@@ -312,7 +312,150 @@ def _validate_and_decode(anchor: np.ndarray, encoded: EncodedTensor) -> np.ndarr
 
 
 def validate_encoded(anchor: np.ndarray, encoded: EncodedTensor) -> None:
-    _validate_and_decode(anchor, encoded)
+    """Validate a resident operand without creating its full decoded target.
+
+    Descriptor arithmetic is vectorized and detailed lane checks are bounded
+    to 256 tiles at a time. ``decode_tensor`` remains the independent CPU
+    reconstruction path used by conversion and full correctness audits.
+    """
+    a = _matrix(anchor)
+    if (not isinstance(encoded, EncodedTensor) or
+            not isinstance(encoded.policy, CodecPolicy) or encoded.shape != a.shape):
+        raise ValueError("invalid tensor metadata or anchor shape")
+    if encoded.kind == "native":
+        if encoded.descriptors is not None or encoded.payload is not None:
+            raise ValueError("native tensor contains packed arrays")
+        if _matrix(encoded.native_words).shape != a.shape:
+            raise ValueError("native shape mismatch")
+        return
+    if encoded.kind != "packed" or encoded.native_words is not None:
+        raise ValueError("invalid packed tensor fields")
+    desc, payload = encoded.descriptors, encoded.payload
+    block = encoded.policy.block_values
+    tiles_per_row = (a.shape[1] + block - 1) // block
+    tile_count = a.shape[0] * tiles_per_row
+    if (desc is None or payload is None or desc.dtype != np.dtype("<u4") or
+            desc.shape != (tile_count, 2) or not desc.flags.c_contiguous or
+            payload.dtype != np.dtype("uint8") or payload.ndim != 1 or
+            not payload.flags.c_contiguous or len(payload) % 4):
+        raise ValueError("invalid descriptor or payload array")
+
+    index = np.arange(tile_count, dtype=np.int64)
+    row = index // tiles_per_row
+    start = (index % tiles_per_row) * block
+    valid = np.minimum(block, a.shape[1] - start)
+    fields = desc[:, 1].astype(np.uint64)
+    mode = (fields & 3).astype(np.int8)
+    width_id = ((fields >> 2) & 3).astype(np.int8)
+    transform_id = ((fields >> 4) & 1).astype(np.int8)
+    count = ((fields >> 5) & 0x1FF).astype(np.int64)
+    widths = np.asarray(WIDTHS, dtype=np.int64)[width_id]
+    packed = mode == 2
+    if (np.any(fields >> 14) or np.any(mode == 3) or
+            np.any((mode == 0) & (fields != 0)) or
+            np.any((mode == 1) & (fields != 1)) or
+            np.any(count > valid) or
+            ("xor" not in encoded.policy.transforms and
+             np.any(packed & (transform_id == 0))) or
+            ("ordered_delta" not in encoded.policy.transforms and
+             np.any(packed & (transform_id == 1)))):
+        raise ValueError("invalid descriptor field")
+    low_size = 4 * ((valid * widths + 31) // 32)
+    mask_bytes = 4 * ((block + 31) // 32)
+    masks_size = np.where(count > 0, mask_bytes, 0)
+    raw_size = (2 * valid + 3) & ~3
+    packed_used = low_size + masks_size + 2 * count
+    packed_size = (packed_used + 3) & ~3
+    sizes = np.where(mode == 0, 0, np.where(mode == 1, raw_size, packed_size))
+    expected = (np.cumsum(sizes, dtype=np.uint64) - sizes) // 4
+    if (np.any(expected > np.iinfo(np.uint32).max) or
+            np.any(desc[:, 0].astype(np.uint64) != expected) or
+            int(np.sum(sizes, dtype=np.uint64)) != len(payload)):
+        raise ValueError("invalid descriptor offsets or payload length")
+    offsets = expected * 4
+    lanes = np.arange(block, dtype=np.int64)
+
+    def check_padding(tile_positions: np.ndarray, used: np.ndarray) -> None:
+        if not len(tile_positions) or not len(payload):
+            return
+        pad = sizes[tile_positions] - used
+        if np.any(pad < 0) or np.any(pad > 3):
+            raise ValueError("invalid payload padding length")
+        for byte_index in range(3):
+            has_byte = pad > byte_index
+            if np.any(has_byte):
+                positions = offsets[tile_positions[has_byte]] + used[has_byte] + byte_index
+                if np.any(payload[positions.astype(np.int64)]):
+                    raise ValueError("nonzero payload padding")
+
+    raw_positions = np.flatnonzero(mode == 1)
+    check_padding(raw_positions, 2 * valid[raw_positions])
+    packed_positions = np.flatnonzero(packed)
+    check_padding(packed_positions, packed_used[packed_positions])
+
+    for chunk_start in range(0, len(packed_positions), 256):
+        positions = packed_positions[chunk_start:chunk_start + 256]
+        if not len(positions):
+            continue
+        n = valid[positions]
+        row_index = row[positions]
+        column_start = start[positions]
+        offsets_chunk = offsets[positions].astype(np.int64)
+        low_chunk = low_size[positions]
+        count_chunk = count[positions]
+        exceptions = np.zeros((len(positions), block), dtype=bool)
+        has_mask = count_chunk > 0
+        if np.any(has_mask):
+            mask_start = offsets_chunk[has_mask] + low_chunk[has_mask]
+            mask_positions = mask_start[:, None] + np.arange(mask_bytes)
+            bits = np.unpackbits(payload[mask_positions], axis=1,
+                                 bitorder="little").astype(bool)
+            exceptions[has_mask] = bits[:, :block]
+            mask_valid = lanes[None, :] < n[has_mask, None]
+            if (np.any(np.sum(bits[:, :block], axis=1) != count_chunk[has_mask]) or
+                    np.any(bits[:, :block] & ~mask_valid) or
+                    np.any(bits[:, block:])):
+                raise ValueError("exception mask/count or tail mismatch")
+
+        for width in WIDTHS:
+            group = widths[positions] == width
+            if not np.any(group):
+                continue
+            n_group = n[group]
+            valid_lanes = lanes[None, :] < n_group[:, None]
+            clipped = np.minimum(lanes[None, :], n_group[:, None] - 1)
+            if width:
+                bit_index = clipped * width
+                code_positions = offsets_chunk[group, None] + bit_index // 8
+                codes = ((payload[code_positions] >> (bit_index % 8)) &
+                         ((1 << width) - 1)).astype(np.int32)
+                low_bits = (n_group * width) % 32
+                partial = low_bits != 0
+                if np.any(partial):
+                    end = offsets_chunk[group][partial] + low_chunk[group][partial] - 4
+                    last_bytes = payload[end[:, None] + np.arange(4)].astype(np.uint32)
+                    last_word = (last_bytes[:, 0] | (last_bytes[:, 1] << 8) |
+                                 (last_bytes[:, 2] << 16) | (last_bytes[:, 3] << 24))
+                    if np.any(last_word >> low_bits[partial]):
+                        raise ValueError("nonzero unused low bits")
+            else:
+                codes = np.zeros((int(np.count_nonzero(group)), block), dtype=np.int32)
+            group_exceptions = exceptions[group]
+            if np.any((codes != 0) & group_exceptions & valid_lanes):
+                raise ValueError("exception low-code placeholder is nonzero")
+            ordered = transform_id[positions][group] == 1
+            if np.any(ordered):
+                anchor_words = a[row_index[group][ordered, None],
+                                 column_start[group][ordered, None] + clipped[ordered]]
+                keys = ordered_key(anchor_words).astype(np.int32)
+                ordered_codes = codes[ordered]
+                delta = np.where((ordered_codes & 1) == 0,
+                                 ordered_codes // 2, -(ordered_codes + 1) // 2)
+                reconstructed_key = keys + delta
+                normal = valid_lanes[ordered] & ~group_exceptions[ordered]
+                if np.any(normal & ((reconstructed_key < 0) |
+                                    (reconstructed_key > 65535))):
+                    raise ValueError("ordered-key reconstruction out of range")
 
 
 def decode_tensor(anchor: np.ndarray, encoded: EncodedTensor) -> np.ndarray:

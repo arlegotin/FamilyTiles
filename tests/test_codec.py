@@ -253,3 +253,56 @@ def test_padding_overlap_and_truncation_rejected():
     with pytest.raises(ValueError):
         validate_encoded(anchor[:, -1:].copy(), EncodedTensor("packed", (1, 1), policy,
                                                              bad_mode, forced.payload, None))
+
+
+def test_runtime_validation_does_not_reconstruct_full_matrix(monkeypatch):
+    import familytiles.codec as codec
+
+    anchor = np.full((3, 129), 0x3F80, dtype=np.uint16)
+    target = anchor.copy()
+    target[:, ::17] = np.uint16(0x4000)
+    encoded = encode_tensor(anchor, target, CodecPolicy(1, 64, ("ordered_delta",)),
+                            modes=("packed",))
+
+    def forbidden_decode(*args):
+        raise AssertionError("validation allocated a decoded matrix")
+
+    monkeypatch.setattr(codec, "_decode_validated", forbidden_decode)
+    validate_encoded(anchor, encoded)
+
+
+def test_runtime_validator_agrees_with_full_reference_on_mutations():
+    import familytiles.codec as codec
+
+    rng = np.random.default_rng(20260928)
+    for block, length in ((64, 33), (128, 129), (256, 257)):
+        anchor = rng.integers(0, 65536, (3, length), dtype=np.uint16)
+        target = anchor.copy()
+        target[:, ::7] = rng.integers(0, 65536, target[:, ::7].shape,
+                                     dtype=np.uint16)
+        encoded = encode_tensor(anchor, target,
+                                CodecPolicy(1, block, ("xor", "ordered_delta")),
+                                modes=("copy", "raw", "packed"))
+        assert encoded.kind == "packed"
+        for mutation in range(60):
+            desc = encoded.descriptors.copy()
+            payload = encoded.payload.copy()
+            if mutation % 2:
+                tile = int(rng.integers(len(desc)))
+                word = int(rng.integers(2))
+                desc[tile, word] ^= np.uint32(1 << int(rng.integers(32)))
+            elif len(payload):
+                byte = int(rng.integers(len(payload)))
+                payload[byte] ^= np.uint8(1 << int(rng.integers(8)))
+            changed = EncodedTensor("packed", anchor.shape, encoded.policy,
+                                    desc, payload, None)
+            fast_ok = slow_ok = True
+            try:
+                validate_encoded(anchor, changed)
+            except ValueError:
+                fast_ok = False
+            try:
+                codec._validate_and_decode(anchor, changed)
+            except ValueError:
+                slow_ok = False
+            assert fast_ok == slow_ok, (block, length, mutation)
