@@ -1,0 +1,542 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "current_sessions": [
+    "results/continuation/blocks/session-0.json",
+    "results/continuation/blocks/session-1.json",
+    "results/continuation/blocks/session-2.json"
+  ],
+  "historical": {
+    "classification": "unresolved",
+    "explanation": "Saved source, benchmark-code, config, inventory, fixture and activation hashes match. Absolute custom-kernel times differ while native batched times are closer. Historical swap usage also differs, without recorded growth during either run. This does not establish the cause; compiled headers, git state and warmup duration were not saved.",
+    "other_runs": [
+      {
+        "activation_hashes": [
+          "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce"
+        ],
+        "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+        "benchmark_code_hash": "dbc8afae200227708c670d8d2457a6f8928cf69128e9427fe020de5beeb0013c",
+        "cache_limit_bytes": 268435456,
+        "config_hash": "b9ae3550b6d13f2d5492459d83b13a3840d47ee4f837e3b89bb9f1a9dee08ffb",
+        "decision": "fail",
+        "gate_record": "results/gates/f34e4ead50964a1391c922813de28c4d/G3.json",
+        "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
+        "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
+        "median_times_ns": {
+          "family_pair": 104385416,
+          "family_two_singles": 121028584,
+          "native_batched": 66275709,
+          "native_two": 70483209
+        },
+        "missing_historical_fields": [
+          "git_commit",
+          "dirty_diff",
+          "generated_headers",
+          "compiled_dispatch_path",
+          "warmup_duration_ns"
+        ],
+        "native_batched_two_products": "unrecorded",
+        "pool_size": 8,
+        "run_id": "03e59ee9f495487ca833428be7e45391",
+        "source_hash": "1651c482a4566f0149b32756a22872579e81d8efb603c4433dc8c1c766fd10b2",
+        "swap_used_after_bytes": [
+          1556742144,
+          1556742144,
+          1556742144
+        ],
+        "swap_used_before_bytes": [
+          1556742144,
+          1556742144,
+          1556742144
+        ],
+        "sweeps": 8,
+        "tensor_names": [
+          "model.layers.0.self_attn.q_proj.weight",
+          "model.layers.0.self_attn.k_proj.weight",
+          "model.layers.0.self_attn.v_proj.weight",
+          "model.layers.0.self_attn.o_proj.weight",
+          "model.layers.0.mlp.gate_proj.weight",
+          "model.layers.0.mlp.up_proj.weight",
+          "model.layers.0.mlp.down_proj.weight",
+          "model.layers.14.self_attn.q_proj.weight",
+          "model.layers.14.self_attn.k_proj.weight",
+          "model.layers.14.self_attn.v_proj.weight",
+          "model.layers.14.self_attn.o_proj.weight",
+          "model.layers.14.mlp.gate_proj.weight",
+          "model.layers.14.mlp.up_proj.weight",
+          "model.layers.14.mlp.down_proj.weight",
+          "model.layers.27.self_attn.q_proj.weight",
+          "model.layers.27.self_attn.k_proj.weight",
+          "model.layers.27.self_attn.v_proj.weight",
+          "model.layers.27.self_attn.o_proj.weight",
+          "model.layers.27.mlp.gate_proj.weight",
+          "model.layers.27.mlp.up_proj.weight",
+          "model.layers.27.mlp.down_proj.weight"
+        ],
+        "trial_times_ns": {
+          "family_pair": [
+            125185833,
+            96851541,
+            104385416
+          ],
+          "family_two_singles": [
+            118182584,
+            129843584,
+            121028584
+          ],
+          "native_batched": [
+            66275709,
+            66007125,
+            67621583
+          ],
+          "native_two": [
+            77961667,
+            70219667,
+            70483209
+          ]
+        }
+      },
+      {
+        "activation_hashes": [
+          "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce"
+        ],
+        "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+        "benchmark_code_hash": "2aa15872055eb22ec4c2b22d69e119105403b4b78bc208ae3fecdcfec6bd72b4",
+        "cache_limit_bytes": 268435456,
+        "config_hash": "dad8fb5edfe7946c951b4b9e959affba3732e3df4aabfa48ccaf5ac77dfff54c",
+        "decision": "fail",
+        "gate_record": "results/gates/4c0f4a62f80d41579344b0c0ec9cfb63/G3.json",
+        "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
+        "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
+        "median_times_ns": {
+          "family_pair": 117303666,
+          "family_two_singles": 117277834,
+          "native_batched": 73718584,
+          "native_two": 72026875
+        },
+        "missing_historical_fields": [
+          "git_commit",
+          "dirty_diff",
+          "generated_headers",
+          "compiled_dispatch_path",
+          "warmup_duration_ns"
+        ],
+        "native_batched_two_products": "unrecorded",
+        "pool_size": 8,
+        "run_id": "15a2fc85fb614ba7bdc2ab1421305a7d",
+        "source_hash": "ed5f46ddd113ce9ed7b2c8136af4de0f6ef0e86383165605ec39f320efae2840",
+        "swap_used_after_bytes": [
+          1556742144,
+          1556742144,
+          1556742144
+        ],
+        "swap_used_before_bytes": [
+          1556742144,
+          1556742144,
+          1556742144
+        ],
+        "sweeps": 8,
+        "tensor_names": [
+          "model.layers.0.self_attn.q_proj.weight",
+          "model.layers.0.self_attn.k_proj.weight",
+          "model.layers.0.self_attn.v_proj.weight",
+          "model.layers.0.self_attn.o_proj.weight",
+          "model.layers.0.mlp.gate_proj.weight",
+          "model.layers.0.mlp.up_proj.weight",
+          "model.layers.0.mlp.down_proj.weight",
+          "model.layers.14.self_attn.q_proj.weight",
+          "model.layers.14.self_attn.k_proj.weight",
+          "model.layers.14.self_attn.v_proj.weight",
+          "model.layers.14.self_attn.o_proj.weight",
+          "model.layers.14.mlp.gate_proj.weight",
+          "model.layers.14.mlp.up_proj.weight",
+          "model.layers.14.mlp.down_proj.weight",
+          "model.layers.27.self_attn.q_proj.weight",
+          "model.layers.27.self_attn.k_proj.weight",
+          "model.layers.27.self_attn.v_proj.weight",
+          "model.layers.27.self_attn.o_proj.weight",
+          "model.layers.27.mlp.gate_proj.weight",
+          "model.layers.27.mlp.up_proj.weight",
+          "model.layers.27.mlp.down_proj.weight"
+        ],
+        "trial_times_ns": {
+          "family_pair": [
+            117177625,
+            117303666,
+            123680583
+          ],
+          "family_two_singles": [
+            117277834,
+            120844416,
+            116560250
+          ],
+          "native_batched": [
+            74912834,
+            73718584,
+            67938375
+          ],
+          "native_two": [
+            61629375,
+            87439667,
+            72026875
+          ]
+        }
+      },
+      {
+        "activation_hashes": [
+          "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce"
+        ],
+        "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+        "benchmark_code_hash": "dbc8afae200227708c670d8d2457a6f8928cf69128e9427fe020de5beeb0013c",
+        "cache_limit_bytes": 268435456,
+        "config_hash": "81758e86d07844f3fcb5210124240b43453ad5c3a4daaf87166eb03342e1e661",
+        "decision": "fail",
+        "gate_record": "results/gates/61dc30a89d154587b66d082b26e58c24/G3.json",
+        "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
+        "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
+        "median_times_ns": {
+          "family_pair": 285065292,
+          "family_two_singles": 202897667,
+          "native_batched": 69489917,
+          "native_two": 121052125
+        },
+        "missing_historical_fields": [
+          "git_commit",
+          "dirty_diff",
+          "generated_headers",
+          "compiled_dispatch_path",
+          "warmup_duration_ns"
+        ],
+        "native_batched_two_products": "unrecorded",
+        "pool_size": 8,
+        "run_id": "897cb6c77905422492aa201a0b82be59",
+        "source_hash": "f376e3f0ae1d877b0eae0d6eaec18d010b3f85c9ca600f1778ace11c0ca314c2",
+        "swap_used_after_bytes": [
+          5716508672,
+          5716508672,
+          5708120064
+        ],
+        "swap_used_before_bytes": [
+          5716508672,
+          5716508672,
+          5708120064
+        ],
+        "sweeps": 8,
+        "tensor_names": [
+          "model.layers.0.self_attn.q_proj.weight",
+          "model.layers.0.self_attn.k_proj.weight",
+          "model.layers.0.self_attn.v_proj.weight",
+          "model.layers.0.self_attn.o_proj.weight",
+          "model.layers.0.mlp.gate_proj.weight",
+          "model.layers.0.mlp.up_proj.weight",
+          "model.layers.0.mlp.down_proj.weight",
+          "model.layers.14.self_attn.q_proj.weight",
+          "model.layers.14.self_attn.k_proj.weight",
+          "model.layers.14.self_attn.v_proj.weight",
+          "model.layers.14.self_attn.o_proj.weight",
+          "model.layers.14.mlp.gate_proj.weight",
+          "model.layers.14.mlp.up_proj.weight",
+          "model.layers.14.mlp.down_proj.weight",
+          "model.layers.27.self_attn.q_proj.weight",
+          "model.layers.27.self_attn.k_proj.weight",
+          "model.layers.27.self_attn.v_proj.weight",
+          "model.layers.27.self_attn.o_proj.weight",
+          "model.layers.27.mlp.gate_proj.weight",
+          "model.layers.27.mlp.up_proj.weight",
+          "model.layers.27.mlp.down_proj.weight"
+        ],
+        "trial_times_ns": {
+          "family_pair": [
+            285065292,
+            300415959,
+            165894541
+          ],
+          "family_two_singles": [
+            240002584,
+            202897667,
+            202444542
+          ],
+          "native_batched": [
+            69489917,
+            65302792,
+            74061542
+          ],
+          "native_two": [
+            68860125,
+            121052125,
+            262412709
+          ]
+        }
+      },
+      {
+        "activation_hashes": [
+          "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce"
+        ],
+        "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+        "benchmark_code_hash": "dbc8afae200227708c670d8d2457a6f8928cf69128e9427fe020de5beeb0013c",
+        "cache_limit_bytes": 268435456,
+        "config_hash": "81758e86d07844f3fcb5210124240b43453ad5c3a4daaf87166eb03342e1e661",
+        "decision": "fail",
+        "gate_record": "results/gates/71ea57bdee3b493b8fabe3b75239bace/G3.json",
+        "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
+        "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
+        "median_times_ns": {
+          "family_pair": 258753125,
+          "family_two_singles": 226480958,
+          "native_batched": 78616958,
+          "native_two": 242493125
+        },
+        "missing_historical_fields": [
+          "git_commit",
+          "dirty_diff",
+          "generated_headers",
+          "compiled_dispatch_path",
+          "warmup_duration_ns"
+        ],
+        "native_batched_two_products": "unrecorded",
+        "pool_size": 8,
+        "run_id": "9207a35910cf42d8b4fe41d0b0814a13",
+        "source_hash": "f376e3f0ae1d877b0eae0d6eaec18d010b3f85c9ca600f1778ace11c0ca314c2",
+        "swap_used_after_bytes": [
+          5708120064,
+          5708120064,
+          5708120064
+        ],
+        "swap_used_before_bytes": [
+          5708120064,
+          5708120064,
+          5708120064
+        ],
+        "sweeps": 8,
+        "tensor_names": [
+          "model.layers.0.self_attn.q_proj.weight",
+          "model.layers.0.self_attn.k_proj.weight",
+          "model.layers.0.self_attn.v_proj.weight",
+          "model.layers.0.self_attn.o_proj.weight",
+          "model.layers.0.mlp.gate_proj.weight",
+          "model.layers.0.mlp.up_proj.weight",
+          "model.layers.0.mlp.down_proj.weight",
+          "model.layers.14.self_attn.q_proj.weight",
+          "model.layers.14.self_attn.k_proj.weight",
+          "model.layers.14.self_attn.v_proj.weight",
+          "model.layers.14.self_attn.o_proj.weight",
+          "model.layers.14.mlp.gate_proj.weight",
+          "model.layers.14.mlp.up_proj.weight",
+          "model.layers.14.mlp.down_proj.weight",
+          "model.layers.27.self_attn.q_proj.weight",
+          "model.layers.27.self_attn.k_proj.weight",
+          "model.layers.27.self_attn.v_proj.weight",
+          "model.layers.27.self_attn.o_proj.weight",
+          "model.layers.27.mlp.gate_proj.weight",
+          "model.layers.27.mlp.up_proj.weight",
+          "model.layers.27.mlp.down_proj.weight"
+        ],
+        "trial_times_ns": {
+          "family_pair": [
+            220983625,
+            295244583,
+            258753125
+          ],
+          "family_two_singles": [
+            213438750,
+            286408125,
+            226480958
+          ],
+          "native_batched": [
+            78616958,
+            74100750,
+            78803541
+          ],
+          "native_two": [
+            402687791,
+            81032792,
+            242493125
+          ]
+        }
+      }
+    ],
+    "same_source_runs": [
+      {
+        "activation_hashes": [
+          "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce"
+        ],
+        "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+        "benchmark_code_hash": "dbc8afae200227708c670d8d2457a6f8928cf69128e9427fe020de5beeb0013c",
+        "cache_limit_bytes": 268435456,
+        "config_hash": "484beb50fb78fc591dca5238fbcda3c68f27c6d0a2e46607fe1b5a1a2ab1f6d5",
+        "decision": "pass",
+        "gate_record": "results/gates/79f303f318b14f65aafd28e367d05c0d/G3.json",
+        "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
+        "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
+        "median_times_ns": {
+          "family_pair": 75999500,
+          "family_two_singles": 113921541,
+          "native_batched": 62386959,
+          "native_two": 71964292
+        },
+        "missing_historical_fields": [
+          "git_commit",
+          "dirty_diff",
+          "generated_headers",
+          "compiled_dispatch_path",
+          "warmup_duration_ns"
+        ],
+        "native_batched_two_products": "unrecorded",
+        "pool_size": 8,
+        "run_id": "a43f4070630a48b3b91a2b212af15274",
+        "source_hash": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88",
+        "swap_used_after_bytes": [
+          1556742144,
+          1556742144,
+          1556742144
+        ],
+        "swap_used_before_bytes": [
+          1556742144,
+          1556742144,
+          1556742144
+        ],
+        "sweeps": 8,
+        "tensor_names": [
+          "model.layers.0.self_attn.q_proj.weight",
+          "model.layers.0.self_attn.k_proj.weight",
+          "model.layers.0.self_attn.v_proj.weight",
+          "model.layers.0.self_attn.o_proj.weight",
+          "model.layers.0.mlp.gate_proj.weight",
+          "model.layers.0.mlp.up_proj.weight",
+          "model.layers.0.mlp.down_proj.weight",
+          "model.layers.14.self_attn.q_proj.weight",
+          "model.layers.14.self_attn.k_proj.weight",
+          "model.layers.14.self_attn.v_proj.weight",
+          "model.layers.14.self_attn.o_proj.weight",
+          "model.layers.14.mlp.gate_proj.weight",
+          "model.layers.14.mlp.up_proj.weight",
+          "model.layers.14.mlp.down_proj.weight",
+          "model.layers.27.self_attn.q_proj.weight",
+          "model.layers.27.self_attn.k_proj.weight",
+          "model.layers.27.self_attn.v_proj.weight",
+          "model.layers.27.self_attn.o_proj.weight",
+          "model.layers.27.mlp.gate_proj.weight",
+          "model.layers.27.mlp.up_proj.weight",
+          "model.layers.27.mlp.down_proj.weight"
+        ],
+        "trial_times_ns": {
+          "family_pair": [
+            127368208,
+            75238625,
+            75999500
+          ],
+          "family_two_singles": [
+            116962292,
+            97639292,
+            113921541
+          ],
+          "native_batched": [
+            80146500,
+            62386959,
+            50959292
+          ],
+          "native_two": [
+            74819417,
+            53970875,
+            71964292
+          ]
+        }
+      },
+      {
+        "activation_hashes": [
+          "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce"
+        ],
+        "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+        "benchmark_code_hash": "dbc8afae200227708c670d8d2457a6f8928cf69128e9427fe020de5beeb0013c",
+        "cache_limit_bytes": 268435456,
+        "config_hash": "484beb50fb78fc591dca5238fbcda3c68f27c6d0a2e46607fe1b5a1a2ab1f6d5",
+        "decision": "fail",
+        "gate_record": "results/gates/e18d8163e6a6405d93b3da179a28904d/G3.json",
+        "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
+        "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
+        "median_times_ns": {
+          "family_pair": 181961417,
+          "family_two_singles": 215045542,
+          "native_batched": 64768125,
+          "native_two": 80805125
+        },
+        "missing_historical_fields": [
+          "git_commit",
+          "dirty_diff",
+          "generated_headers",
+          "compiled_dispatch_path",
+          "warmup_duration_ns"
+        ],
+        "native_batched_two_products": "unrecorded",
+        "pool_size": 8,
+        "run_id": "39ea29b854844748bfe79b272d6b3eab",
+        "source_hash": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88",
+        "swap_used_after_bytes": [
+          5699731456,
+          5699731456,
+          5699731456
+        ],
+        "swap_used_before_bytes": [
+          5699731456,
+          5699731456,
+          5699731456
+        ],
+        "sweeps": 8,
+        "tensor_names": [
+          "model.layers.0.self_attn.q_proj.weight",
+          "model.layers.0.self_attn.k_proj.weight",
+          "model.layers.0.self_attn.v_proj.weight",
+          "model.layers.0.self_attn.o_proj.weight",
+          "model.layers.0.mlp.gate_proj.weight",
+          "model.layers.0.mlp.up_proj.weight",
+          "model.layers.0.mlp.down_proj.weight",
+          "model.layers.14.self_attn.q_proj.weight",
+          "model.layers.14.self_attn.k_proj.weight",
+          "model.layers.14.self_attn.v_proj.weight",
+          "model.layers.14.self_attn.o_proj.weight",
+          "model.layers.14.mlp.gate_proj.weight",
+          "model.layers.14.mlp.up_proj.weight",
+          "model.layers.14.mlp.down_proj.weight",
+          "model.layers.27.self_attn.q_proj.weight",
+          "model.layers.27.self_attn.k_proj.weight",
+          "model.layers.27.self_attn.v_proj.weight",
+          "model.layers.27.self_attn.o_proj.weight",
+          "model.layers.27.mlp.gate_proj.weight",
+          "model.layers.27.mlp.up_proj.weight",
+          "model.layers.27.mlp.down_proj.weight"
+        ],
+        "trial_times_ns": {
+          "family_pair": [
+            181961417,
+            238107334,
+            176352125
+          ],
+          "family_two_singles": [
+            215045542,
+            225264875,
+            195104750
+          ],
+          "native_batched": [
+            64768125,
+            64435625,
+            69152959
+          ],
+          "native_two": [
+            80805125,
+            85013750,
+            69216416
+          ]
+        }
+      }
+    ]
+  },
+  "historical_discrepancy": "unresolved",
+  "note": "Original G3 gate and all raw records remain unchanged.",
+  "performance_classification": "stable_current_pass",
+  "ratio_relative_spread": 0.01565603203855548,
+  "session_median_ratios": [
+    1.3594478638572838,
+    1.3381643045459883,
+    1.3716801655196356
+  ],
+  "stable": true
+}

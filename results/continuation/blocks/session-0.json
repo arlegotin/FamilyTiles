@@ -1,0 +1,2514 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "benchmark_code_sha256": "39e72cd0b668c7d6c26a3b24114734ffd2e952b77c41e834300590138a54f286",
+  "block_ratios": [
+    1.325060370900542,
+    1.36241225068002,
+    1.3594478638572838,
+    1.3625430722670988,
+    1.3493272200568762
+  ],
+  "combined_diagnostic_storage": true,
+  "input_identity": {
+    "note": "Three genuine saved Qwen activations per width; other same-width roles reuse them for timing.",
+    "role_revisions": {
+      "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+      "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "source_keys_by_tensor": {
+      "model.layers.0.mlp.down_proj.weight": [
+        "layer0.down_proj",
+        "layer14.down_proj",
+        "layer27.down_proj"
+      ],
+      "model.layers.0.mlp.gate_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.0.mlp.up_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.0.self_attn.k_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.0.self_attn.o_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.0.self_attn.q_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.0.self_attn.v_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.14.mlp.down_proj.weight": [
+        "layer0.down_proj",
+        "layer14.down_proj",
+        "layer27.down_proj"
+      ],
+      "model.layers.14.mlp.gate_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.14.mlp.up_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.14.self_attn.k_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.14.self_attn.o_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.14.self_attn.q_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.14.self_attn.v_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.27.mlp.down_proj.weight": [
+        "layer0.down_proj",
+        "layer14.down_proj",
+        "layer27.down_proj"
+      ],
+      "model.layers.27.mlp.gate_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.27.mlp.up_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.27.self_attn.k_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.27.self_attn.o_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.27.self_attn.q_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.27.self_attn.v_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ]
+    }
+  },
+  "kernel_config": {
+    "accumulation": "fp32",
+    "lanes_per_row": 32,
+    "layout_changes_after_first_correct": 2,
+    "layout_version": 3,
+    "math_mode": "safe",
+    "output": "bf16",
+    "pair_source_sha256": "ffa5c9b3ba47160031de84a4f1720f5076d19741ec45ec34697479deaafbf2e4",
+    "partial_sum_bytes": 0,
+    "single_source_sha256": "f5ca49812cc2c5ee2a65e5b2f932f54bb2563f62a066a0adf3dcf9d21e1605cd"
+  },
+  "median_ratio": 1.3594478638572838,
+  "mlx_after": {
+    "active_bytes": 989149184,
+    "cache_bytes": 33541128,
+    "peak_active_bytes": 989646856
+  },
+  "mlx_before": {
+    "active_bytes": 989149184,
+    "cache_bytes": 33541128,
+    "peak_active_bytes": 0
+  },
+  "package_versions": {
+    "mlx": "0.32.2",
+    "mlx-lm": "0.31.3",
+    "numpy": "2.5.3"
+  },
+  "policy_hash": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
+  "pressure_after": {
+    "available_bytes": 11689918464,
+    "memory_percent": 69.8,
+    "swap_used_bytes": 7428833280
+  },
+  "pressure_before": {
+    "available_bytes": 11651973120,
+    "memory_percent": 69.9,
+    "swap_used_bytes": 7428833280
+  },
+  "revisions": {
+    "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+    "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "safe_budget_bytes": 7457095680,
+  "session": 0,
+  "shapes": {
+    "model.layers.0.mlp.down_proj.weight": [
+      1536,
+      8960
+    ],
+    "model.layers.0.mlp.gate_proj.weight": [
+      8960,
+      1536
+    ],
+    "model.layers.0.mlp.up_proj.weight": [
+      8960,
+      1536
+    ],
+    "model.layers.0.self_attn.k_proj.weight": [
+      256,
+      1536
+    ],
+    "model.layers.0.self_attn.o_proj.weight": [
+      1536,
+      1536
+    ],
+    "model.layers.0.self_attn.q_proj.weight": [
+      1536,
+      1536
+    ],
+    "model.layers.0.self_attn.v_proj.weight": [
+      256,
+      1536
+    ],
+    "model.layers.14.mlp.down_proj.weight": [
+      1536,
+      8960
+    ],
+    "model.layers.14.mlp.gate_proj.weight": [
+      8960,
+      1536
+    ],
+    "model.layers.14.mlp.up_proj.weight": [
+      8960,
+      1536
+    ],
+    "model.layers.14.self_attn.k_proj.weight": [
+      256,
+      1536
+    ],
+    "model.layers.14.self_attn.o_proj.weight": [
+      1536,
+      1536
+    ],
+    "model.layers.14.self_attn.q_proj.weight": [
+      1536,
+      1536
+    ],
+    "model.layers.14.self_attn.v_proj.weight": [
+      256,
+      1536
+    ],
+    "model.layers.27.mlp.down_proj.weight": [
+      1536,
+      8960
+    ],
+    "model.layers.27.mlp.gate_proj.weight": [
+      8960,
+      1536
+    ],
+    "model.layers.27.mlp.up_proj.weight": [
+      8960,
+      1536
+    ],
+    "model.layers.27.self_attn.k_proj.weight": [
+      256,
+      1536
+    ],
+    "model.layers.27.self_attn.o_proj.weight": [
+      1536,
+      1536
+    ],
+    "model.layers.27.self_attn.q_proj.weight": [
+      1536,
+      1536
+    ],
+    "model.layers.27.self_attn.v_proj.weight": [
+      256,
+      1536
+    ]
+  },
+  "slots": [
+    {
+      "block": 0,
+      "duration_ns": 56114667,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 0,
+      "duration_ns": 76026542,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 0,
+      "duration_ns": 76735583,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 0,
+      "duration_ns": 59172250,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 1,
+      "duration_ns": 58486208,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 1,
+      "duration_ns": 79070292,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 1,
+      "duration_ns": 81968084,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 1,
+      "duration_ns": 59714708,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 2,
+      "duration_ns": 58401416,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 2,
+      "duration_ns": 80119750,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 2,
+      "duration_ns": 80579958,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 2,
+      "duration_ns": 59808125,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 3,
+      "duration_ns": 61311708,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 3,
+      "duration_ns": 84016042,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 3,
+      "duration_ns": 80887833,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 3,
+      "duration_ns": 59714833,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 4,
+      "duration_ns": 56903459,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 4,
+      "duration_ns": 77547791,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 4,
+      "duration_ns": 77767250,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+        "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+        "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+        "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+        "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+        "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+        "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+        "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+      ],
+      "last_output_shapes": [
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ],
+        [
+          1536
+        ],
+        [
+          256
+        ],
+        [
+          256
+        ],
+        [
+          1536
+        ],
+        [
+          8960
+        ],
+        [
+          8960
+        ],
+        [
+          1536
+        ]
+      ],
+      "mode": "family_pair",
+      "model_products": 336,
+      "operation_count": 168
+    },
+    {
+      "block": 4,
+      "duration_ns": 58202083,
+      "evaluated_outputs": 336,
+      "last_output_hashes": [
+        "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+        "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+        "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+        "d0d42636d080a1a287977e52174fe57448f794373cea0a3b46bf1de273c2a942",
+        "2e8bb8b786ad6307e2f0eb0a9db7931c21f67163ccab01b26d6145e2ff92d9ef",
+        "9f8ce56b71cf70648ddf838a64e1b2e0db69259b56888785b51114d5eac4dabc",
+        "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+        "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+        "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+        "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+        "6c99d07b344e249b5155abad87f26d102ab53bb9f78751c5ef6c5f9aa1a985ee",
+        "456a38c3f7872f782f85cf1503a9264a03a45aceed127e01923b63ba9b4aaeb7",
+        "16834b8d1bc25d5253151e105f9a3147fbca0dbf9e9f450e26840ee191411b34",
+        "fdabec83f1661eda648f63e20afe860cdb66fe3cb26910c649fc9b13fb6d0fcd",
+        "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+        "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+        "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+        "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+        "cb613c817d9212418b33d8776a4da60851663a0b817c863c8651a73f504e8adb",
+        "f806090486ac16e3cc7ee386a86556b7a71e1573d0554d2dbf46620b250b3ef5",
+        "8497d50e4c186f4ecd8fbeb11cf41c457b05984c62463cc973e4b1eac36dc0c9"
+      ],
+      "last_output_shapes": [
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          256
+        ],
+        [
+          2,
+          1536
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          8960
+        ],
+        [
+          2,
+          1536
+        ]
+      ],
+      "mode": "native_batched",
+      "model_products": 336,
+      "operation_count": 168
+    }
+  ],
+  "tensor_names": [
+    "model.layers.0.self_attn.q_proj.weight",
+    "model.layers.0.self_attn.k_proj.weight",
+    "model.layers.0.self_attn.v_proj.weight",
+    "model.layers.0.self_attn.o_proj.weight",
+    "model.layers.0.mlp.gate_proj.weight",
+    "model.layers.0.mlp.up_proj.weight",
+    "model.layers.0.mlp.down_proj.weight",
+    "model.layers.14.self_attn.q_proj.weight",
+    "model.layers.14.self_attn.k_proj.weight",
+    "model.layers.14.self_attn.v_proj.weight",
+    "model.layers.14.self_attn.o_proj.weight",
+    "model.layers.14.mlp.gate_proj.weight",
+    "model.layers.14.mlp.up_proj.weight",
+    "model.layers.14.mlp.down_proj.weight",
+    "model.layers.27.self_attn.q_proj.weight",
+    "model.layers.27.self_attn.k_proj.weight",
+    "model.layers.27.self_attn.v_proj.weight",
+    "model.layers.27.self_attn.o_proj.weight",
+    "model.layers.27.mlp.gate_proj.weight",
+    "model.layers.27.mlp.up_proj.weight",
+    "model.layers.27.mlp.down_proj.weight"
+  ],
+  "two_singles_control": {
+    "duration_ns": 107873750,
+    "evaluated_outputs": 336,
+    "last_output_hashes": [
+      "40235eb69a3a79c6ea9e87cb348ac9f19781f580a780e63978e635d91b26e899",
+      "f2d9aba5ea664f94efb673ae25c8e3e2cf24fbd431b5cea8ba4150a433a65223",
+      "1e855f1ee7d7e29ef7648eae23e10e68b80204f43ac023bff301e40670bd4668",
+      "f09a2578f8fa90dd05b04bea4a1b95442d883b91407260f4a6a27a1e025952fe",
+      "380736c62ff6801c7a1baa1136d4adc20cd92c71507fb565ee3c5d8a8ef29923",
+      "914745bcfd99ac90dfda46bfba0affcf3d99b69944753109662e5c462944fb64",
+      "e2d8e5159f1740fb8714d49eaac160db99c3e290ba2a521f49c497cbd99e64da",
+      "dc798cf3fa086868fa26bd2c21434a412f2660eea0e627ecf232821e7cbefc8e",
+      "37bf7690ce1c088d200e85adbd9cde10f175fa295b617b23e7ec3b3bbe5f0e23",
+      "0953d6f0a941458b8245183a795500159c163dd26357d319552ae5658e394082",
+      "bc90b7e833449f2647c9d13cb9fdbf49414785c24b4ac98e116d89b2767454f7",
+      "ef8aba6b4c1ac6bb5ede65b0e4145dd60da067f96d38f29ab3e9566e3ce98153",
+      "324d19f179d6736acb6524cf20675c37e6d49cdcf2cf0b9898b34fd728b6fdf5",
+      "49fbe74bf732819000bf882af75b0058ac5ba0ff43caa0c18eb8b83ee1370419",
+      "c9a884eb0c4bb02aeb7e7de76cf240daa31f396403913b7a0c002ca8b45a5e35",
+      "e4fc057320a99405e1b0054e15c1ce7c9b327c80d1ae9a671da66093dfca3ef7",
+      "ead1a516c1bf69a090f2ff8b4d08fa6bbece8749934087272fe4618c91037d13",
+      "4155f393120b0b88816213007f4d44221716df7da92db27359db8593ab15fa4c",
+      "71d7bb5facf17c695a0f68a981dec78d34f99b037889b6be9e2d59d8f7ead22c",
+      "4db48b4deab5dfc7addd9e325f2b6d820fa0016c54a97cc1afd9e6738a22baf8",
+      "cc1d890c0e2e65aad6f63dba1961c2c9c866388098a3d0c0a6cd84936fdf2307"
+    ],
+    "last_output_shapes": [
+      [
+        1536
+      ],
+      [
+        256
+      ],
+      [
+        256
+      ],
+      [
+        1536
+      ],
+      [
+        8960
+      ],
+      [
+        8960
+      ],
+      [
+        1536
+      ],
+      [
+        1536
+      ],
+      [
+        256
+      ],
+      [
+        256
+      ],
+      [
+        1536
+      ],
+      [
+        8960
+      ],
+      [
+        8960
+      ],
+      [
+        1536
+      ],
+      [
+        1536
+      ],
+      [
+        256
+      ],
+      [
+        256
+      ],
+      [
+        1536
+      ],
+      [
+        8960
+      ],
+      [
+        8960
+      ],
+      [
+        1536
+      ]
+    ],
+    "mode": "family_two_singles",
+    "model_products": 336,
+    "operation_count": 168
+  },
+  "work": {
+    "biases": "absent in all modes, matching original G3 matrix-only sweep",
+    "blocks": 5,
+    "contiguity": "custom ensure_row_contiguous=False; native stack contiguous",
+    "native_stack": "prebuilt once from distinct original matrices",
+    "sweeps_per_slot": 8,
+    "visits_per_slot": 168
+  }
+}
