@@ -78,6 +78,20 @@ def main(argv: list[str] | None = None) -> int:
         except (OSError, ValueError) as exc:
             print(f"verify: {exc}", file=sys.stderr)
             return 2
+    if args.command == "verify" and args.device == "gpu" and args.scope is None:
+        from .convert import load_artifact
+        from .metal import verify_gpu
+        from .records import read_gate
+        try:
+            artifact = load_artifact(resolve_under_root(root, args.artifact))
+            gate = read_gate(root / "results/gates/G2.json")
+            if gate.decision != "pass" or gate.context.artifact_hash != artifact.manifest_hash:
+                raise ValueError("G2 CPU gate does not match this artifact")
+            result = verify_gpu(artifact)
+            return 0 if result["representation_exact"] else 3
+        except (OSError, ValueError) as exc:
+            print(f"verify: {exc}", file=sys.stderr)
+            return 2
     if args.command != "report":
         print(f"{args.command} is not implemented at the current gate", file=sys.stderr)
         return 2
