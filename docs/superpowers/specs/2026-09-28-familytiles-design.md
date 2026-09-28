@@ -66,6 +66,8 @@ Each record stores schema version, gate, family/revision IDs, format/policy/envi
 
 Commands check prerequisite records against the exact family, policy, and artifact. A changed format/revision invalidates dependent evidence. Equivalent numerical checks may be reused only when code/kernel/operator configuration, inputs, and artifact hashes match. Records are append-only by run ID; a failure must not leave an old selection artifact silently usable.
 
+Hash the relevant producer/dependency content for each evidence stage and record the repository commit separately. Documentation-only commits and newly added downstream modules do not invalidate unchanged earlier measurements. Changes to a gate's producer or numerical/format dependencies invalidate affected checks; define those dependencies explicitly and rerun them. A Git commit identifier alone is insufficient to decide whether evidence is reusable.
+
 An early-stop report is available at every gate. G0/G1 failure does not require implementing kernels or all later baseline runners just to render a report. No override flag silently bypasses a failed gate.
 
 ## 4. Machine, acquisition, and process limits
