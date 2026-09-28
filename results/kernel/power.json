@@ -1,0 +1,5 @@
+{
+  "external_power": true,
+  "note": "Observed during the first formal G3 sweep; no other GPU task was run concurrently.",
+  "power_status_output": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=36372579)\t100%; charged; 0:00 remaining present: true\n"
+}

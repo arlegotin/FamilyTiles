@@ -1,7 +1,7 @@
 {
   "anchor_view_probe": {
-    "active_after_bytes": 16777216,
-    "active_before_bytes": 16777218,
+    "active_after_bytes": 18771968,
+    "active_before_bytes": 18771970,
     "additional_bytes": -2,
     "anchor_bytes": 16777216,
     "no_full_copy": true
@@ -9,7 +9,7 @@
   "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
   "hash_mismatched_tensors": 0,
   "representation_exact": true,
-  "safe_process_budget_bytes": 7170559180,
+  "safe_process_budget_bytes": 6388275609,
   "verified_encoded_tensors": 196,
   "verified_encoded_words": 1310195712
 }

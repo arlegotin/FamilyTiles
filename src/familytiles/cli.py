@@ -30,8 +30,9 @@ def main(argv: list[str] | None = None) -> int:
     verify_parser.add_argument("--artifact", required=True)
     verify_parser.add_argument("--device", choices=("cpu", "gpu"))
     verify_parser.add_argument("--scope", choices=("model",))
-    for name in ("bench",):
-        commands.add_parser(name, help="Available after its prerequisite implementation gate")
+    bench_parser = commands.add_parser("bench", help="Run a gated benchmark suite")
+    bench_parser.add_argument("--artifact", required=True)
+    bench_parser.add_argument("--suite", choices=("kernel",), required=True)
     args = parser.parse_args(argv)
     root = Path(__file__).resolve().parents[2]
     if args.command == "doctor":
@@ -91,6 +92,14 @@ def main(argv: list[str] | None = None) -> int:
             return 0 if result["representation_exact"] else 3
         except (OSError, ValueError) as exc:
             print(f"verify: {exc}", file=sys.stderr)
+            return 2
+    if args.command == "bench" and args.suite == "kernel":
+        from .measure import run_kernel_benchmark
+        try:
+            gate = run_kernel_benchmark(resolve_under_root(root, args.artifact))
+            return {"pass": 0, "fail": 3, "blocked": 4}[gate.decision]
+        except (OSError, ValueError) as exc:
+            print(f"bench: {exc}", file=sys.stderr)
             return 2
     if args.command != "report":
         print(f"{args.command} is not implemented at the current gate", file=sys.stderr)

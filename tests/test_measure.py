@@ -80,3 +80,84 @@ def test_summarize_trials_uses_trial_summaries_not_pooled_tokens():
     result = measure.summarize_trials(rows)
     assert result["median_completion_ns"] == 200
     assert result["median_trial_p95_latency_ns"] == 1000
+
+
+def _kernel_rows(family_ns=135, native_two_ns=100, native_batch_ns=90,
+                 source_hash="kernel-v1"):
+    rows = []
+    for trial in range(3):
+        for mode, duration in (("family_pair", family_ns),
+                               ("native_two", native_two_ns),
+                               ("native_batched", native_batch_ns),
+                               ("raw_pair", native_two_ns + 5),
+                               ("family_two_singles", family_ns + 20)):
+            rows.append({"trial": trial, "mode": mode, "status": "complete",
+                         "completion_ns": duration, "completed_model_tokens": 42,
+                         "artifact_hash": "artifact-1", "input_hash": "inputs-1",
+                         "source_hash": source_hash, "inventory_hash": "inventory-1",
+                         "matrix_times_ns": [1, duration - 1],
+                         "peak_active_bytes": 1000, "peak_extra_bytes": 1000,
+                         "decoded_matrix_bytes": 0})
+    return rows
+
+
+def _kernel_correctness(source_hash="kernel-v1", layout_changes=0):
+    return {"artifact_hash": "artifact-1", "input_hash": "inputs-1",
+            "source_hash": source_hash, "inventory_hash": "inventory-1",
+            "c1_zero_mismatches": True, "c2_bitwise_equal": True,
+            "layout_changes": layout_changes}
+
+
+def test_kernel_sweep_uses_summed_real_work_and_fastest_native_pair():
+    at_boundary = measure.evaluate_g3(_kernel_rows(), _kernel_correctness())
+    assert at_boundary.decision == "pass"
+    assert at_boundary.observed["pair_ratio_vs_best_native"] == 1.5
+    slow_large_matrix = _kernel_rows(family_ns=145)
+    for row in slow_large_matrix:
+        if row["mode"] == "family_pair":
+            row["matrix_times_ns"] = [0.1, 144.9]
+    assert measure.evaluate_g3(slow_large_matrix, _kernel_correctness()).decision == "fail"
+    assert measure.evaluate_g3(_kernel_rows(family_ns=135.009),
+                               _kernel_correctness()).decision == "fail"
+
+
+def test_kernel_evidence_rejects_changed_source_and_c2_mismatch():
+    assert measure.evaluate_g3(_kernel_rows(source_hash="old"),
+                               _kernel_correctness(source_hash="new")).decision == "blocked"
+    incorrect = _kernel_correctness()
+    incorrect["c2_bitwise_equal"] = False
+    assert measure.evaluate_g3(_kernel_rows(family_ns=50), incorrect).decision == "fail"
+
+
+def test_kernel_layout_budget_is_two_after_first_correct():
+    assert measure.evaluate_g3(_kernel_rows(),
+                               _kernel_correctness(layout_changes=2)).decision == "pass"
+    assert measure.evaluate_g3(_kernel_rows(),
+                               _kernel_correctness(layout_changes=3)).decision == "fail"
+
+
+def test_kernel_cells_cover_early_middle_late_and_all_projection_roles(tmp_path):
+    from familytiles.convert import FamilyArtifact
+
+    roles = ("q", "k", "v", "o", "gate", "up", "down")
+    tensors = {}
+    for layer in range(5):
+        for role in roles:
+            prefix = "self_attn" if role in ("q", "k", "v", "o") else "mlp"
+            tensors[f"model.layers.{layer}.{prefix}.{role}_proj.weight"] = {
+                "shape": [32 + layer, 64], "target": {"kind": "packed"}}
+    fixture = tmp_path / "inputs.json"
+    fixture.write_text('{"seed": 20260928, "pool_size": 8, "sweeps": 2}')
+    artifact = FamilyArtifact(tmp_path, {"family_id": "test", "tensors": tensors,
+                                         "revisions": {"anchor": "a", "target": "b"}},
+                              "artifact-hash")
+    cells = measure.build_kernel_cells(artifact, fixture)
+    assert cells
+    names = cells[0].extras["tensor_names"]
+    assert len(names) == 21
+    assert {int(name.split(".")[2]) for name in names} == {0, 2, 4}
+    assert {name.rsplit(".", 2)[-2].removesuffix("_proj") for name in names} == set(roles)
+    assert {cell.trial for cell in cells if not cell.trace} == {0, 1, 2}
+    assert {cell.mode for cell in cells} >= {"family_pair", "native_two",
+                                             "native_batched", "raw_pair",
+                                             "family_two_singles", "family_single"}
