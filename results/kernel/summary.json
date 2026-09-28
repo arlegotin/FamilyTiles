@@ -29,7 +29,7 @@
         "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
       }
     },
-    "decision": "pass",
+    "decision": "fail",
     "gate": "G3",
     "input_hashes": {
       "artifact": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
@@ -44,14 +44,14 @@
       "layout_changes": 2,
       "maximum_family_pair_peak_extra_bytes": 65536,
       "median_sweep_ns_by_mode": {
-        "family_pair": 75999500,
-        "family_two_singles": 113921541,
-        "native_batched": 62386959,
-        "native_two": 71964292,
-        "raw_pair": 100022333
+        "family_pair": 181961417,
+        "family_two_singles": 215045542,
+        "native_batched": 64768125,
+        "native_two": 80805125,
+        "raw_pair": 170829333
       },
-      "pair_ratio_vs_best_native": 1.2181952962317013,
-      "pair_ratio_vs_two_single_fused": 0.6671214182399446,
+      "pair_ratio_vs_best_native": 2.8094285113240502,
+      "pair_ratio_vs_two_single_fused": 0.8461529372229442,
       "trial_counts": {
         "family_pair": 3,
         "family_two_singles": 3,
@@ -60,7 +60,7 @@
         "raw_pair": 3
       }
     },
-    "reason": "paired primitive met the prespecified native sweep ceiling",
+    "reason": "paired primitive exceeded 1.5x the fastest native pair sweep",
     "schema_version": 1,
     "thresholds": {
       "maximum_fused_extra_allocation_bytes": 8388608,
@@ -74,44 +74,44 @@
   "mode_summaries": {
     "family_pair": {
       "complete_trials": 3,
-      "median_completion_ns": 75999500,
-      "median_trial_p95_latency_ns": 703375
+      "median_completion_ns": 181961417,
+      "median_trial_p95_latency_ns": 2124666
     },
     "family_single": {
       "complete_trials": 3,
-      "median_completion_ns": 92650500,
-      "median_trial_p95_latency_ns": 963125
+      "median_completion_ns": 220515500,
+      "median_trial_p95_latency_ns": 3106167
     },
     "family_two_singles": {
       "complete_trials": 3,
-      "median_completion_ns": 113921541,
-      "median_trial_p95_latency_ns": 1187125
+      "median_completion_ns": 215045542,
+      "median_trial_p95_latency_ns": 2938167
     },
     "native_batched": {
       "complete_trials": 3,
-      "median_completion_ns": 62386959,
-      "median_trial_p95_latency_ns": 574667
+      "median_completion_ns": 64768125,
+      "median_trial_p95_latency_ns": 571709
     },
     "native_single": {
       "complete_trials": 3,
-      "median_completion_ns": 45758458,
-      "median_trial_p95_latency_ns": 417708
+      "median_completion_ns": 66437000,
+      "median_trial_p95_latency_ns": 554125
     },
     "native_two": {
       "complete_trials": 3,
-      "median_completion_ns": 71964292,
-      "median_trial_p95_latency_ns": 1006625
+      "median_completion_ns": 80805125,
+      "median_trial_p95_latency_ns": 768208
     },
     "raw_pair": {
       "complete_trials": 3,
-      "median_completion_ns": 100022333,
-      "median_trial_p95_latency_ns": 1213209
+      "median_completion_ns": 170829333,
+      "median_trial_p95_latency_ns": 2038542
     },
     "raw_single": {
       "complete_trials": 3,
-      "median_completion_ns": 56203583,
-      "median_trial_p95_latency_ns": 649542
+      "median_completion_ns": 197652750,
+      "median_trial_p95_latency_ns": 3601583
     }
   },
-  "run_dir": "results/kernel/runs/a43f4070630a48b3b91a2b212af15274"
+  "run_dir": "results/kernel/runs/39ea29b854844748bfe79b272d6b3eab"
 }

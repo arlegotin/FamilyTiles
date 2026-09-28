@@ -17,18 +17,22 @@ import mlx.nn as nn
 import numpy as np
 import psutil
 from mlx_lm.models.cache import make_prompt_cache
+from mlx_lm.models.activations import swiglu
+from mlx_lm.models.base import create_attention_mask, scaled_dot_product_attention
 from mlx_lm.models.qwen2 import Model, ModelArgs
 from mlx_lm.utils import load_model
 
 from .convert import FamilyArtifact, _safe_path
+from .codec import CodecPolicy
 from .measure import compute_budget
-from .metal import DeviceOperand, decode_words, family_gemv, load_operand, raw_gemv
+from .metal import (DeviceOperand, decode_words, family_gemv, load_operand,
+                    raw_gemv, raw_gemv_pair)
 
 
 ModelId = Literal["anchor", "target"]
 PROJECTIONS = ("q_proj", "k_proj", "v_proj", "o_proj",
                "gate_proj", "up_proj", "down_proj")
-MODES = frozenset({"B1", "A1", "family_single"})
+MODES = frozenset({"B1", "A1", "family_single", "raw_pair"})
 
 
 def expected_active_shapes(config: dict[str, Any]) -> dict[str, tuple[int, ...]]:
@@ -255,6 +259,53 @@ def _read_native(artifact: FamilyArtifact, role: ModelId, name: str,
     return value
 
 
+def wrap_raw_pair_models(models: dict[ModelId, Model],
+                         configs: dict[ModelId, dict[str, Any]]) -> tuple[
+                             dict[str, DeviceOperand], dict[tuple[str, str], mx.array]]:
+    """Replace stock BF16 linears with shared raw-operand references.
+
+    The uint16 views use the same storage as the stock BF16 parameters; the
+    original linear modules are released after replacement. This is the A3
+    arithmetic control, not a compressed FamilyTiles treatment.
+    """
+    shapes = {role: expected_active_shapes(config) for role, config in configs.items()}
+    if set(shapes["anchor"]) != set(shapes["target"]):
+        raise ValueError("raw pair models have different active inventories")
+    policy = CodecPolicy(1, 256, ("ordered_delta",))
+    operands: dict[str, DeviceOperand] = {}
+    native: dict[tuple[str, str], mx.array] = {}
+    for name in sorted(shapes["anchor"]):
+        is_projection = name.endswith(".weight") and any(
+            name.endswith(f".{projection}.weight") for projection in PROJECTIONS)
+        if not is_projection:
+            for role in ("anchor", "target"):
+                parent, attr = _attribute(models[role], name)
+                value = getattr(parent, attr)
+                if value.dtype != mx.bfloat16:
+                    raise ValueError(f"raw pair requires BF16: {role}:{name}")
+                native[(role, name)] = value
+            continue
+        module_name = name.removesuffix(".weight")
+        modules = {role: getattr(*_attribute(models[role], module_name))
+                   for role in ("anchor", "target")}
+        if (modules["anchor"].weight.dtype != mx.bfloat16 or
+                modules["target"].weight.dtype != mx.bfloat16 or
+                modules["anchor"].weight.shape != modules["target"].weight.shape):
+            raise ValueError(f"raw pair operand mismatch: {name}")
+        shape = tuple(modules["anchor"].weight.shape)
+        a_words = modules["anchor"].weight.view(mx.uint16)
+        t_words = modules["target"].weight.view(mx.uint16)
+        operand = DeviceOperand("native", shape, policy, a_words, None, None,
+                                t_words, {"anchor": id(a_words), "native": id(t_words)})
+        operands[name] = operand
+        for role in ("anchor", "target"):
+            bias_name = module_name + ".bias"
+            bias = native.get((role, bias_name)) if bias_name in shapes[role] else None
+            parent, attr = _attribute(models[role], module_name)
+            setattr(parent, attr, FamilyLinear(operand, role, bias, "family_single"))
+    return operands, native
+
+
 def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
     if mode not in MODES:
         raise ValueError(f"unsupported runtime mode {mode!r}")
@@ -266,7 +317,7 @@ def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
     mx.set_cache_limit(budget.cache_limit_bytes)
     configs = _load_configs(artifact)
     validate_active_inventory(artifact.manifest, configs)
-    if mode == "B1":
+    if mode in ("B1", "raw_pair"):
         models = {role: load_model(_config_path(artifact, role).parent, strict=True)[0]
                   for role in ("anchor", "target")}
         for name, record in artifact.manifest["tensors"].items():
@@ -274,6 +325,9 @@ def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
                 anchor_parent, attr = _attribute(models["anchor"], name)
                 target_parent, _ = _attribute(models["target"], name)
                 setattr(target_parent, attr, getattr(anchor_parent, attr))
+        if mode == "raw_pair":
+            operands, native = wrap_raw_pair_models(models, configs)
+            return RuntimeFamily(artifact, mode, models, configs, operands, native)
         return RuntimeFamily(artifact, mode, models, configs, {}, {})
 
     # Qwen2 constructors create lazy random placeholders. Every active leaf is
@@ -356,6 +410,125 @@ def step_single(runtime: RuntimeFamily, state: RequestState,
     _evaluate_cache(state.cache, logits)
     state.position += 1
     return logits
+
+
+def validate_pair_structure(runtime: RuntimeFamily) -> None:
+    """Reject same-shape variants with different computation structures."""
+    if set(runtime.models) != {"anchor", "target"}:
+        raise ValueError("pair requires both served models")
+    fields = ("model_type", "hidden_size", "intermediate_size", "num_hidden_layers",
+              "num_attention_heads", "num_key_value_heads",
+              "rope_theta", "rope_traditional", "rope_scaling", "tie_word_embeddings")
+    args = {role: ModelArgs.from_dict(runtime.configs[role])
+            for role in ("anchor", "target")}
+    if any(getattr(args["anchor"], field) != getattr(args["target"], field)
+           for field in fields):
+        raise ValueError("incompatible paired Qwen2 computation structure")
+    # mlx-lm's default RoPE ignores max_position_embeddings, so the real
+    # Qwen base/Instruct context limits may differ for a short paired run.
+    if (args["anchor"].rope_scaling is not None and
+            args["anchor"].max_position_embeddings != args["target"].max_position_embeddings):
+        raise ValueError("incompatible scaled-RoPE context structure")
+    if len(runtime.models["anchor"].model.layers) != len(runtime.models["target"].model.layers):
+        raise ValueError("incompatible paired Qwen2 layer structure")
+
+
+def _paired_linear(runtime: RuntimeFamily, name: str,
+                   x_anchor: mx.array, x_target: mx.array) -> tuple[mx.array, mx.array]:
+    if runtime.mode != "raw_pair":
+        raise ValueError("paired linear control requires raw_pair mode")
+    operand = runtime.operands[name]
+    modules = []
+    for role in ("anchor", "target"):
+        parent, attribute = _attribute(runtime.models[role], name.removesuffix(".weight"))
+        module = getattr(parent, attribute)
+        if not isinstance(module, FamilyLinear):
+            raise ValueError("paired linear module was not replaced")
+        modules.append(module)
+    if (x_anchor.shape != (1, 1, operand.shape[1]) or
+            x_target.shape != (1, 1, operand.shape[1])):
+        raise ValueError("paired linear expects independent one-token activations")
+    outputs = raw_gemv_pair(operand.anchor_words, operand.native_words,
+                            x_anchor[0, 0, :], x_target[0, 0, :],
+                            (modules[0].bias, modules[1].bias))
+    return outputs[0].reshape(1, 1, -1), outputs[1].reshape(1, 1, -1)
+
+
+def _attention_finish(attention: Any, queries: mx.array, keys: mx.array,
+                      values: mx.array, mask: Any, cache: Any) -> mx.array:
+    # Adapted from mlx-lm 0.31.3 mlx_lm/models/qwen2.py, Copyright Apple Inc.
+    # MIT license; installed source SHA is recorded in results/environment.json.
+    batch, length, _ = queries.shape
+    q = queries.reshape(batch, length, attention.n_heads, -1).transpose(0, 2, 1, 3)
+    k = keys.reshape(batch, length, attention.n_kv_heads, -1).transpose(0, 2, 1, 3)
+    v = values.reshape(batch, length, attention.n_kv_heads, -1).transpose(0, 2, 1, 3)
+    q = attention.rope(q, offset=cache.offset)
+    k = attention.rope(k, offset=cache.offset)
+    k, v = cache.update_and_fetch(k, v)
+    output = scaled_dot_product_attention(q, k, v, cache=cache,
+                                          scale=attention.scale, mask=mask)
+    return output.transpose(0, 2, 1, 3).reshape(batch, length, -1)
+
+
+def step_pair(runtime: RuntimeFamily,
+              states: tuple[RequestState, RequestState],
+              token_ids: tuple[int, int]) -> tuple[mx.array, mx.array]:
+    if not isinstance(states, tuple) or len(states) != 2 or not isinstance(token_ids, tuple) or len(token_ids) != 2:
+        raise ValueError("paired step needs two states and token IDs")
+    if runtime.mode == "B1":
+        return (step_single(runtime, states[0], token_ids[0]),
+                step_single(runtime, states[1], token_ids[1]))
+    if runtime.mode != "raw_pair":
+        raise ValueError("paired execution is unavailable for this runtime mode")
+    validate_pair_structure(runtime)
+    if ((states[0].model_id, states[1].model_id) != ("anchor", "target") or
+            not all(state.active for state in states) or
+            states[0].cache is states[1].cache or
+            any(left is right for left, right in zip(states[0].cache, states[1].cache))):
+        raise ValueError("paired requests must have distinct active model and KV states")
+    for state in states:
+        if not state.cache or any(entry.offset != state.position for entry in state.cache):
+            raise ValueError("request position and KV state disagree")
+        if state.position >= runtime.configs[state.model_id].get("max_position_embeddings", 32768):
+            raise ValueError("request exceeds its model's context limit")
+    models = (runtime.models["anchor"], runtime.models["target"])
+    hidden = [model.model.embed_tokens(mx.array([[token]], dtype=mx.int32))
+              for model, token in zip(models, token_ids)]
+    masks = [create_attention_mask(h, state.cache[0]) for h, state in zip(hidden, states)]
+    for layer_number, (layer_anchor, layer_target) in enumerate(
+            zip(models[0].model.layers, models[1].model.layers)):
+        layers = (layer_anchor, layer_target)
+        normed = [layer.input_layernorm(h) for layer, h in zip(layers, hidden)]
+        prefix = f"model.layers.{layer_number}.self_attn."
+        q = _paired_linear(runtime, prefix + "q_proj.weight", *normed)
+        k = _paired_linear(runtime, prefix + "k_proj.weight", *normed)
+        v = _paired_linear(runtime, prefix + "v_proj.weight", *normed)
+        attended = [_attention_finish(layer.self_attn, qi, ki, vi, mask,
+                                      state.cache[layer_number])
+                    for layer, qi, ki, vi, mask, state in
+                    zip(layers, q, k, v, masks, states)]
+        projected = _paired_linear(runtime, prefix + "o_proj.weight", *attended)
+        hidden = [h + output for h, output in zip(hidden, projected)]
+        mlp_normed = [layer.post_attention_layernorm(h)
+                      for layer, h in zip(layers, hidden)]
+        mlp_prefix = f"model.layers.{layer_number}.mlp."
+        gate = _paired_linear(runtime, mlp_prefix + "gate_proj.weight", *mlp_normed)
+        up = _paired_linear(runtime, mlp_prefix + "up_proj.weight", *mlp_normed)
+        activated = [swiglu(g, u) for g, u in zip(gate, up)]
+        down = _paired_linear(runtime, mlp_prefix + "down_proj.weight", *activated)
+        hidden = [h + output for h, output in zip(hidden, down)]
+    logits = []
+    for model, h in zip(models, hidden):
+        output = model.model.norm(h)
+        output = (model.model.embed_tokens.as_linear(output)
+                  if model.args.tie_word_embeddings else model.lm_head(output))
+        logits.append(output[0, -1, :])
+    cache_values = [value for state in states for entry in state.cache
+                    for value in entry.state if value is not None]
+    mx.eval(*logits, *cache_values)
+    for state in states:
+        state.position += 1
+    return logits[0], logits[1]
 
 
 def release_request(state: RequestState) -> None:

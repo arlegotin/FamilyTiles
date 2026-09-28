@@ -13,7 +13,10 @@ from familytiles.codec import CodecPolicy, encode_tensor
 from familytiles.metal import device_operand_from_words
 from familytiles.model import (FamilyLinear, expected_active_names,
                                expected_active_shapes, load_runtime,
-                               loaded_weight_ledger, validate_active_inventory)
+                               loaded_weight_ledger, prefill, release_request,
+                               step_pair, step_single, validate_active_inventory,
+                               validate_pair_structure, wrap_raw_pair_models,
+                               RuntimeFamily)
 
 
 def _tiny_config(tied=True):
@@ -227,3 +230,79 @@ def test_no_random_full_placeholder_is_evaluated(tmp_path, monkeypatch):
     assert ledger["random_placeholder_evaluated_bytes"] == 0
     assert ledger["unique_weight_allocation_bytes"] > 0
     assert set(runtime.operands) == {name for name in shapes if name.endswith("_proj.weight")}
+
+
+@pytest.fixture
+def tiny_raw_runtime():
+    import mlx.core as mx
+    from mlx_lm.models.qwen2 import Model, ModelArgs
+
+    config = {**_tiny_config(), "rms_norm_eps": 1e-6}
+    configs = {"anchor": config.copy(), "target": config.copy()}
+    models = {role: Model(ModelArgs.from_dict(config))
+              for role in ("anchor", "target")}
+    for model in models.values():
+        model.set_dtype(mx.bfloat16)
+        mx.eval(model.parameters())
+    operands, native = wrap_raw_pair_models(models, configs)
+    return RuntimeFamily(None, "raw_pair", models, configs, operands, native)
+
+
+def _word_mismatch(a, b):
+    import mlx.core as mx
+
+    mx.eval(a, b)
+    return int(np.count_nonzero(np.asarray(a.view(mx.uint16)) !=
+                                np.asarray(b.view(mx.uint16))))
+
+
+def test_raw_lockstep_matches_separate_execution(tiny_raw_runtime):
+    runtime = tiny_raw_runtime
+    _, a = prefill(runtime, "anchor", [1, 2, 3])
+    _, b = prefill(runtime, "target", [4, 5])
+    _, a_control = prefill(runtime, "anchor", [1, 2, 3])
+    _, b_control = prefill(runtime, "target", [4, 5])
+    paired = step_pair(runtime, (a, b), (6, 7))
+    separate = (step_single(runtime, a_control, 6),
+                step_single(runtime, b_control, 7))
+    assert [_word_mismatch(x, y) for x, y in zip(paired, separate)] == [0, 0]
+    assert a.position == 4 and b.position == 3
+
+
+def test_same_shapes_incompatible_structure_rejected(tiny_raw_runtime):
+    runtime = tiny_raw_runtime
+    runtime.configs["target"] = {**runtime.configs["target"], "rope_theta": 12345}
+    with pytest.raises(ValueError, match="structure"):
+        validate_pair_structure(runtime)
+
+
+def test_default_rope_allows_distinct_declared_context_limits(tiny_raw_runtime):
+    runtime = tiny_raw_runtime
+    runtime.configs["target"] = {**runtime.configs["target"],
+                                  "max_position_embeddings": 1024}
+    validate_pair_structure(runtime)
+
+
+def test_unequal_states_do_not_share_kv(tiny_raw_runtime):
+    runtime = tiny_raw_runtime
+    _, a = prefill(runtime, "anchor", [1, 2, 3, 4])
+    _, b = prefill(runtime, "target", [5, 6])
+    assert a.cache is not b.cache
+    assert all(x is not y for x, y in zip(a.cache, b.cache))
+    assert a.position != b.position
+    step_pair(runtime, (a, b), (7, 8))
+    assert a.cache[0].offset == 5 and b.cache[0].offset == 3
+
+
+def test_survivor_after_other_stream_finishes(tiny_raw_runtime):
+    runtime = tiny_raw_runtime
+    _, a = prefill(runtime, "anchor", [1, 2, 3])
+    _, b = prefill(runtime, "target", [4, 5])
+    _, isolated = prefill(runtime, "anchor", [1, 2, 3])
+    step_pair(runtime, (a, b), (6, 7))
+    step_single(runtime, isolated, 6)
+    release_request(b)
+    assert not b.active and b.cache == []
+    survivor = step_single(runtime, a, 8)
+    control = step_single(runtime, isolated, 8)
+    assert _word_mismatch(survivor, control) == 0

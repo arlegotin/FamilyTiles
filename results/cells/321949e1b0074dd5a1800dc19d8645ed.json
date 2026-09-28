@@ -1,0 +1,905 @@
+{
+  "activation_hash": "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce",
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "budget_bytes": 6266693222,
+  "cache_limit_bytes": 268435456,
+  "cell_hash": "b7f1f68394666e92445815cfd338cb5b5dcb5699790eb449bb31cae3ef3cbf39",
+  "child_reaped": true,
+  "completed_model_tokens": 336,
+  "completion_ns": 204140042,
+  "config_hash": "780977169f70afd78d00bd1e40d86eae6d1e6aea3ae7094164e3ebb59a98ed2a",
+  "decoded_matrix_bytes": 0,
+  "exit_code": 0,
+  "family_id": "qwen2.5-1.5b",
+  "implementation_hash": "dbc8afae200227708c670d8d2457a6f8928cf69128e9427fe020de5beeb0013c",
+  "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
+  "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
+  "latency_ns": [
+    2478292,
+    1650709,
+    805375,
+    944833,
+    2304000,
+    1806458,
+    2196708,
+    691792,
+    431208,
+    457125,
+    582666,
+    1602667,
+    2185500,
+    2071125,
+    687125,
+    473208,
+    486500,
+    696708,
+    1612667,
+    1638250,
+    2008708,
+    666791,
+    459083,
+    445875,
+    1008333,
+    2477625,
+    1699291,
+    1991541,
+    716291,
+    452084,
+    468333,
+    742959,
+    1821750,
+    1738291,
+    2103333,
+    690625,
+    511000,
+    473125,
+    626500,
+    2125500,
+    1797083,
+    2067750,
+    703667,
+    474750,
+    476625,
+    605459,
+    1595333,
+    2127584,
+    2134541,
+    703959,
+    414167,
+    396958,
+    807583,
+    1628042,
+    1705750,
+    2154916,
+    644958,
+    438750,
+    494583,
+    638583,
+    1757917,
+    1616500,
+    2127084,
+    687334,
+    841625,
+    425250,
+    655083,
+    2023541,
+    1714583,
+    2122167,
+    2279709,
+    1258625,
+    898250,
+    998625,
+    1675833,
+    1541708,
+    2845917,
+    774167,
+    798667,
+    362500,
+    957083,
+    1539708,
+    1726125,
+    2821583,
+    1108042,
+    457625,
+    530833,
+    664834,
+    1720042,
+    1722583,
+    2082416,
+    794583,
+    651708,
+    717708,
+    750958,
+    1611417,
+    1644875,
+    2071500,
+    642750,
+    467166,
+    471917,
+    618083,
+    1587333,
+    1656959,
+    2028708,
+    1177459,
+    772250,
+    530875,
+    746625,
+    1611500,
+    1695875,
+    2163542,
+    875084,
+    746833,
+    464000,
+    604792,
+    1618083,
+    1630625,
+    2145042,
+    1385583,
+    484583,
+    412625,
+    574584,
+    1551000,
+    1601042,
+    2090833,
+    756584,
+    504167,
+    523750,
+    720500,
+    2085625,
+    1659167,
+    5502792,
+    683708,
+    501500,
+    483208,
+    595125,
+    1512459,
+    1548542,
+    2038833,
+    730334,
+    502792,
+    553959,
+    644209,
+    1648500,
+    1665916,
+    2088917,
+    637667,
+    435666,
+    419708,
+    574875,
+    1587625,
+    1623959,
+    2092791,
+    662000,
+    422250,
+    395458,
+    453292,
+    1006166,
+    987834,
+    3046167,
+    897875,
+    482000,
+    421708,
+    462000,
+    1012292,
+    1051791,
+    1291875
+  ],
+  "matrix_times_ns": [
+    {
+      "name": "model.layers.0.self_attn.q_proj.weight",
+      "time_ns": 8215836
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj.weight",
+      "time_ns": 5595875
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj.weight",
+      "time_ns": 4158291
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj.weight",
+      "time_ns": 5920542
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj.weight",
+      "time_ns": 15405291
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj.weight",
+      "time_ns": 14049500
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj.weight",
+      "time_ns": 20286498
+    },
+    {
+      "name": "model.layers.14.self_attn.q_proj.weight",
+      "time_ns": 7407126
+    },
+    {
+      "name": "model.layers.14.self_attn.k_proj.weight",
+      "time_ns": 4878375
+    },
+    {
+      "name": "model.layers.14.self_attn.v_proj.weight",
+      "time_ns": 4281040
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj.weight",
+      "time_ns": 5536000
+    },
+    {
+      "name": "model.layers.14.mlp.gate_proj.weight",
+      "time_ns": 12476417
+    },
+    {
+      "name": "model.layers.14.mlp.up_proj.weight",
+      "time_ns": 12983125
+    },
+    {
+      "name": "model.layers.14.mlp.down_proj.weight",
+      "time_ns": 18476833
+    },
+    {
+      "name": "model.layers.27.self_attn.q_proj.weight",
+      "time_ns": 6453417
+    },
+    {
+      "name": "model.layers.27.self_attn.k_proj.weight",
+      "time_ns": 4158166
+    },
+    {
+      "name": "model.layers.27.self_attn.v_proj.weight",
+      "time_ns": 3676917
+    },
+    {
+      "name": "model.layers.27.self_attn.o_proj.weight",
+      "time_ns": 5217750
+    },
+    {
+      "name": "model.layers.27.mlp.gate_proj.weight",
+      "time_ns": 12834917
+    },
+    {
+      "name": "model.layers.27.mlp.up_proj.weight",
+      "time_ns": 12753666
+    },
+    {
+      "name": "model.layers.27.mlp.down_proj.weight",
+      "time_ns": 16525458
+    }
+  ],
+  "memory_samples": [
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 180344,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 671744,
+      "timestamp_ns": 1771476370516958
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 22807056,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 41762816,
+      "timestamp_ns": 1771476485530958
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 42943016,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 66027520,
+      "timestamp_ns": 1771476608872291
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 65110568,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 80920576,
+      "timestamp_ns": 1771476737655041
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 90112576,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 115458048,
+      "timestamp_ns": 1771476862770375
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 98812528,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 165003264,
+      "timestamp_ns": 1771476987055833
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 99074672,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 165265408,
+      "timestamp_ns": 1771477100508291
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 139985568,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 206798848,
+      "timestamp_ns": 1771477223830333
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 140362400,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 207208448,
+      "timestamp_ns": 1771477343170458
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 140362400,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 207208448,
+      "timestamp_ns": 1771477468663250
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 187826872,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 254476288,
+      "timestamp_ns": 1771477585224875
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 187826872,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 254476288,
+      "timestamp_ns": 1771477704723125
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 236602064,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 261865472,
+      "timestamp_ns": 1771477819805291
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 239157968,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 271728640,
+      "timestamp_ns": 1771477944265416
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 252216040,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 319717376,
+      "timestamp_ns": 1771478059854500
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 252232424,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 319733760,
+      "timestamp_ns": 1771478180048541
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 294486784,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 347701248,
+      "timestamp_ns": 1771478296904125
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 294486784,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 361676800,
+      "timestamp_ns": 1771478414768458
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 336446232,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 361676800,
+      "timestamp_ns": 1771478531764750
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 337036056,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 404422656,
+      "timestamp_ns": 1771478653503875
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 337068824,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 404471808,
+      "timestamp_ns": 1771478774195375
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 389186376,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 421609472,
+      "timestamp_ns": 1771478889809416
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 396411720,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 463601664,
+      "timestamp_ns": 1771478997741083
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 396411720,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 463601664,
+      "timestamp_ns": 1771479106390958
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 438436704,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 475430912,
+      "timestamp_ns": 1771479234776916
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 438436704,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 505298944,
+      "timestamp_ns": 1771479359199916
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 438436704,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 505298944,
+      "timestamp_ns": 1771479481913166
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 480166800,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 547586048,
+      "timestamp_ns": 1771479602471416
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 480166800,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 547586048,
+      "timestamp_ns": 1771479715149708
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 524125120,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 551518208,
+      "timestamp_ns": 1771479834054000
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 525632448,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 552943616,
+      "timestamp_ns": 1771479946764333
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 662750144,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 555745280,
+      "timestamp_ns": 1771480067508041
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 662766528,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 555761664,
+      "timestamp_ns": 1771480183854916
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 503071560,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 555778048,
+      "timestamp_ns": 1771480298305958
+    }
+  ],
+  "mlx_counters": {
+    "after": {
+      "active_bytes": 429111296,
+      "cache_bytes": 106496,
+      "peak_active_bytes": 429176832
+    },
+    "before": {
+      "active_bytes": 429111296,
+      "cache_bytes": 106496,
+      "peak_active_bytes": 429170688
+    }
+  },
+  "mode": "family_pair",
+  "peak_active_bytes": 429176832,
+  "peak_extra_bytes": 65536,
+  "pid": 69573,
+  "pressure_after": {
+    "available_bytes": 10500587520,
+    "memory_percent": 72.8,
+    "swap_used_bytes": 5708120064
+  },
+  "pressure_before": {
+    "available_bytes": 10444488704,
+    "memory_percent": 73.0,
+    "swap_used_bytes": 5708120064
+  },
+  "requested_model_tokens": 336,
+  "revisions": {
+    "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+    "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "run_id": "321949e1b0074dd5a1800dc19d8645ed",
+  "source_hash": "f376e3f0ae1d877b0eae0d6eaec18d010b3f85c9ca600f1778ace11c0ca314c2",
+  "status": "complete",
+  "suite": "kernel",
+  "trace": true,
+  "trial": 3,
+  "wall_ns": 4049016333,
+  "worker_events": [
+    {
+      "completed_model_tokens": 42,
+      "event": "progress",
+      "sweep": 1
+    },
+    {
+      "completed_model_tokens": 84,
+      "event": "progress",
+      "sweep": 2
+    },
+    {
+      "completed_model_tokens": 126,
+      "event": "progress",
+      "sweep": 3
+    },
+    {
+      "completed_model_tokens": 168,
+      "event": "progress",
+      "sweep": 4
+    },
+    {
+      "completed_model_tokens": 210,
+      "event": "progress",
+      "sweep": 5
+    },
+    {
+      "completed_model_tokens": 252,
+      "event": "progress",
+      "sweep": 6
+    },
+    {
+      "completed_model_tokens": 294,
+      "event": "progress",
+      "sweep": 7
+    },
+    {
+      "completed_model_tokens": 336,
+      "event": "progress",
+      "sweep": 8
+    },
+    {
+      "activation_hash": "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce",
+      "completed_model_tokens": 336,
+      "completion_ns": 204140042,
+      "decoded_matrix_bytes": 0,
+      "event": "complete",
+      "latency_ns": [
+        2478292,
+        1650709,
+        805375,
+        944833,
+        2304000,
+        1806458,
+        2196708,
+        691792,
+        431208,
+        457125,
+        582666,
+        1602667,
+        2185500,
+        2071125,
+        687125,
+        473208,
+        486500,
+        696708,
+        1612667,
+        1638250,
+        2008708,
+        666791,
+        459083,
+        445875,
+        1008333,
+        2477625,
+        1699291,
+        1991541,
+        716291,
+        452084,
+        468333,
+        742959,
+        1821750,
+        1738291,
+        2103333,
+        690625,
+        511000,
+        473125,
+        626500,
+        2125500,
+        1797083,
+        2067750,
+        703667,
+        474750,
+        476625,
+        605459,
+        1595333,
+        2127584,
+        2134541,
+        703959,
+        414167,
+        396958,
+        807583,
+        1628042,
+        1705750,
+        2154916,
+        644958,
+        438750,
+        494583,
+        638583,
+        1757917,
+        1616500,
+        2127084,
+        687334,
+        841625,
+        425250,
+        655083,
+        2023541,
+        1714583,
+        2122167,
+        2279709,
+        1258625,
+        898250,
+        998625,
+        1675833,
+        1541708,
+        2845917,
+        774167,
+        798667,
+        362500,
+        957083,
+        1539708,
+        1726125,
+        2821583,
+        1108042,
+        457625,
+        530833,
+        664834,
+        1720042,
+        1722583,
+        2082416,
+        794583,
+        651708,
+        717708,
+        750958,
+        1611417,
+        1644875,
+        2071500,
+        642750,
+        467166,
+        471917,
+        618083,
+        1587333,
+        1656959,
+        2028708,
+        1177459,
+        772250,
+        530875,
+        746625,
+        1611500,
+        1695875,
+        2163542,
+        875084,
+        746833,
+        464000,
+        604792,
+        1618083,
+        1630625,
+        2145042,
+        1385583,
+        484583,
+        412625,
+        574584,
+        1551000,
+        1601042,
+        2090833,
+        756584,
+        504167,
+        523750,
+        720500,
+        2085625,
+        1659167,
+        5502792,
+        683708,
+        501500,
+        483208,
+        595125,
+        1512459,
+        1548542,
+        2038833,
+        730334,
+        502792,
+        553959,
+        644209,
+        1648500,
+        1665916,
+        2088917,
+        637667,
+        435666,
+        419708,
+        574875,
+        1587625,
+        1623959,
+        2092791,
+        662000,
+        422250,
+        395458,
+        453292,
+        1006166,
+        987834,
+        3046167,
+        897875,
+        482000,
+        421708,
+        462000,
+        1012292,
+        1051791,
+        1291875
+      ],
+      "matrix_times_ns": [
+        {
+          "name": "model.layers.0.self_attn.q_proj.weight",
+          "time_ns": 8215836
+        },
+        {
+          "name": "model.layers.0.self_attn.k_proj.weight",
+          "time_ns": 5595875
+        },
+        {
+          "name": "model.layers.0.self_attn.v_proj.weight",
+          "time_ns": 4158291
+        },
+        {
+          "name": "model.layers.0.self_attn.o_proj.weight",
+          "time_ns": 5920542
+        },
+        {
+          "name": "model.layers.0.mlp.gate_proj.weight",
+          "time_ns": 15405291
+        },
+        {
+          "name": "model.layers.0.mlp.up_proj.weight",
+          "time_ns": 14049500
+        },
+        {
+          "name": "model.layers.0.mlp.down_proj.weight",
+          "time_ns": 20286498
+        },
+        {
+          "name": "model.layers.14.self_attn.q_proj.weight",
+          "time_ns": 7407126
+        },
+        {
+          "name": "model.layers.14.self_attn.k_proj.weight",
+          "time_ns": 4878375
+        },
+        {
+          "name": "model.layers.14.self_attn.v_proj.weight",
+          "time_ns": 4281040
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj.weight",
+          "time_ns": 5536000
+        },
+        {
+          "name": "model.layers.14.mlp.gate_proj.weight",
+          "time_ns": 12476417
+        },
+        {
+          "name": "model.layers.14.mlp.up_proj.weight",
+          "time_ns": 12983125
+        },
+        {
+          "name": "model.layers.14.mlp.down_proj.weight",
+          "time_ns": 18476833
+        },
+        {
+          "name": "model.layers.27.self_attn.q_proj.weight",
+          "time_ns": 6453417
+        },
+        {
+          "name": "model.layers.27.self_attn.k_proj.weight",
+          "time_ns": 4158166
+        },
+        {
+          "name": "model.layers.27.self_attn.v_proj.weight",
+          "time_ns": 3676917
+        },
+        {
+          "name": "model.layers.27.self_attn.o_proj.weight",
+          "time_ns": 5217750
+        },
+        {
+          "name": "model.layers.27.mlp.gate_proj.weight",
+          "time_ns": 12834917
+        },
+        {
+          "name": "model.layers.27.mlp.up_proj.weight",
+          "time_ns": 12753666
+        },
+        {
+          "name": "model.layers.27.mlp.down_proj.weight",
+          "time_ns": 16525458
+        }
+      ],
+      "mlx_counters": {
+        "after": {
+          "active_bytes": 429111296,
+          "cache_bytes": 106496,
+          "peak_active_bytes": 429176832
+        },
+        "before": {
+          "active_bytes": 429111296,
+          "cache_bytes": 106496,
+          "peak_active_bytes": 429170688
+        }
+      },
+      "peak_active_bytes": 429176832,
+      "peak_extra_bytes": 65536
+    }
+  ],
+  "worker_stderr": ""
+}

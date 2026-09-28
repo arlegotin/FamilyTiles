@@ -3,7 +3,7 @@
     "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
     "environment_hash": "9463dbacff1256b177ec23fa324cba57ff4ea230f9721af4f62c12bab3cb0617",
     "family_id": "qwen2.5-1.5b",
-    "implementation_hash": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88",
+    "implementation_hash": "f376e3f0ae1d877b0eae0d6eaec18d010b3f85c9ca600f1778ace11c0ca314c2",
     "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
     "policy_hash": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
     "revisions": {
@@ -17,7 +17,7 @@
     "artifact": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
     "inputs": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
     "inventory": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
-    "kernel_source": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88"
+    "kernel_source": "f376e3f0ae1d877b0eae0d6eaec18d010b3f85c9ca600f1778ace11c0ca314c2"
   },
   "observed": {
     "best_native_pair_mode": "native_batched",
@@ -26,14 +26,14 @@
     "layout_changes": 2,
     "maximum_family_pair_peak_extra_bytes": 65536,
     "median_sweep_ns_by_mode": {
-      "family_pair": 181961417,
-      "family_two_singles": 215045542,
-      "native_batched": 64768125,
-      "native_two": 80805125,
-      "raw_pair": 170829333
+      "family_pair": 285065292,
+      "family_two_singles": 202897667,
+      "native_batched": 69489917,
+      "native_two": 121052125,
+      "raw_pair": 195009917
     },
-    "pair_ratio_vs_best_native": 2.8094285113240502,
-    "pair_ratio_vs_two_single_fused": 0.8461529372229442,
+    "pair_ratio_vs_best_native": 4.102254029170879,
+    "pair_ratio_vs_two_single_fused": 1.4049707727787724,
     "trial_counts": {
       "family_pair": 3,
       "family_two_singles": 3,
