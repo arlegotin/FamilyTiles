@@ -104,22 +104,26 @@ def _pad4(data: bytes) -> bytes:
     return data + bytes((-len(data)) % 4)
 
 
-def _tile_payload(anchor: np.ndarray, target: np.ndarray, width: int,
-                  transform: str, block: int) -> tuple[bytes, int]:
-    residual = encode_residual(anchor, target, transform)
+def _tile_payload(residual: np.ndarray, target: np.ndarray, width: int,
+                  block: int) -> tuple[bytes, int]:
     exceptional = residual >= (1 << width)
     count = int(np.count_nonzero(exceptional))
-    codes = np.where(exceptional, 0, residual).astype(np.uint32)
-    packed = np.zeros((len(target) * width + 31) // 32, dtype="<u4")
+    parts = []
     if width:
-        for lane, code in enumerate(codes):
-            packed[lane * width // 32] |= np.uint32(int(code) << ((lane * width) % 32))
-    parts = [packed.tobytes()]
+        lanes_per_byte = 8 // width
+        padded_lanes = ((len(target) + lanes_per_byte - 1) // lanes_per_byte) * lanes_per_byte
+        codes = np.zeros(padded_lanes, dtype=np.uint8)
+        codes[:len(target)] = np.where(exceptional, 0, residual).astype(np.uint8)
+        grouped = codes.reshape((-1, lanes_per_byte)).astype(np.uint16)
+        packed_bytes = np.bitwise_or.reduce(
+            grouped << (np.arange(lanes_per_byte, dtype=np.uint16) * width), axis=1
+        ).astype(np.uint8)
+        parts.append(_pad4(packed_bytes.tobytes()))
     if count:
-        masks = np.zeros((block + 31) // 32, dtype="<u4")
-        for lane in np.flatnonzero(exceptional):
-            masks[int(lane) // 32] |= np.uint32(1 << (int(lane) % 32))
-        parts.extend((masks.tobytes(), target[exceptional].astype(WORD_DTYPE).tobytes()))
+        mask_lanes = np.zeros(block, dtype=np.uint8)
+        mask_lanes[:len(target)] = exceptional
+        parts.extend((np.packbits(mask_lanes, bitorder="little").tobytes(),
+                      target[exceptional].astype(WORD_DTYPE).tobytes()))
     return _pad4(b"".join(parts)), count
 
 
@@ -147,8 +151,9 @@ def encode_tensor(anchor: np.ndarray, target: np.ndarray, policy: CodecPolicy, *
                 for transform_id, transform in enumerate(("xor", "ordered_delta")):
                     if transform not in policy.transforms:
                         continue
+                    residual = encode_residual(aa, tt, transform)
                     for width_id, width in enumerate(WIDTHS):
-                        data, count = _tile_payload(aa, tt, width, transform, policy.block_values)
+                        data, count = _tile_payload(residual, tt, width, policy.block_values)
                         field = 2 | (width_id << 2) | (transform_id << 4) | (count << 5)
                         choices.append((8 + len(data), 2 + 4 * transform_id + width_id, field, data))
             if not choices:
