@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "stage": "E0",
+  "status": "pass",
+  "command": ".venv/bin/python -m pytest tests/test_codec.py -q",
+  "passed_tests": 99,
+  "scope": "synthetic integer codec controls only",
+  "model_eligibility": "unmeasured",
+  "checks": [
+    "all 65536 ordered-key words",
+    "one million seeded pairs per transform",
+    "17-bit extrema",
+    "block sizes 64/128/256 and row tails",
+    "COPY/RAW/PACKED and native fallback",
+    "corrupt descriptors, masks, padding and truncation"
+  ]
+}
