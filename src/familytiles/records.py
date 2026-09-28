@@ -134,3 +134,26 @@ def require_gate(path: Path, gate: str, context: RunContext) -> GateRecord:
     if record.gate != gate or record.context != context or record.decision != "pass":
         raise ValueError("prerequisite gate does not match or pass")
     return record
+
+
+def validate_measurement_row(row: JsonObject) -> None:
+    """Keep censored cells and distinct memory counters explicit in saved records."""
+    required = {"run_id", "suite", "mode", "trial", "requested_model_tokens",
+                "completed_model_tokens", "status", "completion_ns", "latency_ns",
+                "memory_samples", "pid", "child_reaped"}
+    if not isinstance(row, dict) or not required.issubset(row):
+        raise ValueError("incomplete measurement row")
+    if row["status"] not in {"complete", "timeout", "error", "budget_blocked"}:
+        raise ValueError("unknown measurement status")
+    if (not isinstance(row["completed_model_tokens"], int)
+            or not 0 <= row["completed_model_tokens"] <= row["requested_model_tokens"]):
+        raise ValueError("invalid completed token count")
+    if row["status"] == "complete":
+        if not isinstance(row["completion_ns"], int) or row["completion_ns"] <= 0:
+            raise ValueError("complete cell lacks measured completion time")
+    elif row["completion_ns"] is not None:
+        raise ValueError("censored cell cannot have a completion time")
+    if not isinstance(row["latency_ns"], list) or not isinstance(row["memory_samples"], list):
+        raise ValueError("invalid timing or memory samples")
+    if "total_bytes" in row or any("total_bytes" in sample for sample in row["memory_samples"]):
+        raise ValueError("overlapping memory counters must not be summed")

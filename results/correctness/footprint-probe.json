@@ -1,0 +1,212 @@
+{
+  "after_median_bytes": 16023960,
+  "before_median_bytes": 16023960,
+  "during_median_bytes": 83165640,
+  "probe_detected_64_mib": true,
+  "sample_counts": [
+    6,
+    8,
+    7
+  ],
+  "status": "complete",
+  "trace": {
+    "budget_bytes": 6939072921,
+    "cell_hash": "47d5d57cbd84c7e70504911a8840f3a1a9698f5e4cbf4c2446e76d443c08010c",
+    "child_reaped": true,
+    "completed_model_tokens": 0,
+    "completion_ns": 1,
+    "exit_code": 0,
+    "implementation_hash": "538275bf6ec2aa262b49e05bb4809cf49912f8d0c6d624f93da4b01254b4072d",
+    "latency_ns": [],
+    "memory_samples": [
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 950560,
+        "physical_probe_available": true,
+        "rss_bytes": 294912,
+        "timestamp_ns": 1765536436828958
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765536541451125
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765536649976083
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765536769072458
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765536883537708
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765536998716166
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 83165640,
+        "physical_probe_available": true,
+        "rss_bytes": 94437376,
+        "timestamp_ns": 1765537113768541
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 83165640,
+        "physical_probe_available": true,
+        "rss_bytes": 94437376,
+        "timestamp_ns": 1765537228434458
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 83165640,
+        "physical_probe_available": true,
+        "rss_bytes": 94437376,
+        "timestamp_ns": 1765537339376291
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 83165640,
+        "physical_probe_available": true,
+        "rss_bytes": 94437376,
+        "timestamp_ns": 1765537451995166
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 83165640,
+        "physical_probe_available": true,
+        "rss_bytes": 94437376,
+        "timestamp_ns": 1765537569345666
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 83165640,
+        "physical_probe_available": true,
+        "rss_bytes": 94437376,
+        "timestamp_ns": 1765537680998666
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 83165640,
+        "physical_probe_available": true,
+        "rss_bytes": 94437376,
+        "timestamp_ns": 1765537793780916
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 94437376,
+        "timestamp_ns": 1765537906465750
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765538018653208
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765538130222458
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765538246710583
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765538365103583
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765538479950250
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765538598048083
+      },
+      {
+        "phase": "running",
+        "physical_footprint_bytes": 16023960,
+        "physical_probe_available": true,
+        "rss_bytes": 27328512,
+        "timestamp_ns": 1765538716393958
+      }
+    ],
+    "mlx_counters": null,
+    "mode": "touch",
+    "pid": 62159,
+    "pressure_after": {
+      "available_bytes": 11569938432,
+      "memory_percent": 70.1,
+      "swap_used_bytes": 1556742144
+    },
+    "pressure_before": {
+      "available_bytes": 11565137920,
+      "memory_percent": 70.1,
+      "swap_used_bytes": 1556742144
+    },
+    "requested_model_tokens": 0,
+    "run_id": "bc9e4dbc1750418ab2f444ab288410df",
+    "status": "complete",
+    "suite": "_test",
+    "trace": true,
+    "trial": 0,
+    "wall_ns": 2386915542,
+    "worker_events": [
+      {
+        "completed_model_tokens": 0,
+        "event": "progress",
+        "mlx_counters": null,
+        "timestamp_ns": 1765537102494041,
+        "touched_bytes": 67108864
+      },
+      {
+        "event": "released",
+        "timestamp_ns": 1765537906504041
+      },
+      {
+        "completed_model_tokens": 0,
+        "completion_ns": 1,
+        "event": "complete",
+        "latency_ns": [],
+        "mlx_counters": null
+      }
+    ],
+    "worker_stderr": ""
+  }
+}

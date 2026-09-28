@@ -1,0 +1,43 @@
+{
+  "allocation_bytes": 67108864,
+  "detected_active_allocation": true,
+  "fresh_processes": true,
+  "probes": [
+    {
+      "after": {
+        "active": 0,
+        "cache": 0,
+        "peak": 67109382
+      },
+      "before": {
+        "active": 0,
+        "cache": 0,
+        "peak": 0
+      },
+      "cache_limit_bytes": 0,
+      "during": {
+        "active": 67108868,
+        "cache": 0,
+        "peak": 67109382
+      }
+    },
+    {
+      "after": {
+        "active": 0,
+        "cache": 67109382,
+        "peak": 67109382
+      },
+      "before": {
+        "active": 0,
+        "cache": 0,
+        "peak": 0
+      },
+      "cache_limit_bytes": 268435456,
+      "during": {
+        "active": 67108868,
+        "cache": 514,
+        "peak": 67109382
+      }
+    }
+  ]
+}

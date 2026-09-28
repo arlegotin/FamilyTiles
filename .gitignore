@@ -14,4 +14,5 @@ samples/
 results/survey/**/sample-*.bin
 results/survey/**/weight-*.bin
 results/survey/*.lock
+tools/footprint
 .superpowers/
