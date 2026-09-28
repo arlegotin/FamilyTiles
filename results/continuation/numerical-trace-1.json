@@ -1,0 +1,143 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "fixture_sha256": "7d1783cfc2eee1cc311b97fbd23d541395222aebedb3f25789e4a9ce3f908bd3",
+  "prefill_cache_matches_reference": {
+    "A1": {
+      "anchor": true,
+      "target": true
+    },
+    "family_single": {
+      "anchor": true,
+      "target": true
+    },
+    "native_pair": {
+      "anchor": true,
+      "target": true
+    },
+    "raw_pair": {
+      "anchor": true,
+      "target": true
+    }
+  },
+  "records": [
+    "results/continuation/numerical-b1-1.json",
+    "results/continuation/numerical-native_pair-1.json",
+    "results/continuation/numerical-raw_pair-1.json",
+    "results/continuation/numerical-a1-1.json",
+    "results/continuation/numerical-family_single-1.json"
+  ],
+  "reference_self_replay": "bitwise-identical",
+  "same_schedule": {
+    "A1_vs_native_pair": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ]
+    },
+    "fused_vs_raw_pair": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ]
+    }
+  },
+  "steps": 1,
+  "versus_reference": {
+    "A1": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ]
+    },
+    "family_single": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 124372,
+          "max_absolute_error": 0.15625,
+          "normalized_rms": 0.009800157633218074
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 134762,
+          "max_absolute_error": 0.28125,
+          "normalized_rms": 0.018264748419437826
+        }
+      ]
+    },
+    "native_pair": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ]
+    },
+    "raw_pair": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 124372,
+          "max_absolute_error": 0.15625,
+          "normalized_rms": 0.009800157633218074
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 134762,
+          "max_absolute_error": 0.28125,
+          "normalized_rms": 0.018264748419437826
+        }
+      ]
+    }
+  }
+}

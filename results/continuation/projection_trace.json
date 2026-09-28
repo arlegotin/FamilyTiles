@@ -1,0 +1,109 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "fixture_sha256": "930f478a9bdff7a22220cc8ae25988ed56ec7e44719c5b059e91a37aa7ee3f5f",
+  "method": "reference first-layer input activation replay; two_round casts GEMV before bias",
+  "rows": [
+    {
+      "activation_sha256": "3439b454fb740162b1e4360f2e7a7a803df2a4d8b3b9afad23f5daa73c9bfd25",
+      "projection": "q_proj",
+      "role": "anchor",
+      "stock_vs_current": {
+        "argmax_agreement": true,
+        "bit_mismatches": 434,
+        "max_absolute_error": 0.5,
+        "normalized_rms": 0.002977697991851388
+      },
+      "stock_vs_two_round": {
+        "argmax_agreement": true,
+        "bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "normalized_rms": 0.0
+      }
+    },
+    {
+      "activation_sha256": "3439b454fb740162b1e4360f2e7a7a803df2a4d8b3b9afad23f5daa73c9bfd25",
+      "projection": "k_proj",
+      "role": "anchor",
+      "stock_vs_current": {
+        "argmax_agreement": true,
+        "bit_mismatches": 57,
+        "max_absolute_error": 0.03125,
+        "normalized_rms": 5.1847838701641855e-05
+      },
+      "stock_vs_two_round": {
+        "argmax_agreement": true,
+        "bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "normalized_rms": 0.0
+      }
+    },
+    {
+      "activation_sha256": "3439b454fb740162b1e4360f2e7a7a803df2a4d8b3b9afad23f5daa73c9bfd25",
+      "projection": "v_proj",
+      "role": "anchor",
+      "stock_vs_current": {
+        "argmax_agreement": true,
+        "bit_mismatches": 91,
+        "max_absolute_error": 0.00390625,
+        "normalized_rms": 0.0014117809656024839
+      },
+      "stock_vs_two_round": {
+        "argmax_agreement": true,
+        "bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "normalized_rms": 0.0
+      }
+    },
+    {
+      "activation_sha256": "a158ee54d3e005362bad7021e187d1f6a5fe179441082d221c7e135e73cb8a12",
+      "projection": "q_proj",
+      "role": "target",
+      "stock_vs_current": {
+        "argmax_agreement": true,
+        "bit_mismatches": 416,
+        "max_absolute_error": 0.25,
+        "normalized_rms": 0.0018857379982683397
+      },
+      "stock_vs_two_round": {
+        "argmax_agreement": true,
+        "bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "normalized_rms": 0.0
+      }
+    },
+    {
+      "activation_sha256": "a158ee54d3e005362bad7021e187d1f6a5fe179441082d221c7e135e73cb8a12",
+      "projection": "k_proj",
+      "role": "target",
+      "stock_vs_current": {
+        "argmax_agreement": true,
+        "bit_mismatches": 54,
+        "max_absolute_error": 0.25,
+        "normalized_rms": 0.00023682785405376787
+      },
+      "stock_vs_two_round": {
+        "argmax_agreement": true,
+        "bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "normalized_rms": 0.0
+      }
+    },
+    {
+      "activation_sha256": "a158ee54d3e005362bad7021e187d1f6a5fe179441082d221c7e135e73cb8a12",
+      "projection": "v_proj",
+      "role": "target",
+      "stock_vs_current": {
+        "argmax_agreement": true,
+        "bit_mismatches": 71,
+        "max_absolute_error": 0.015625,
+        "normalized_rms": 0.00401621828598665
+      },
+      "stock_vs_two_round": {
+        "argmax_agreement": true,
+        "bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "normalized_rms": 0.0
+      }
+    }
+  ]
+}

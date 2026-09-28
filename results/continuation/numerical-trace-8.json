@@ -1,0 +1,647 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "fixture_sha256": "98ec11e0a5a2d292f7893ec71cfd793cc87d90928633f2da7d44336d5df5205c",
+  "prefill_cache_matches_reference": {
+    "A1": {
+      "anchor": true,
+      "target": true
+    },
+    "family_single": {
+      "anchor": true,
+      "target": true
+    },
+    "native_pair": {
+      "anchor": true,
+      "target": true
+    },
+    "raw_pair": {
+      "anchor": true,
+      "target": true
+    }
+  },
+  "records": [
+    "results/continuation/numerical-b1-8.json",
+    "results/continuation/numerical-native_pair-8.json",
+    "results/continuation/numerical-raw_pair-8.json",
+    "results/continuation/numerical-a1-8.json",
+    "results/continuation/numerical-family_single-8.json"
+  ],
+  "reference_self_replay": "bitwise-identical",
+  "same_schedule": {
+    "A1_vs_native_pair": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ]
+    },
+    "fused_vs_raw_pair": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ]
+    }
+  },
+  "steps": 8,
+  "versus_reference": {
+    "A1": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ]
+    },
+    "family_single": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 124372,
+          "max_absolute_error": 0.15625,
+          "normalized_rms": 0.009800157633218074
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 121166,
+          "max_absolute_error": 0.15625,
+          "normalized_rms": 0.008098755255724597
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 132286,
+          "max_absolute_error": 0.234375,
+          "normalized_rms": 0.011140648459064699
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 118518,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.00755756733530576
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 118397,
+          "max_absolute_error": 0.15625,
+          "normalized_rms": 0.007746138676620132
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 139004,
+          "max_absolute_error": 0.21875,
+          "normalized_rms": 0.014240003407173673
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 115127,
+          "max_absolute_error": 0.140625,
+          "normalized_rms": 0.007004343164082222
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 123296,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.008917437811121613
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 134762,
+          "max_absolute_error": 0.28125,
+          "normalized_rms": 0.018264748419437826
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 145632,
+          "max_absolute_error": 0.265625,
+          "normalized_rms": 0.02219306356324795
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 132692,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.013038904049489434
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 128807,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.012869848742482237
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 123005,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.009202967599270103
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 131980,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.012588405204022787
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 140265,
+          "max_absolute_error": 0.28125,
+          "normalized_rms": 0.01998085082232376
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 139477,
+          "max_absolute_error": 0.3125,
+          "normalized_rms": 0.021009330362560984
+        }
+      ]
+    },
+    "native_pair": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "normalized_rms": 0.0
+        }
+      ]
+    },
+    "raw_pair": {
+      "anchor": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 124372,
+          "max_absolute_error": 0.15625,
+          "normalized_rms": 0.009800157633218074
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 121166,
+          "max_absolute_error": 0.15625,
+          "normalized_rms": 0.008098755255724597
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 132286,
+          "max_absolute_error": 0.234375,
+          "normalized_rms": 0.011140648459064699
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 118518,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.00755756733530576
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 118397,
+          "max_absolute_error": 0.15625,
+          "normalized_rms": 0.007746138676620132
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 139004,
+          "max_absolute_error": 0.21875,
+          "normalized_rms": 0.014240003407173673
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 115127,
+          "max_absolute_error": 0.140625,
+          "normalized_rms": 0.007004343164082222
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 123296,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.008917437811121613
+        }
+      ],
+      "target": [
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 134762,
+          "max_absolute_error": 0.28125,
+          "normalized_rms": 0.018264748419437826
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 145632,
+          "max_absolute_error": 0.265625,
+          "normalized_rms": 0.02219306356324795
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 132692,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.013038904049489434
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 128807,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.012869848742482237
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 123005,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.009202967599270103
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 131980,
+          "max_absolute_error": 0.1875,
+          "normalized_rms": 0.012588405204022787
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 140265,
+          "max_absolute_error": 0.28125,
+          "normalized_rms": 0.01998085082232376
+        },
+        {
+          "argmax_agreement": true,
+          "bit_mismatches": 139477,
+          "max_absolute_error": 0.3125,
+          "normalized_rms": 0.021009330362560984
+        }
+      ]
+    }
+  }
+}

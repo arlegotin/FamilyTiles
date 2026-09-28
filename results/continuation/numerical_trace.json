@@ -1,0 +1,100 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "decision": "native-operator staging eligible; current fused arithmetic ineligible for C3",
+  "first_identified_raw_divergence": "layer 0 biased Q projection, reference activation replay",
+  "fixture_sha256": "98ec11e0a5a2d292f7893ec71cfd793cc87d90928633f2da7d44336d5df5205c",
+  "per_model_max_nrmse": {
+    "A1": {
+      "anchor": 0.0,
+      "target": 0.0
+    },
+    "family_single": {
+      "anchor": 0.014240003407173673,
+      "target": 0.02219306356324795
+    },
+    "native_pair": {
+      "anchor": 0.0,
+      "target": 0.0
+    },
+    "raw_pair": {
+      "anchor": 0.014240003407173673,
+      "target": 0.02219306356324795
+    }
+  },
+  "prefill_cache_matches_reference": {
+    "A1": {
+      "anchor": true,
+      "target": true
+    },
+    "family_single": {
+      "anchor": true,
+      "target": true
+    },
+    "native_pair": {
+      "anchor": true,
+      "target": true
+    },
+    "raw_pair": {
+      "anchor": true,
+      "target": true
+    }
+  },
+  "projection_bias_experiment": [
+    {
+      "current_mismatches": 434,
+      "projection": "q_proj",
+      "role": "anchor",
+      "two_round_mismatches": 0
+    },
+    {
+      "current_mismatches": 57,
+      "projection": "k_proj",
+      "role": "anchor",
+      "two_round_mismatches": 0
+    },
+    {
+      "current_mismatches": 91,
+      "projection": "v_proj",
+      "role": "anchor",
+      "two_round_mismatches": 0
+    },
+    {
+      "current_mismatches": 416,
+      "projection": "q_proj",
+      "role": "target",
+      "two_round_mismatches": 0
+    },
+    {
+      "current_mismatches": 54,
+      "projection": "k_proj",
+      "role": "target",
+      "two_round_mismatches": 0
+    },
+    {
+      "current_mismatches": 71,
+      "projection": "v_proj",
+      "role": "target",
+      "two_round_mismatches": 0
+    }
+  ],
+  "projection_trace": "results/continuation/projection_trace.json",
+  "records": [
+    "results/continuation/numerical-b1-8.json",
+    "results/continuation/numerical-native_pair-8.json",
+    "results/continuation/numerical-raw_pair-8.json",
+    "results/continuation/numerical-a1-8.json",
+    "results/continuation/numerical-family_single-8.json"
+  ],
+  "reference_self_replay": "bitwise-identical",
+  "same_schedule_max_word_mismatch": {
+    "A1_vs_native_pair": {
+      "anchor": 0,
+      "target": 0
+    },
+    "fused_vs_raw_pair": {
+      "anchor": 0,
+      "target": 0
+    }
+  },
+  "scope": "eight cached teacher-forced steps, not the original 2048-prediction C3 gate"
+}

@@ -25,14 +25,14 @@ from mlx_lm.utils import load_model
 from .convert import FamilyArtifact, _safe_path
 from .codec import CodecPolicy
 from .measure import compute_budget
-from .metal import (DeviceOperand, decode_words, family_gemv, load_operand,
+from .metal import (DeviceOperand, decode_words, family_gemv, family_gemv_pair, load_operand,
                     raw_gemv, raw_gemv_pair)
 
 
 ModelId = Literal["anchor", "target"]
 PROJECTIONS = ("q_proj", "k_proj", "v_proj", "o_proj",
                "gate_proj", "up_proj", "down_proj")
-MODES = frozenset({"B1", "A1", "family_single", "raw_pair"})
+MODES = frozenset({"B1", "A1", "family_single", "raw_pair", "native_pair"})
 
 
 def expected_active_shapes(config: dict[str, Any]) -> dict[str, tuple[int, ...]]:
@@ -181,7 +181,7 @@ class RuntimeFamily:
 
 def loaded_weight_ledger(runtime: RuntimeFamily) -> dict[str, int]:
     """Count each owned MLX array once; aliases are shared object references."""
-    if runtime.mode == "B1":
+    if runtime.mode in ("B1", "native_pair"):
         from mlx.utils import tree_flatten
         arrays = [array for model in runtime.models.values()
                   for _, array in tree_flatten(model.parameters())]
@@ -317,7 +317,7 @@ def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
     mx.set_cache_limit(budget.cache_limit_bytes)
     configs = _load_configs(artifact)
     validate_active_inventory(artifact.manifest, configs)
-    if mode in ("B1", "raw_pair"):
+    if mode in ("B1", "raw_pair", "native_pair"):
         models = {role: load_model(_config_path(artifact, role).parent, strict=True)[0]
                   for role in ("anchor", "target")}
         for name, record in artifact.manifest["tensors"].items():
@@ -435,22 +435,34 @@ def validate_pair_structure(runtime: RuntimeFamily) -> None:
 
 def _paired_linear(runtime: RuntimeFamily, name: str,
                    x_anchor: mx.array, x_target: mx.array) -> tuple[mx.array, mx.array]:
-    if runtime.mode != "raw_pair":
-        raise ValueError("paired linear control requires raw_pair mode")
-    operand = runtime.operands[name]
+    if runtime.mode not in ("raw_pair", "native_pair", "A1", "family_single"):
+        raise ValueError("paired linear mode is unsupported")
+    operand = runtime.operands.get(name)
     modules = []
     for role in ("anchor", "target"):
         parent, attribute = _attribute(runtime.models[role], name.removesuffix(".weight"))
         module = getattr(parent, attribute)
-        if not isinstance(module, FamilyLinear):
+        if runtime.mode == "native_pair":
+            if not isinstance(module, nn.Linear):
+                raise ValueError("native paired linear module changed")
+        elif not isinstance(module, FamilyLinear):
             raise ValueError("paired linear module was not replaced")
         modules.append(module)
-    if (x_anchor.shape != (1, 1, operand.shape[1]) or
-            x_target.shape != (1, 1, operand.shape[1])):
+    input_width = (modules[0].weight.shape[1] if runtime.mode == "native_pair"
+                   else operand.shape[1])
+    if (x_anchor.shape != (1, 1, input_width) or
+            x_target.shape != (1, 1, input_width)):
         raise ValueError("paired linear expects independent one-token activations")
-    outputs = raw_gemv_pair(operand.anchor_words, operand.native_words,
-                            x_anchor[0, 0, :], x_target[0, 0, :],
-                            (modules[0].bias, modules[1].bias))
+    if runtime.mode == "native_pair":
+        return modules[0](x_anchor), modules[1](x_target)
+    if runtime.mode == "A1":
+        return modules[0].prefill(x_anchor), modules[1].prefill(x_target)
+    biases = modules[0].bias, modules[1].bias
+    if runtime.mode == "family_single":
+        outputs = family_gemv_pair(operand, x_anchor[0, 0, :], x_target[0, 0, :], biases)
+    else:
+        outputs = raw_gemv_pair(operand.anchor_words, operand.native_words,
+                                x_anchor[0, 0, :], x_target[0, 0, :], biases)
     return outputs[0].reshape(1, 1, -1), outputs[1].reshape(1, 1, -1)
 
 
@@ -478,7 +490,7 @@ def step_pair(runtime: RuntimeFamily,
     if runtime.mode == "B1":
         return (step_single(runtime, states[0], token_ids[0]),
                 step_single(runtime, states[1], token_ids[1]))
-    if runtime.mode != "raw_pair":
+    if runtime.mode not in ("raw_pair", "native_pair", "A1", "family_single"):
         raise ValueError("paired execution is unavailable for this runtime mode")
     validate_pair_structure(runtime)
     if ((states[0].model_id, states[1].model_id) != ("anchor", "target") or
