@@ -6,7 +6,7 @@ import argparse
 from pathlib import Path
 import sys
 
-from .records import resolve_under_root
+from .records import publish_gate, resolve_under_root
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -15,13 +15,30 @@ def main(argv: list[str] | None = None) -> int:
     report = commands.add_parser("report", help="Render supported status from saved records")
     report.add_argument("--results", required=True)
     report.add_argument("--out", required=True)
-    for name in ("doctor", "survey", "convert", "verify", "bench"):
+    doctor_parser = commands.add_parser("doctor", help="Run the G0 machine and Metal smoke")
+    doctor_parser.add_argument("--out", required=True)
+    for name in ("survey", "convert", "verify", "bench"):
         commands.add_parser(name, help="Available after its prerequisite implementation gate")
     args = parser.parse_args(argv)
+    root = Path(__file__).resolve().parents[2]
+    if args.command == "doctor":
+        from .measure import doctor, evaluate_g0
+        import json
+
+        try:
+            output = resolve_under_root(root, args.out)
+            environment = doctor(output)
+            audit_path = root / "results/prior-art.json"
+            audit = json.loads(audit_path.read_text()) if audit_path.is_file() else {}
+            gate = evaluate_g0(environment, audit)
+            publish_gate(root / "results/gates", gate)
+            return {"pass": 0, "fail": 3, "blocked": 4}[gate.decision]
+        except (OSError, ValueError) as exc:
+            print(f"doctor: {exc}", file=sys.stderr)
+            return 2
     if args.command != "report":
         print(f"{args.command} is not implemented at the current gate", file=sys.stderr)
         return 2
-    root = Path(__file__).resolve().parents[2]
     try:
         from .report import render_report
 

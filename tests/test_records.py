@@ -6,6 +6,8 @@ from familytiles.records import (
     GateRecord,
     RunContext,
     require_gate,
+    publish_gate,
+    read_gate,
     resolve_under_root,
     write_json_atomic,
 )
@@ -63,3 +65,15 @@ def test_paths_reject_parent_absolute_and_symlink_escape(tmp_path):
     for value in ("../outside/file", str(outside / "file"), "link/file"):
         with pytest.raises(ValueError):
             resolve_under_root(root, value)
+
+
+def test_gate_history_is_append_only_with_latest_pointer(tmp_path):
+    gate_dir = tmp_path / "gates"
+    first = GateRecord(1, "G0", context(), {}, {}, {"smoke": True}, "pass", "first")
+    second = GateRecord(1, "G0", context(), {}, {}, {"smoke": False}, "blocked", "second")
+    first_path = publish_gate(gate_dir, first)
+    second_path = publish_gate(gate_dir, second)
+    assert first_path != second_path
+    assert read_gate(first_path).reason == "first"
+    assert read_gate(second_path).reason == "second"
+    assert read_gate(gate_dir / "G0.json").reason == "second"

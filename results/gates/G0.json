@@ -1,0 +1,34 @@
+{
+  "context": {
+    "artifact_hash": null,
+    "environment_hash": "9463dbacff1256b177ec23fa324cba57ff4ea230f9721af4f62c12bab3cb0617",
+    "family_id": null,
+    "implementation_hash": "50b21cfc57e74cdfd75b0747e33d711e6aa0cd64647bb838e9d3b1bbd7e5188e",
+    "input_hash": null,
+    "policy_hash": null,
+    "revisions": {}
+  },
+  "decision": "pass",
+  "gate": "G0",
+  "input_hashes": {
+    "dependency_lock": "f0ba4ce4c5e3ac073e4dcfa9982dfa2d86088ab1982b4fe2569fee7889e5ab91",
+    "prior_art": "60f9a527d47065f5db3895ec7529f617836ac22b0511fb0028e0fca52c989f08"
+  },
+  "observed": {
+    "audit_complete": true,
+    "smoke": true
+  },
+  "reason": "native smoke and scoped collision audit passed",
+  "schema_version": 1,
+  "thresholds": {
+    "minimum_budget_bytes": 16777216,
+    "required_sources": [
+      "P01",
+      "P02",
+      "P04",
+      "P08",
+      "P09",
+      "P12"
+    ]
+  }
+}

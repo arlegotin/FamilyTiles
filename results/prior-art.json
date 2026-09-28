@@ -1,0 +1,105 @@
+{
+  "audit_hash": "60f9a527d47065f5db3895ec7529f617836ac22b0511fb0028e0fca52c989f08",
+  "collision_decision": "none_found",
+  "inspected_on": "2026-09-28",
+  "inspected_sources": [
+    "P01",
+    "P02",
+    "P04",
+    "P08",
+    "P09",
+    "P12"
+  ],
+  "platform_source_revisions": {
+    "mlx_lm_v0.31.3": "ed1fca4cef15a824c5f1702c80f70b4cffc8e4dd",
+    "mlx_v0.32.2": "1f8e74e3f12f31365464a6867c6579f0e9b29d85"
+  },
+  "schema_version": 1,
+  "scope": "No inspected entry point demonstrated exact two-variant anchor reuse; no global absence claim",
+  "source_revisions": {
+    "P01": "23b2d4297642b8ddfafeaad65824e0751492809e",
+    "P02": "612924f36f0723a048211e6abe228258a08de0f8",
+    "P04": "20db6d19240e65359adc4392e6be0234f27788ff",
+    "P08": "6f8a209bfe46b0905f90d61b0796e352147ff041",
+    "P09": "db0e6d3d4505cf71379f6b9b4567acf598bc186c",
+    "P12": "arXiv 2606.15789v1 sections IV-V Algorithm V.1"
+  },
+  "sources": [
+    {
+      "grouped_exact_anchor_reuse": "not_in_inspected_path",
+      "id": "P01",
+      "inspected_file_sha256": {
+        "fmd.pyx": "6b42e6ea68eac98830b54ca7e7ba017634a161c59b0135eb4a1f34ae854bb7c4"
+      },
+      "inspected_location": "fmd.pyx:compress_param,decompress_param,decompress",
+      "license": "license file absent; treat reuse as unresolved",
+      "paper_sha256": "13ad894320f1bc30a1912507b5b775fc0fdcb5d46c0e04d6d537f205f6eeb689",
+      "paper_version": "NeurIPS 2024 Table 6",
+      "repository": "ningwanyi/FM-Delta",
+      "source_revision": "23b2d4297642b8ddfafeaad65824e0751492809e"
+    },
+    {
+      "grouped_exact_anchor_reuse": "not_in_inspected_path",
+      "id": "P02",
+      "inspected_file_sha256": {
+        "src/bitx/bitx_bytes.rs": "1f76fe984b5070240da99279c395ce73606f6ceea5281ce91bd1f6ef1f62f953",
+        "src/restore.rs": "2d1cb911a0225b996fb995e141f57e61720e5a39116f8870ae4fdc9946a404cf"
+      },
+      "inspected_location": "src/bitx/bitx_bytes.rs:bitx_decompress;src/restore.rs:restore_model",
+      "license": "Apache-2.0",
+      "paper_sha256": "17c195320142b61a4eaba930ee45b5b87c3e120d07410465bee18bb68b0c2404",
+      "paper_version": "arXiv 2505.06252v3",
+      "repository": "ds2-lab/ZipLLM",
+      "source_revision": "612924f36f0723a048211e6abe228258a08de0f8"
+    },
+    {
+      "grouped_exact_anchor_reuse": "not_in_inspected_path",
+      "id": "P04",
+      "inspected_file_sha256": {
+        "deltazip/nn_modules/batched_qlinear.py": "4c16bbae4a2ffa6807c7a6b9be4ebb25efd490801b9a2b653fe2f432dae0f5ec"
+      },
+      "inspected_location": "deltazip/nn_modules/batched_qlinear.py:BatchedQuantLinearForward",
+      "license": "Apache-2.0",
+      "paper_sha256": "1202b28ee9fbf22abbf480ad84ba0ece2db03fa37ce90a2f25accaccb2a3e1f0",
+      "paper_version": "arXiv 2312.05215v3 section 4",
+      "repository": "eth-easl/deltazip",
+      "source_revision": "20db6d19240e65359adc4392e6be0234f27788ff"
+    },
+    {
+      "grouped_exact_anchor_reuse": "not_in_inspected_path",
+      "id": "P08",
+      "inspected_file_sha256": {
+        "csrc/L_Kernel.cuh": "449212daaaa3f5353cec93e5e2340686858971f48c124a3949019b1598ba3a4b"
+      },
+      "inspected_location": "csrc/L_Kernel.cuh:BF16TripleBitmap_MM_Kernel_Fast",
+      "license": "Apache-2.0",
+      "paper_sha256": "ec43ed798d3cd9c4e65fa117a22cfa96befc589fc9a59151edb096db192e483d",
+      "paper_version": "arXiv 2603.17435v1 section 4.3",
+      "repository": "HPMLL/ZipServ_ASPLOS26",
+      "source_revision": "6f8a209bfe46b0905f90d61b0796e352147ff041"
+    },
+    {
+      "grouped_exact_anchor_reuse": "not_in_inspected_path",
+      "id": "P09",
+      "inspected_file_sha256": {
+        "src/reconstructive_matmul.cuh": "aae13e0268a1ebae96bb240516976681b7fc353eb89881caaa5d7b6b0627560b"
+      },
+      "inspected_location": "src/reconstructive_matmul.cuh:ReconstructiveMatmulTemplate",
+      "license": "BSD-3-Clause",
+      "paper_sha256": "7d796f7d81a9162bc3632e82e068553e65ce367688197e9cfb27b52718972ad9",
+      "paper_version": "Cf-TR-2026.04.v1 section 8",
+      "repository": "cloudflareresearch/unweight-kernels",
+      "source_revision": "db0e6d3d4505cf71379f6b9b4567acf598bc186c"
+    },
+    {
+      "grouped_exact_anchor_reuse": "unknown_source",
+      "id": "P12",
+      "inspected_location": "Algorithm V.1; no associated released source identified",
+      "license": "source license unknown",
+      "paper_sha256": "62a55fe8d60d043a6d66ae76cac4f1aab1e599cb9752f023d13f29107074bfb9",
+      "paper_version": "arXiv 2606.15789v1 sections IV-V Algorithm V.1",
+      "repository": null,
+      "source_revision": null
+    }
+  ]
+}

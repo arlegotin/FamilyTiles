@@ -1,0 +1,66 @@
+{
+  "active_memory_after_probe": 40,
+  "architecture": "arm64",
+  "available_bytes": 10297720832,
+  "bf16_matmul": true,
+  "cache_limit_bytes": 268435456,
+  "cache_memory_after_probe": 2,
+  "custom_kernel_api": {
+    "compile_options": {
+      "math_mode": "safe"
+    },
+    "constructor": "mlx.core.fast.metal_kernel",
+    "ensure_row_contiguous": false,
+    "output_dtype": "uint16",
+    "tested_words": [
+      0,
+      3,
+      0,
+      0
+    ]
+  },
+  "dependency_lock_hash": "f0ba4ce4c5e3ac073e4dcfa9982dfa2d86088ab1982b4fe2569fee7889e5ab91",
+  "device_info": {
+    "architecture": "applegpu_g15s",
+    "device_name": "Apple M3 Max",
+    "max_buffer_length": 22613000192,
+    "max_recommended_working_set_size": 30150672384,
+    "memory_size": 38654705664,
+    "resource_limit": 499000
+  },
+  "installed_mlx_lm_qwen2_sha256": "30d38786f3c598bf58c1dafcdffbeac6f3c507442bde768944350c57222cf391",
+  "macos": "26.6.2",
+  "memory_api": {
+    "get_active_memory": true,
+    "get_cache_memory": true,
+    "get_peak_memory": true,
+    "set_cache_limit": true,
+    "set_memory_limit": true
+  },
+  "metal_available": true,
+  "package_versions": {
+    "huggingface_hub": "1.33.0",
+    "mlx": "0.32.2",
+    "mlx-lm": "0.31.3",
+    "numpy": "2.5.3",
+    "psutil": "7.2.2",
+    "pytest": "9.1.1",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "zstandard": "0.25.0"
+  },
+  "physical_bytes": 38654705664,
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "platform_source_revisions": {
+    "mlx_lm_v0.31.3": "ed1fca4cef15a824c5f1702c80f70b4cffc8e4dd",
+    "mlx_v0.32.2": "1f8e74e3f12f31365464a6867c6579f0e9b29d85"
+  },
+  "process_limit_bytes": 6178632499,
+  "python": "3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "schema_version": 1,
+  "source_hashes": {
+    "src/familytiles/measure.py": "50b21cfc57e74cdfd75b0747e33d711e6aa0cd64647bb838e9d3b1bbd7e5188e",
+    "src/familytiles/records.py": "05ab0aaa280a87b690f6c739e7e5605ecc6bf94faf331babf88525b8340651c3"
+  },
+  "uint16_probe": true
+}

@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import tempfile
 from typing import Any, Literal
+from uuid import uuid4
 
 
 JsonObject = dict[str, Any]
@@ -115,6 +116,17 @@ def read_gate(path: Path) -> GateRecord:
     with path.open(encoding="utf-8") as stream:
         data = json.load(stream)
     return GateRecord.from_dict(data)
+
+
+def publish_gate(gates_dir: Path, record: GateRecord) -> Path:
+    """Retain immutable run evidence and update the stable latest pointer."""
+    encoded = record.to_dict()
+    run_dir = gates_dir / uuid4().hex
+    run_dir.mkdir(parents=True, exist_ok=False)
+    run_path = run_dir / f"{record.gate}.json"
+    write_json_atomic(run_path, encoded)
+    write_json_atomic(gates_dir / f"{record.gate}.json", encoded)
+    return run_path
 
 
 def require_gate(path: Path, gate: str, context: RunContext) -> GateRecord:
