@@ -10,3 +10,5 @@ Install the local package in a Python virtual environment, then run `python -m f
 - [Gated implementation plan](docs/superpowers/plans/2026-09-28-familytiles.md)
 
 The project stopped at G3 according to the prespecified gate. Later CLI suites and the full C3/G5 evaluation are not implemented or measured. The specification fixes the resource limits, numerical checks, baselines, and acceptance thresholds before measurement.
+
+A bounded [continuation](results/continuation/CONTINUATION_RESULTS.md) tested exact reconstruction with stock MLX operators and two fixed mixed native/compressed policies. Cached logits matched stock in the short checks, but the mixed policies missed the continuation's 1.50× decode-latency ceiling by a wide margin. The original G3 failure and unrun full C3 gate remain unchanged.
