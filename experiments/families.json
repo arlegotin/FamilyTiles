@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "families": [
+    {
+      "id": "qwen2.5-0.5b",
+      "anchor": "Qwen/Qwen2.5-0.5B",
+      "target": "Qwen/Qwen2.5-0.5B-Instruct",
+      "role": "primary",
+      "enabled": true
+    },
+    {
+      "id": "qwen2.5-1.5b",
+      "anchor": "Qwen/Qwen2.5-1.5B",
+      "target": "Qwen/Qwen2.5-1.5B-Instruct",
+      "role": "fallback-scale-check",
+      "enabled": true
+    },
+    {
+      "id": "smollm2-360m",
+      "anchor": "HuggingFaceTB/SmolLM2-360M",
+      "target": "HuggingFaceTB/SmolLM2-360M-Instruct",
+      "role": "optional-codec-holdout",
+      "enabled": false
+    }
+  ]
+}
