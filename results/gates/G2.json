@@ -1,0 +1,60 @@
+{
+  "context": {
+    "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+    "environment_hash": "9463dbacff1256b177ec23fa324cba57ff4ea230f9721af4f62c12bab3cb0617",
+    "family_id": "qwen2.5-1.5b",
+    "implementation_hash": "89c0d84e00159e55ae292584798457e9853140b9962493e41eb690497a5d6afb",
+    "input_hash": null,
+    "policy_hash": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
+    "revisions": {
+      "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+      "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    }
+  },
+  "decision": "pass",
+  "gate": "G2",
+  "input_hashes": {
+    "artifact": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+    "g1_summary": "d2d7a7004070852916facafaa7dbdf2c382b92de4c86665571178fab530dcb4a"
+  },
+  "observed": {
+    "audit": {
+      "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+      "hash_mismatched_anchor_tensors": 0,
+      "hash_mismatched_target_tensors": 0,
+      "mismatched_words": 0,
+      "representation_exact": true,
+      "verified_active_tensors": 338,
+      "verified_target_words": 1543714304
+    },
+    "download_reserved_bytes": 6174934288,
+    "kv_bound_bytes": 88080384,
+    "largest_matrix_bytes": 27525120,
+    "ledger": {
+      "alias_bytes": 0,
+      "anchor_bytes": 3087428608,
+      "b2_bytes": 6175162549,
+      "b3_bytes": 4382169185,
+      "b4_compressed_anchor_bytes": 3482853051,
+      "b4_raw_anchor_bytes": 4203566758,
+      "family_beyond_b2_raw": 0.20495098295079348,
+      "family_bytes": 4909619493,
+      "family_saving_vs_b1": 0.20490153516774046,
+      "manifest_bytes": 305333,
+      "native_target_bytes": 467037184,
+      "raw_target_bytes": 3087428608,
+      "w0_bytes": 6174857216,
+      "w1_bytes": 6174857216
+    },
+    "planned_peak_bytes": 5589621029,
+    "safe_process_budget_bytes": 6844563456,
+    "staging_and_cache_bound_bytes": 680001536
+  },
+  "reason": "complete CPU exactness, size and planned runtime budget passed",
+  "schema_version": 1,
+  "thresholds": {
+    "maximum_process_budget_bytes": 6844563456,
+    "minimum_b1_saving": 0.15,
+    "minimum_beyond_b2_raw": 0.05
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "conversion_seconds_excluding_final_load": 2110.286618666956,
+  "family_id": "qwen2.5-1.5b",
+  "peak_rss_is_sampled_lower_bound": true,
+  "revisions": {
+    "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+    "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "safe_budget_at_conversion_bytes": 6533657395,
+  "sampled_conversion_peak_rss_bytes": 7570636800
+}

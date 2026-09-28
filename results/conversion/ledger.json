@@ -1,0 +1,16 @@
+{
+  "alias_bytes": 0,
+  "anchor_bytes": 3087428608,
+  "b2_bytes": 6175162549,
+  "b3_bytes": 4382169185,
+  "b4_compressed_anchor_bytes": 3482853051,
+  "b4_raw_anchor_bytes": 4203566758,
+  "family_beyond_b2_raw": 0.20495098295079348,
+  "family_bytes": 4909619493,
+  "family_saving_vs_b1": 0.20490153516774046,
+  "manifest_bytes": 305333,
+  "native_target_bytes": 467037184,
+  "raw_target_bytes": 3087428608,
+  "w0_bytes": 6174857216,
+  "w1_bytes": 6174857216
+}

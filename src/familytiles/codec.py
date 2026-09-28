@@ -243,15 +243,15 @@ def _decode_validated(anchor: np.ndarray, encoded: EncodedTensor) -> np.ndarray:
             low_size = 4 * ((n * width + 31) // 32)
             codes = np.zeros(n, dtype=np.uint32)
             if width:
-                low = np.frombuffer(data[:low_size].tobytes(), dtype="<u4")
-                for lane in range(n):
-                    codes[lane] = (int(low[lane * width // 32]) >> ((lane * width) % 32)) & ((1 << width) - 1)
+                low = np.asarray(data[:low_size])
+                bit_offsets = np.arange(n, dtype=np.uint32) * width
+                codes = ((low[bit_offsets // 8] >> (bit_offsets % 8)) &
+                         ((1 << width) - 1)).astype(np.uint32)
             exceptions = np.zeros(n, dtype=bool)
             if count:
                 mask_size = 4 * ((encoded.policy.block_values + 31) // 32)
-                masks = np.frombuffer(data[low_size:low_size + mask_size].tobytes(), dtype="<u4")
-                for lane in range(n):
-                    exceptions[lane] = bool(int(masks[lane // 32]) & (1 << (lane % 32)))
+                exceptions = np.unpackbits(np.asarray(data[low_size:low_size + mask_size]),
+                                           bitorder="little")[:n].astype(bool)
                 literals = np.frombuffer(data[low_size + mask_size:low_size + mask_size + 2 * count].tobytes(), dtype=WORD_DTYPE)
             normal = ~exceptions
             transform = ("xor", "ordered_delta")[transform_id]
@@ -263,7 +263,7 @@ def _decode_validated(anchor: np.ndarray, encoded: EncodedTensor) -> np.ndarray:
     return result
 
 
-def validate_encoded(anchor: np.ndarray, encoded: EncodedTensor) -> None:
+def _validate_and_decode(anchor: np.ndarray, encoded: EncodedTensor) -> np.ndarray:
     a = _matrix(anchor)
     if not isinstance(encoded, EncodedTensor) or not isinstance(encoded.policy, CodecPolicy) or encoded.shape != a.shape:
         raise ValueError("invalid tensor metadata or anchor shape")
@@ -273,7 +273,7 @@ def validate_encoded(anchor: np.ndarray, encoded: EncodedTensor) -> None:
         words = _matrix(encoded.native_words)
         if words.shape != a.shape:
             raise ValueError("native shape mismatch")
-        return
+        return words.copy()
     if encoded.kind != "packed" or encoded.native_words is not None:
         raise ValueError("invalid packed tensor fields")
     payload = encoded.payload
@@ -292,23 +292,28 @@ def validate_encoded(anchor: np.ndarray, encoded: EncodedTensor) -> None:
             low_words = np.frombuffer(data[:low_size].tobytes(), dtype="<u4")
             if int(low_words[-1]) >> (n * width % 32):
                 raise ValueError("nonzero unused low bits")
-        masks = np.frombuffer(data[low_size:low_size + mask_size].tobytes(), dtype="<u4")
+        mask_bytes = np.asarray(data[low_size:low_size + mask_size])
+        masks = np.frombuffer(mask_bytes.tobytes(), dtype="<u4")
         bits = sum(int(x).bit_count() for x in masks)
-        if bits != count or any(int(masks[lane // 32]) & (1 << (lane % 32)) for lane in range(n, encoded.policy.block_values) if count):
+        exception_bits = np.unpackbits(mask_bytes, bitorder="little") if count else np.zeros(0, dtype=np.uint8)
+        if bits != count or (count and np.any(exception_bits[n:])):
             raise ValueError("exception mask/count or tail mismatch")
         if count and width:
-            low = np.frombuffer(data[:low_size].tobytes(), dtype="<u4")
-            for lane in range(n):
-                if int(masks[lane // 32]) & (1 << (lane % 32)):
-                    if (int(low[lane * width // 32]) >> ((lane * width) % 32)) & ((1 << width) - 1):
-                        raise ValueError("exception low-code placeholder is nonzero")
+            low = np.asarray(data[:low_size])
+            offsets = np.arange(n, dtype=np.uint32) * width
+            codes = (low[offsets // 8] >> (offsets % 8)) & ((1 << width) - 1)
+            if np.any(codes[exception_bits[:n].astype(bool)]):
+                raise ValueError("exception low-code placeholder is nonzero")
         end = low_size + mask_size + 2 * count
         if np.any(data[end:]):
             raise ValueError("nonzero PACKED padding")
     # Also checks ordered-key reconstruction bounds for normal lanes.
-    _decode_validated(a, encoded)
+    return _decode_validated(a, encoded)
+
+
+def validate_encoded(anchor: np.ndarray, encoded: EncodedTensor) -> None:
+    _validate_and_decode(anchor, encoded)
 
 
 def decode_tensor(anchor: np.ndarray, encoded: EncodedTensor) -> np.ndarray:
-    validate_encoded(anchor, encoded)
-    return _decode_validated(_matrix(anchor), encoded)
+    return _validate_and_decode(anchor, encoded)

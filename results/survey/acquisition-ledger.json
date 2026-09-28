@@ -6,5 +6,5 @@
     "Qwen/Qwen2.5-1.5B": 11632640,
     "Qwen/Qwen2.5-1.5B-Instruct": 11632640
   },
-  "weight_reserved": 0
+  "weight_reserved": 6174934288
 }
