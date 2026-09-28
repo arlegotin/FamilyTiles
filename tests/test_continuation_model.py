@@ -115,3 +115,39 @@ def test_fused_lockstep_dispatch_matches_raw_pair_schedule(tiny_stock_runtime):
     _, t = prefill(runtime, "target", [4, 5])
     fused = tuple(_words(value) for value in step_pair(runtime, (a, t), (6, 7)))
     assert [np.count_nonzero(x != y) for x, y in zip(raw, fused)] == [0, 0]
+
+
+def test_mixed_native_and_exact_staged_dispatch_matches_stock(tiny_stock_runtime):
+    import mlx.core as mx
+    from familytiles.codec import CodecPolicy, encode_tensor
+    from familytiles.metal import device_operand_from_words
+    from familytiles.model import (FamilyLinear, PROJECTIONS, _attribute,
+                                   prefill, step_pair, step_single)
+
+    runtime = tiny_stock_runtime
+    prompts = ([1, 2, 3], [4, 5])
+    _, stock_a = prefill(runtime, "anchor", prompts[0])
+    _, stock_t = prefill(runtime, "target", prompts[1])
+    expected = tuple(_words(step_single(runtime, state, token))
+                     for state, token in zip((stock_a, stock_t), (6, 7)))
+    selected = "model.layers.0.self_attn.q_proj.weight"
+    module_name = selected.removesuffix(".weight")
+    modules = {role: getattr(*_attribute(runtime.models[role], module_name))
+               for role in ("anchor", "target")}
+    a_words, t_words = (_words(modules[role].weight) for role in ("anchor", "target"))
+    operand = device_operand_from_words(a_words, encode_tensor(
+        a_words, t_words, CodecPolicy(1, 64, ("ordered_delta",)), modes=("packed",)))
+    runtime.operands[selected] = operand
+    for role in ("anchor", "target"):
+        parent, attribute = _attribute(runtime.models[role], module_name)
+        setattr(parent, attribute, FamilyLinear(operand, role, modules[role].bias, "A1"))
+    runtime.mode = "mixed"
+    runtime.native_promoted = frozenset(
+        f"model.layers.0.{branch}.{projection}.weight"
+        for projection in PROJECTIONS if projection != "q_proj"
+        for branch in (("self_attn",) if projection in PROJECTIONS[:4] else ("mlp",)))
+    _, a = prefill(runtime, "anchor", prompts[0])
+    _, t = prefill(runtime, "target", prompts[1])
+    actual = tuple(_words(value) for value in step_pair(runtime, (a, t), (6, 7)))
+    assert [np.count_nonzero(x != y) for x, y in zip(actual, expected)] == [0, 0]
+    mx.eval(*[value for state in (a, t) for entry in state.cache for value in entry.state])

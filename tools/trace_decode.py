@@ -17,6 +17,7 @@ from familytiles.records import write_json_atomic
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results/continuation"
 MODES = ("B1", "native_pair", "raw_pair", "A1", "family_single")
+MIXED_MODES = ("mixed15", "mixed10")
 
 
 def token_schedule(saved: dict, steps: int) -> list[tuple[int, int]]:
@@ -73,7 +74,13 @@ def run_worker(mode: str, steps: int) -> dict:
     schedule = token_schedule(saved, steps)
     fixture_hash = hashlib.sha256(json.dumps({"inputs": saved, "tokens": schedule},
                                              sort_keys=True).encode()).hexdigest()
-    runtime = load_runtime(artifact, mode)
+    if mode in MIXED_MODES:
+        policy_path = OUT / f"policy-{mode.removeprefix('mixed')}.json"
+        execution_policy = json.loads(policy_path.read_text())
+        runtime = load_runtime(artifact, "mixed", execution_policy=execution_policy)
+    else:
+        execution_policy = None
+        runtime = load_runtime(artifact, mode)
     states = tuple(prefill(runtime, role, saved[f"{role}_prompt"])[1]
                    for role in ("anchor", "target"))
     prefill_state = {role: {"position": state.position, "cache": _cache_digest(state)}
@@ -113,6 +120,8 @@ def run_worker(mode: str, steps: int) -> dict:
               "revisions": artifact.manifest["revisions"], "fixture_sha256": fixture_hash,
               "input_lengths": [len(saved[f"{role}_prompt"]) for role in ("anchor", "target")],
               "tokens": schedule, "kernel_config": kernel_config(),
+              "execution_policy_sha256": (hashlib.sha256(policy_path.read_bytes()).hexdigest()
+                                          if execution_policy is not None else None),
               "prefill_state": prefill_state, "post_steps": post_steps,
               "logit_hashes": {role: hashlib.sha256(np.stack(values).tobytes()).hexdigest()
                                for role, values in logit_words.items()},
@@ -185,7 +194,7 @@ def compare(steps: int) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=(*MODES, "all", "compare"), default="all")
+    parser.add_argument("--mode", choices=(*MODES, *MIXED_MODES, "all", "compare"), default="all")
     parser.add_argument("--steps", type=int, choices=(1, 8), default=1)
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)

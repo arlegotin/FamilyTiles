@@ -1,0 +1,38 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "eligible_modes": [
+    "native resident",
+    "exact staged native"
+  ],
+  "fused_C3": "ineligible by eight-step diagnostic",
+  "note": "Projected active-weight bytes only; measured peak and runtime decide utility.",
+  "original_G3": "unchanged historical failure",
+  "policies": [
+    {
+      "extra_resident_bytes": 330707904,
+      "native_count": 99,
+      "path": "results/continuation/policy-15.json",
+      "projected_weight_saving_fraction": 0.15133374753648718,
+      "staged_count": 97,
+      "target_saving_fraction": 0.15
+    },
+    {
+      "extra_resident_bytes": 645765152,
+      "native_count": 123,
+      "path": "results/continuation/policy-10.json",
+      "projected_weight_saving_fraction": 0.10031115106516497,
+      "staged_count": 73,
+      "target_saving_fraction": 0.1
+    }
+  ],
+  "profile_gains_ns_per_role": {
+    "down_proj": 2132402,
+    "gate_proj": 1974014,
+    "k_proj": 0,
+    "o_proj": 473666,
+    "q_proj": 591167,
+    "up_proj": 1874055,
+    "v_proj": 165347
+  },
+  "selection_profile": "results/continuation/operator_profile.csv"
+}

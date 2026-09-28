@@ -1,0 +1,256 @@
+{
+  "activation_identity": {
+    "note": "Three genuine saved Qwen activations per width; other same-width roles reuse them for timing.",
+    "role_revisions": {
+      "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+      "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "source_keys_by_tensor": {
+      "model.layers.11.mlp.down_proj.weight": [
+        "layer0.down_proj",
+        "layer14.down_proj",
+        "layer27.down_proj"
+      ],
+      "model.layers.11.mlp.gate_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.11.mlp.up_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.11.self_attn.k_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.11.self_attn.o_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.11.self_attn.q_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.11.self_attn.v_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.22.mlp.down_proj.weight": [
+        "layer0.down_proj",
+        "layer14.down_proj",
+        "layer27.down_proj"
+      ],
+      "model.layers.22.mlp.gate_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.22.mlp.up_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.22.self_attn.k_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.22.self_attn.o_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.22.self_attn.q_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.22.self_attn.v_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.3.mlp.down_proj.weight": [
+        "layer0.down_proj",
+        "layer14.down_proj",
+        "layer27.down_proj"
+      ],
+      "model.layers.3.mlp.gate_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.3.mlp.up_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.3.self_attn.k_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.3.self_attn.o_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.3.self_attn.q_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ],
+      "model.layers.3.self_attn.v_proj.weight": [
+        "layer0.q_proj",
+        "layer14.q_proj",
+        "layer27.q_proj"
+      ]
+    }
+  },
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "biases": "absent in both modes, matching original G3 sweep",
+  "candidate_vs_native_ratio": 1.815239573028633,
+  "confirmation_layers": true,
+  "matrix_names": [
+    "model.layers.3.self_attn.q_proj.weight",
+    "model.layers.3.self_attn.k_proj.weight",
+    "model.layers.3.self_attn.v_proj.weight",
+    "model.layers.3.self_attn.o_proj.weight",
+    "model.layers.3.mlp.gate_proj.weight",
+    "model.layers.3.mlp.up_proj.weight",
+    "model.layers.3.mlp.down_proj.weight",
+    "model.layers.11.self_attn.q_proj.weight",
+    "model.layers.11.self_attn.k_proj.weight",
+    "model.layers.11.self_attn.v_proj.weight",
+    "model.layers.11.self_attn.o_proj.weight",
+    "model.layers.11.mlp.gate_proj.weight",
+    "model.layers.11.mlp.up_proj.weight",
+    "model.layers.11.mlp.down_proj.weight",
+    "model.layers.22.self_attn.q_proj.weight",
+    "model.layers.22.self_attn.k_proj.weight",
+    "model.layers.22.self_attn.v_proj.weight",
+    "model.layers.22.self_attn.o_proj.weight",
+    "model.layers.22.mlp.gate_proj.weight",
+    "model.layers.22.mlp.up_proj.weight",
+    "model.layers.22.mlp.down_proj.weight"
+  ],
+  "median_ns": {
+    "mixed": 13158521.0,
+    "native": 7248917.0
+  },
+  "native_promoted_in_sweep": [
+    "model.layers.11.mlp.down_proj.weight",
+    "model.layers.11.self_attn.o_proj.weight",
+    "model.layers.11.self_attn.q_proj.weight",
+    "model.layers.11.self_attn.v_proj.weight",
+    "model.layers.22.mlp.down_proj.weight",
+    "model.layers.22.mlp.gate_proj.weight",
+    "model.layers.22.self_attn.o_proj.weight",
+    "model.layers.22.self_attn.q_proj.weight",
+    "model.layers.22.self_attn.v_proj.weight",
+    "model.layers.3.mlp.down_proj.weight",
+    "model.layers.3.self_attn.o_proj.weight",
+    "model.layers.3.self_attn.q_proj.weight",
+    "model.layers.3.self_attn.v_proj.weight"
+  ],
+  "native_weight_stack": "prebuilt once from distinct original matrices",
+  "policy_sha256": "c1d255bc631ec7f42e78033100a9f57109daec6b414e08872f563b76e2f7f38e",
+  "revisions": {
+    "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+    "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "rows": [
+    {
+      "duration_ns": 7208250,
+      "matrix_visits": 21,
+      "mode": "native",
+      "model_products": 42,
+      "trial": 0
+    },
+    {
+      "duration_ns": 13214958,
+      "matrix_visits": 21,
+      "mode": "mixed",
+      "model_products": 42,
+      "trial": 0
+    },
+    {
+      "duration_ns": 13086583,
+      "matrix_visits": 21,
+      "mode": "mixed",
+      "model_products": 42,
+      "trial": 0
+    },
+    {
+      "duration_ns": 7408583,
+      "matrix_visits": 21,
+      "mode": "native",
+      "model_products": 42,
+      "trial": 0
+    },
+    {
+      "duration_ns": 7154000,
+      "matrix_visits": 21,
+      "mode": "native",
+      "model_products": 42,
+      "trial": 1
+    },
+    {
+      "duration_ns": 12956792,
+      "matrix_visits": 21,
+      "mode": "mixed",
+      "model_products": 42,
+      "trial": 1
+    },
+    {
+      "duration_ns": 14145792,
+      "matrix_visits": 21,
+      "mode": "mixed",
+      "model_products": 42,
+      "trial": 1
+    },
+    {
+      "duration_ns": 7551083,
+      "matrix_visits": 21,
+      "mode": "native",
+      "model_products": 42,
+      "trial": 1
+    },
+    {
+      "duration_ns": 7289584,
+      "matrix_visits": 21,
+      "mode": "native",
+      "model_products": 42,
+      "trial": 2
+    },
+    {
+      "duration_ns": 13102084,
+      "matrix_visits": 21,
+      "mode": "mixed",
+      "model_products": 42,
+      "trial": 2
+    },
+    {
+      "duration_ns": 14193917,
+      "matrix_visits": 21,
+      "mode": "mixed",
+      "model_products": 42,
+      "trial": 2
+    },
+    {
+      "duration_ns": 6882000,
+      "matrix_visits": 21,
+      "mode": "native",
+      "model_products": 42,
+      "trial": 2
+    }
+  ],
+  "scope": "complete original matrix sweep; not end-to-end inference",
+  "source": "tools/profile_execution.py:run_complete_sweep"
+}

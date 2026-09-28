@@ -8,6 +8,7 @@ from dataclasses import dataclass
 import hashlib
 import json
 from pathlib import Path
+import re
 import time
 from typing import Any
 
@@ -17,6 +18,7 @@ from familytiles.baselines import (ExactChunks, ExactFamilyBacking, decode_exact
                                    decode_family_exact, encode_exact,
                                    encode_family_exact, exact_allocated_bytes)
 from familytiles.records import write_json_atomic
+from familytiles.policy import validate_execution_policy
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -210,7 +212,8 @@ def profile(*, max_names: int = 21) -> dict:
     return result
 
 
-def run_complete_sweep() -> dict:
+def run_complete_sweep(policy_path: Path | None = None,
+                       *, confirmation: bool = False) -> dict:
     """Timed full original matrix list, with prebuilt operands and fresh outputs."""
     import mlx.core as mx
     import psutil
@@ -225,16 +228,33 @@ def run_complete_sweep() -> dict:
     pinned = json.loads((ROOT / "results/survey" / selected["pinned_manifest"]).read_text())
     names = tuple(build_kernel_cells(artifact, ROOT / "experiments/kernel-inputs.json")[0]
                   .extras["tensor_names"])
+    policy = None
+    if policy_path is not None:
+        policy = json.loads(policy_path.read_text())
+        validate_execution_policy(policy, artifact.manifest_hash, artifact.manifest["tensors"])
+    if confirmation:
+        if policy is None:
+            raise ValueError("confirmation sweep needs a frozen policy")
+        layer_map = {0: 3, 14: 11, 27: 22}
+        def move(name: str) -> str:
+            return re.sub(r"layers\.(0|14|27)\.",
+                          lambda match: f"layers.{layer_map[int(match.group(1))]}.", name)
+        names = tuple(move(name) for name in names)
     shapes = {name: tuple(artifact.manifest["tensors"][name]["shape"]) for name in names}
     budget = compute_budget(psutil.virtual_memory().total, psutil.virtual_memory().available)
     mx.set_memory_limit(budget.process_limit_bytes)
     mx.set_cache_limit(budget.cache_limit_bytes)
-    family = {name: load_operand(artifact, name) for name in names}
+    native_promoted = frozenset(policy["native_names"]) if policy is not None else frozenset()
+    family = {name: load_operand(artifact, name) for name in names
+              if name not in native_promoted}
     native = {}
     for name in names:
         _, target_words = _original_pair(artifact, pinned, name)
         target = mx.array(target_words, dtype=mx.uint16).view(mx.bfloat16)
-        native[name] = mx.stack((family[name].anchor_words.view(mx.bfloat16), target), axis=0)
+        anchor = (family[name].anchor_words.view(mx.bfloat16)
+                  if name in family else mx.array(_original_pair(artifact, pinned, name)[0],
+                                                  dtype=mx.uint16).view(mx.bfloat16))
+        native[name] = mx.stack((anchor, target), axis=0)
         mx.eval(native[name])
         del target_words, target
     inputs, native_inputs, identity = _captured_ring(names, shapes)
@@ -242,34 +262,46 @@ def run_complete_sweep() -> dict:
     def sweep(mode: str, iteration: int) -> int:
         start = time.perf_counter_ns()
         for name in names:
-            item = (native[name] if mode == "native" else family[name])
-            vector = (native_inputs[name] if mode == "native" else inputs[name])[iteration % 3]
-            output = _run_pair(mode, item, vector)
+            operation = ("native" if mode == "native" or
+                         (mode == "mixed" and name in native_promoted)
+                         else "staged_native")
+            item = native[name] if operation == "native" else family[name]
+            vector = (native_inputs[name] if operation == "native"
+                      else inputs[name])[iteration % 3]
+            output = _run_pair(operation, item, vector)
             mx.eval(*output)
             mx.synchronize()
         return time.perf_counter_ns() - start
 
-    for mode in ("native", "staged_native"):
+    candidate_mode = "mixed" if policy is not None else "staged_native"
+    for mode in ("native", candidate_mode):
         sweep(mode, 0)
     rows = []
     for trial in range(3):
-        for mode in ("native", "staged_native", "staged_native", "native"):
+        for mode in ("native", candidate_mode, candidate_mode, "native"):
             rows.append({"trial": trial, "mode": mode,
                          "duration_ns": sweep(mode, trial + 1),
                          "matrix_visits": len(names), "model_products": 2 * len(names)})
     from statistics import median
     times = {mode: median(row["duration_ns"] for row in rows if row["mode"] == mode)
-             for mode in ("native", "staged_native")}
+             for mode in ("native", candidate_mode)}
     result = {"artifact_hash": artifact.manifest_hash,
               "revisions": artifact.manifest["revisions"],
               "matrix_names": list(names), "activation_identity": identity,
               "biases": "absent in both modes, matching original G3 sweep",
               "native_weight_stack": "prebuilt once from distinct original matrices",
+              "policy_sha256": (hashlib.sha256(policy_path.read_bytes()).hexdigest()
+                                if policy_path is not None else None),
+              "native_promoted_in_sweep": sorted(set(names) & native_promoted),
+              "confirmation_layers": confirmation,
               "source": "tools/profile_execution.py:run_complete_sweep",
               "rows": rows, "median_ns": times,
-              "staged_vs_native_ratio": times["staged_native"] / times["native"],
+              "candidate_vs_native_ratio": times[candidate_mode] / times["native"],
               "scope": "complete original matrix sweep; not end-to-end inference"}
-    write_json_atomic(OUT / "staged_sweep.json", result)
+    filename = (f"mixed-sweep-{int(policy['target_saving_fraction'] * 100)}"
+                + ("-confirmation" if confirmation else "") + ".json"
+                if policy is not None else "staged_sweep.json")
+    write_json_atomic(OUT / filename, result)
     return result
 
 
@@ -277,13 +309,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-names", type=int, default=21)
     parser.add_argument("--sweep", action="store_true")
+    parser.add_argument("--policy", type=Path)
+    parser.add_argument("--confirmation", action="store_true")
     args = parser.parse_args()
     if args.sweep:
-        result = run_complete_sweep()
+        result = run_complete_sweep(args.policy, confirmation=args.confirmation)
         print(json.dumps({"matrix_visits": len(result["matrix_names"]),
                           "median_ms": {key: value / 1e6
                                         for key, value in result["median_ns"].items()},
-                          "staged_vs_native_ratio": result["staged_vs_native_ratio"]}))
+                          "candidate_vs_native_ratio": result["candidate_vs_native_ratio"]}))
     else:
         result = profile(max_names=args.max_names)
         print(json.dumps({"names": len(result["names"]),

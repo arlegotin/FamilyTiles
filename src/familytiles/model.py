@@ -27,12 +27,13 @@ from .codec import CodecPolicy
 from .measure import compute_budget
 from .metal import (DeviceOperand, decode_words, family_gemv, family_gemv_pair, load_operand,
                     raw_gemv, raw_gemv_pair)
+from .policy import validate_execution_policy
 
 
 ModelId = Literal["anchor", "target"]
 PROJECTIONS = ("q_proj", "k_proj", "v_proj", "o_proj",
                "gate_proj", "up_proj", "down_proj")
-MODES = frozenset({"B1", "A1", "family_single", "raw_pair", "native_pair"})
+MODES = frozenset({"B1", "A1", "family_single", "raw_pair", "native_pair", "mixed"})
 
 
 def expected_active_shapes(config: dict[str, Any]) -> dict[str, tuple[int, ...]]:
@@ -177,6 +178,7 @@ class RuntimeFamily:
     operands: dict[str, DeviceOperand]
     native_arrays: dict[tuple[str, str], mx.array]
     placeholder_evaluated_bytes: int = 0
+    native_promoted: frozenset[str] = frozenset()
 
 
 def loaded_weight_ledger(runtime: RuntimeFamily) -> dict[str, int]:
@@ -259,6 +261,37 @@ def _read_native(artifact: FamilyArtifact, role: ModelId, name: str,
     return value
 
 
+def _read_original_target(artifact: FamilyArtifact, name: str) -> mx.array:
+    """Load only a policy-promoted target tensor from its pinned local source."""
+    root = Path(__file__).resolve().parents[2]
+    selected = json.loads((root / "results/survey/selected-family.json").read_text())
+    pinned_path = (root / "results/survey" / selected["pinned_manifest"]).resolve()
+    if not pinned_path.is_relative_to((root / "results/survey").resolve()):
+        raise ValueError("pinned manifest escapes survey directory")
+    source = json.loads(pinned_path.read_text())["target"]
+    if (source["repo"] != artifact.manifest["source_repos"]["target"] or
+            source["revision"] != artifact.manifest["revisions"]["target"]):
+        raise ValueError("original target source identity disagrees with artifact")
+    info = source["tensors"][name]
+    shape = tuple(artifact.manifest["tensors"][name]["shape"])
+    if info["dtype"] != "BF16" or tuple(info["shape"]) != shape:
+        raise ValueError("promoted tensor shape or dtype disagrees with artifact")
+    filename = info["shard"]
+    if Path(filename).name != filename:
+        raise ValueError("invalid target shard filename")
+    path = (root / "artifacts/downloaded" / source["repo"].replace("/", "--") /
+            source["revision"] / filename)
+    words = np.memmap(path, mode="r", dtype="<u2",
+                      offset=info["data_start"] + info["byte_offset"], shape=shape)
+    expected = artifact.manifest["tensors"][name]["target"]["sha256"]
+    if hashlib.sha256(memoryview(words).cast("B")).hexdigest() != expected:
+        raise ValueError("promoted original target tensor hash mismatch")
+    value = mx.array(words, dtype=mx.uint16).view(mx.bfloat16)
+    mx.eval(value)
+    del words
+    return value
+
+
 def wrap_raw_pair_models(models: dict[ModelId, Model],
                          configs: dict[ModelId, dict[str, Any]]) -> tuple[
                              dict[str, DeviceOperand], dict[tuple[str, str], mx.array]]:
@@ -306,7 +339,8 @@ def wrap_raw_pair_models(models: dict[ModelId, Model],
     return operands, native
 
 
-def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
+def load_runtime(artifact: FamilyArtifact, mode: str,
+                 execution_policy: dict[str, Any] | None = None) -> RuntimeFamily:
     if mode not in MODES:
         raise ValueError(f"unsupported runtime mode {mode!r}")
     available = psutil.virtual_memory()
@@ -317,6 +351,15 @@ def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
     mx.set_cache_limit(budget.cache_limit_bytes)
     configs = _load_configs(artifact)
     validate_active_inventory(artifact.manifest, configs)
+    native_promoted: frozenset[str] = frozenset()
+    if mode == "mixed":
+        if execution_policy is None:
+            raise ValueError("mixed execution needs a frozen policy")
+        validate_execution_policy(execution_policy, artifact.manifest_hash,
+                                  artifact.manifest["tensors"])
+        native_promoted = frozenset(execution_policy["native_names"])
+    elif execution_policy is not None:
+        raise ValueError("execution policy is only valid for mixed mode")
     if mode in ("B1", "raw_pair", "native_pair"):
         models = {role: load_model(_config_path(artifact, role).parent, strict=True)[0]
                   for role in ("anchor", "target")}
@@ -339,6 +382,23 @@ def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
     for name in sorted(artifact.manifest["tensors"]):
         if name.endswith(".weight") and any(
                 name.endswith(f".{projection}.weight") for projection in PROJECTIONS):
+            if name in native_promoted:
+                module_name = name.removesuffix(".weight")
+                bias_name = module_name + ".bias"
+                for role in ("anchor", "target"):
+                    value = (_read_native(artifact, role, name, native) if role == "anchor"
+                             else _read_original_target(artifact, name))
+                    native[(role, name)] = value
+                    if bias_name in artifact.manifest["tensors"] and (role, bias_name) not in native:
+                        native[(role, bias_name)] = _read_native(artifact, role, bias_name, native)
+                    parent, attribute = _attribute(models[role], module_name)
+                    module = getattr(parent, attribute)
+                    if not isinstance(module, nn.Linear):
+                        raise ValueError("native promotion needs a stock linear module")
+                    module.weight = value
+                    if bias_name in artifact.manifest["tensors"]:
+                        module.bias = native[(role, bias_name)]
+                continue
             operand = load_operand(artifact, name)
             operands[name] = operand
             module_name = name.removesuffix(".weight")
@@ -351,7 +411,8 @@ def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
                         bias = _read_native(artifact, role, bias_name, native)
                         native[(role, bias_name)] = bias
                 parent, attribute = _attribute(models[role], module_name)
-                setattr(parent, attribute, FamilyLinear(operand, role, bias, mode))
+                setattr(parent, attribute, FamilyLinear(
+                    operand, role, bias, "A1" if mode == "mixed" else mode))
         elif not (name.endswith(".weight") and any(
                 name.endswith(f".{projection}.weight") for projection in PROJECTIONS)):
             for role in ("anchor", "target"):
@@ -363,11 +424,15 @@ def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
                     setattr(parent, attr, native[(role, name)])
     if set(operands) != {n for n in artifact.manifest["tensors"]
                          if n.endswith(".weight") and any(n.endswith(f".{p}.weight")
-                                                              for p in PROJECTIONS)}:
+                                                             for p in PROJECTIONS)} - native_promoted:
         raise ValueError("projection inventory incomplete")
     for role in ("anchor", "target"):
         for name in artifact.manifest["tensors"]:
-            if name in operands:
+            if name in native_promoted:
+                parent, attr = _attribute(models[role], name)
+                if getattr(parent, attr) is not native[(role, name)]:
+                    raise ValueError(f"unreplaced native projection: {role}:{name}")
+            elif name in operands:
                 parent, attr = _attribute(models[role], name.removesuffix(".weight"))
                 if not isinstance(getattr(parent, attr), FamilyLinear):
                     raise ValueError(f"unreplaced linear placeholder: {role}:{name}")
@@ -380,7 +445,8 @@ def load_runtime(artifact: FamilyArtifact, mode: str) -> RuntimeFamily:
                 parent, attr = _attribute(models[role], name)
                 if getattr(parent, attr) is not native[(role, name)]:
                     raise ValueError(f"unreplaced native placeholder: {role}:{name}")
-    return RuntimeFamily(artifact, mode, models, configs, operands, native)
+    return RuntimeFamily(artifact, mode, models, configs, operands, native,
+                         native_promoted=native_promoted)
 
 
 def _evaluate_cache(cache: list[Any], logits: mx.array) -> None:
@@ -435,27 +501,29 @@ def validate_pair_structure(runtime: RuntimeFamily) -> None:
 
 def _paired_linear(runtime: RuntimeFamily, name: str,
                    x_anchor: mx.array, x_target: mx.array) -> tuple[mx.array, mx.array]:
-    if runtime.mode not in ("raw_pair", "native_pair", "A1", "family_single"):
+    if runtime.mode not in ("raw_pair", "native_pair", "A1", "family_single", "mixed"):
         raise ValueError("paired linear mode is unsupported")
     operand = runtime.operands.get(name)
+    use_native = runtime.mode == "native_pair" or (
+        runtime.mode == "mixed" and name in runtime.native_promoted)
     modules = []
     for role in ("anchor", "target"):
         parent, attribute = _attribute(runtime.models[role], name.removesuffix(".weight"))
         module = getattr(parent, attribute)
-        if runtime.mode == "native_pair":
+        if use_native:
             if not isinstance(module, nn.Linear):
                 raise ValueError("native paired linear module changed")
         elif not isinstance(module, FamilyLinear):
             raise ValueError("paired linear module was not replaced")
         modules.append(module)
-    input_width = (modules[0].weight.shape[1] if runtime.mode == "native_pair"
+    input_width = (modules[0].weight.shape[1] if use_native
                    else operand.shape[1])
     if (x_anchor.shape != (1, 1, input_width) or
             x_target.shape != (1, 1, input_width)):
         raise ValueError("paired linear expects independent one-token activations")
-    if runtime.mode == "native_pair":
+    if use_native:
         return modules[0](x_anchor), modules[1](x_target)
-    if runtime.mode == "A1":
+    if runtime.mode in ("A1", "mixed"):
         return modules[0].prefill(x_anchor), modules[1].prefill(x_target)
     biases = modules[0].bias, modules[1].bias
     if runtime.mode == "family_single":
@@ -490,7 +558,7 @@ def step_pair(runtime: RuntimeFamily,
     if runtime.mode == "B1":
         return (step_single(runtime, states[0], token_ids[0]),
                 step_single(runtime, states[1], token_ids[1]))
-    if runtime.mode not in ("raw_pair", "native_pair", "A1", "family_single"):
+    if runtime.mode not in ("raw_pair", "native_pair", "A1", "family_single", "mixed"):
         raise ValueError("paired execution is unavailable for this runtime mode")
     validate_pair_structure(runtime)
     if ((states[0].model_id, states[1].model_id) != ("anchor", "target") or
