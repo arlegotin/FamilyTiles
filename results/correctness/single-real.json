@@ -1,0 +1,21 @@
+{
+  "activation_sha256": "1a2fe4b51ee10f3de2fd022caf9098267ea6d1484b173dee43f5e3235d341116",
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "kernel_config": {
+    "accumulation": "fp32",
+    "lanes_per_row": 32,
+    "layout_version": 1,
+    "math_mode": "safe",
+    "output": "bf16",
+    "partial_sum_bytes": 0,
+    "single_source_sha256": "13f5310572d2ec99ade4e3207bbedf5dd808e4453130e88e2ce53adecbcbfefe"
+  },
+  "packed_raw_bit_mismatches": 0,
+  "shape": [
+    1536,
+    1536
+  ],
+  "stock_max_abs_error": 0.0,
+  "stock_normalized_rms_error": 0.0,
+  "tensor": "model.layers.0.self_attn.q_proj.weight"
+}

@@ -193,6 +193,108 @@ def probe_anchor_view() -> dict[str, int | bool]:
             "no_full_copy": additional < 2**20}
 
 
+GEMV_LANES = 32
+GEMV_SOURCE = r"""
+    uint index = thread_position_in_grid.x;
+    uint row = index / GEMV_LANES;
+    uint lane = index % GEMV_LANES;
+    float sum = 0.0f;
+    for (uint column = lane; column < K_VALUES; column += GEMV_LANES) {
+        uint weight_word = WEIGHT_ACCESS;
+        float weight = as_type<float>(weight_word << 16);
+        float activation = float(x[column * x_strides[0]]);
+        sum += weight * activation;
+    }
+    sum = simd_sum(sum);
+    if (lane == 0) {
+        if (HAS_BIAS) sum += float(bias[row * bias_strides[0]]);
+        out[row] = bfloat16_t(sum);
+    }
+"""
+
+
+def _gemv_kernel(*, packed: bool, rows: int, columns: int,
+                 block_values: int, has_bias: bool):
+    import mlx.core as mx
+
+    if packed:
+        input_names = ["anchor", "descriptors", "payload", "x", "bias"]
+        accessor = "ft_target_word(anchor, descriptors, payload, row, column)"
+        helpers = DECODE_HELPERS
+    else:
+        input_names = ["weights", "x", "bias"]
+        accessor = "uint(weights[row * weights_strides[0] + column * weights_strides[1]])"
+        helpers = ""
+    header = (f"#define K_VALUES {columns}\n#define BLOCK_VALUES {block_values}\n"
+              f"#define TILES_PER_ROW {(columns + block_values - 1) // block_values}\n"
+              f"#define GEMV_LANES {GEMV_LANES}\n#define HAS_BIAS {int(has_bias)}\n"
+              + helpers)
+    kernel = mx.fast.metal_kernel(
+        name="familytiles_single_gemv_v1", input_names=input_names,
+        output_names=["out"], source=GEMV_SOURCE.replace("WEIGHT_ACCESS", accessor),
+        header=header,
+        ensure_row_contiguous=False, compile_options={"math_mode": "safe"},
+    )
+    return kernel
+
+
+def _check_gemv_inputs(shape: tuple[int, int], x: Any, bias: Any | None) -> None:
+    import mlx.core as mx
+
+    if (len(shape) != 2 or min(shape) <= 0 or x.ndim != 1
+            or x.shape[0] != shape[1] or x.dtype != mx.bfloat16):
+        raise ValueError("GEMV requires a positive matrix and one BF16 activation vector")
+    if bias is not None and (bias.ndim != 1 or bias.shape[0] != shape[0]
+                             or bias.dtype != mx.bfloat16):
+        raise ValueError("GEMV bias must be a BF16 output vector")
+
+
+def raw_gemv(words: Any, x: Any, bias: Any | None = None):
+    """BF16 matvec control with the packed kernel's reduction schedule."""
+    import mlx.core as mx
+
+    if words.ndim != 2 or words.dtype != mx.uint16:
+        raise ValueError("raw GEMV weights must be a uint16 matrix")
+    _check_gemv_inputs(tuple(words.shape), x, bias)
+    rows, columns = words.shape
+    kernel = _gemv_kernel(packed=False, rows=rows, columns=columns,
+                          block_values=128, has_bias=bias is not None)
+    return kernel(inputs=[words, x, bias if bias is not None else x], template=[],
+                  grid=(rows * GEMV_LANES, 1, 1), threadgroup=(GEMV_LANES, 1, 1),
+                  output_shapes=[(rows,)], output_dtypes=[mx.bfloat16])[0]
+
+
+def family_gemv(operand: DeviceOperand, x: Any, bias: Any | None = None):
+    """Consume exact encoded words in a single output-sized Metal operation."""
+    import mlx.core as mx
+
+    _check_gemv_inputs(operand.shape, x, bias)
+    if operand.kind in ("native", "alias"):
+        words = operand.native_words if operand.kind == "native" else operand.anchor_words
+        return raw_gemv(words, x, bias)
+    if operand.kind != "packed":
+        raise ValueError("unknown GEMV operand kind")
+    rows, columns = operand.shape
+    kernel = _gemv_kernel(packed=True, rows=rows, columns=columns,
+                          block_values=operand.policy.block_values,
+                          has_bias=bias is not None)
+    return kernel(inputs=[operand.anchor_words, operand.descriptors, operand.payload,
+                          x, bias if bias is not None else x], template=[],
+                  grid=(rows * GEMV_LANES, 1, 1), threadgroup=(GEMV_LANES, 1, 1),
+                  output_shapes=[(rows,)], output_dtypes=[mx.bfloat16])[0]
+
+
+def kernel_config() -> dict[str, Any]:
+    return {"layout_version": 1, "lanes_per_row": GEMV_LANES,
+            "accumulation": "fp32", "output": "bf16",
+            "math_mode": "safe", "partial_sum_bytes": 0,
+            "single_source_sha256": hashlib.sha256(
+                (GEMV_SOURCE + DECODE_HELPERS +
+                 "ft_target_word(anchor, descriptors, payload, row, column)" +
+                 "weights[row * weights_strides[0] + column * weights_strides[1]]").encode()
+            ).hexdigest()}
+
+
 def verify_gpu(artifact: FamilyArtifact) -> dict[str, Any]:
     import mlx.core as mx
     import psutil
