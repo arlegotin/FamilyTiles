@@ -1,0 +1,16 @@
+.venv/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+artifacts/
+model-cache/
+samples/
+*.safetensors
+*.gguf
+*.bin
+results/survey/**/sample-*.bin
+results/survey/**/weight-*.bin
+.superpowers/

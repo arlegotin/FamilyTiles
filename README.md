@@ -4,6 +4,8 @@ Research design for exact shared-weight inference on one Apple M3 Max: keep two 
 
 The repository currently contains the specification and implementation plan. The research gates have not been executed, and no compression, correctness, memory, or performance result is claimed.
 
+Implementation is in progress. Install the local package in a Python virtual environment, then run `python -m familytiles.cli report --results results --out RESULTS.md` to render the currently supported gate status. Commands for later gates become available as their implementations are verified.
+
 - [Research specification](docs/superpowers/specs/2026-09-28-familytiles-design.md)
 - [Gated implementation plan](docs/superpowers/plans/2026-09-28-familytiles.md)
 

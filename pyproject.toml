@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "familytiles"
+version = "0.1.0"
+description = "Gated exact shared-weight inference research on Apple Silicon"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy==2.5.3",
+  "zstandard==0.25.0",
+  "huggingface_hub==1.33.0",
+  "safetensors==0.8.0",
+  "requests==2.34.2",
+  "psutil==7.2.2",
+  "mlx==0.32.2; sys_platform == 'darwin' and platform_machine == 'arm64'",
+  "mlx-lm==0.31.3; sys_platform == 'darwin' and platform_machine == 'arm64'",
+]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
