@@ -161,3 +161,76 @@ def test_single_gemv_allocates_only_output_sized_storage():
     mx.eval(output)
     assert mx.get_active_memory() - before < 2**18
     assert output.shape == (256,)
+
+
+@pytest.mark.parametrize("length", [1, 33, 128, 129])
+@pytest.mark.parametrize("modes", [("packed",), ("copy", "raw"), ("raw",)])
+def test_pair_independent_inputs_and_biases(length, modes):
+    import mlx.core as mx
+
+    rng = np.random.default_rng(4455 + length)
+    anchor_float = mx.array(rng.normal(0, 0.1, (5, length)).astype(np.float32),
+                            dtype=mx.bfloat16)
+    target_float = mx.array(rng.normal(0, 0.1, (5, length)).astype(np.float32),
+                            dtype=mx.bfloat16)
+    mx.eval(anchor_float, target_float)
+    anchor = np.asarray(anchor_float.view(mx.uint16))
+    target = np.asarray(target_float.view(mx.uint16))
+    operand = device_operand_from_words(anchor, encode_tensor(
+        anchor, target, CodecPolicy(1, 128, ("xor", "ordered_delta")), modes=modes))
+    x_anchor = mx.array(rng.normal(0, 0.3, length).astype(np.float32),
+                        dtype=mx.bfloat16)
+    x_target = mx.array(rng.normal(1, 0.7, length).astype(np.float32),
+                        dtype=mx.bfloat16)
+    bias_anchor = mx.array(rng.normal(0, 0.2, 5).astype(np.float32),
+                           dtype=mx.bfloat16)
+    bias_target = mx.array(rng.normal(1, 0.2, 5).astype(np.float32),
+                           dtype=mx.bfloat16)
+    actual = metal.family_gemv_pair(operand, x_anchor, x_target,
+                                    (bias_anchor, bias_target))
+    expected = metal.raw_gemv_pair(mx.array(anchor, dtype=mx.uint16),
+                                   mx.array(target, dtype=mx.uint16),
+                                   x_anchor, x_target, (bias_anchor, bias_target))
+    mx.eval(*actual, *expected)
+    assert actual[0] is not actual[1]
+    for packed, raw in zip(actual, expected):
+        np.testing.assert_array_equal(np.asarray(packed.view(mx.uint16)),
+                                      np.asarray(raw.view(mx.uint16)))
+
+
+def test_pair_copy_native_and_identical_input_diagnostics():
+    import mlx.core as mx
+
+    anchor = np.arange(3 * 35, dtype=np.uint16).reshape(3, 35)
+    x = mx.ones((35,), dtype=mx.bfloat16)
+    for target, modes in ((anchor.copy(), ("copy",)),
+                          (np.bitwise_xor(anchor, np.uint16(0x7777)), ("raw",))):
+        operand = device_operand_from_words(anchor, encode_tensor(
+            anchor, target, CodecPolicy(1, 64, ("xor",)), modes=modes))
+        actual = metal.family_gemv_pair(operand, x, x)
+        expected = metal.raw_gemv_pair(mx.array(anchor, dtype=mx.uint16),
+                                       mx.array(target, dtype=mx.uint16), x, x)
+        mx.eval(*actual, *expected)
+        for packed, raw in zip(actual, expected):
+            np.testing.assert_array_equal(np.asarray(packed.view(mx.uint16)),
+                                          np.asarray(raw.view(mx.uint16)))
+
+
+def test_pair_rejects_bad_inputs_and_allocates_no_decoded_matrix():
+    import mlx.core as mx
+
+    anchor = np.zeros((256, 2048), dtype=np.uint16)
+    target = anchor.copy()
+    target[:, ::257] = 0x3F80
+    operand = device_operand_from_words(anchor, encode_tensor(
+        anchor, target, CodecPolicy(1, 256, ("xor",)), modes=("packed",)))
+    x0 = mx.ones((2048,), dtype=mx.bfloat16)
+    x1 = mx.full((2048,), 2, dtype=mx.bfloat16)
+    with pytest.raises(ValueError):
+        metal.family_gemv_pair(operand, x0, mx.ones((2047,), dtype=mx.bfloat16))
+    mx.eval(x0, x1)
+    before = mx.get_active_memory()
+    pair = metal.family_gemv_pair(operand, x0, x1)
+    mx.eval(*pair)
+    assert mx.get_active_memory() - before < 2**18
+    assert pair[0].shape == pair[1].shape == (256,)

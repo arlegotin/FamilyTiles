@@ -24,16 +24,15 @@ template <typename P>
 inline uint ft_read_u16(P payload, uint pos) {
     return uint(payload[pos]) | (uint(payload[pos + 1]) << 8);
 }
-template <typename A, typename D, typename P>
-inline uint ft_target_word(A anchor, D descriptors, P payload,
-                           uint row, uint column) {
+template <typename D, typename P>
+inline uint ft_target_word_from_anchor(uint a, D descriptors, P payload,
+                                       uint row, uint column) {
     uint tile = row * TILES_PER_ROW + column / BLOCK_VALUES;
     uint lane = column % BLOCK_VALUES;
     uint offset = descriptors[2 * tile] * 4;
     uint field = descriptors[2 * tile + 1];
     uint mode = field & 3;
     if (mode == 1) return ft_read_u16(payload, offset + 2 * lane);
-    uint a = uint(anchor[row * K_VALUES + column]);
     if (mode == 0) return a;
     uint width_selector = (field >> 2) & 3;
     uint width = width_selector == 0 ? 0 : (1u << width_selector);
@@ -63,6 +62,17 @@ inline uint ft_target_word(A anchor, D descriptors, P payload,
     int delta = (code & 1u) != 0 ? -int((code + 1u) / 2u) : int(code / 2u);
     uint target_key = uint(int(key) + delta);
     return (target_key & 0x8000u) != 0 ? (target_key ^ 0x8000u) : ((~target_key) & 0xFFFFu);
+}
+template <typename A, typename D, typename P>
+inline uint ft_target_word(A anchor, D descriptors, P payload,
+                           uint row, uint column) {
+    uint tile = row * TILES_PER_ROW + column / BLOCK_VALUES;
+    uint field = descriptors[2 * tile + 1];
+    if ((field & 3u) == 1u)
+        return ft_read_u16(payload, descriptors[2 * tile] * 4 +
+                           2 * (column % BLOCK_VALUES));
+    uint a = uint(anchor[row * K_VALUES + column]);
+    return ft_target_word_from_anchor(a, descriptors, payload, row, column);
 }
 """
 
@@ -211,6 +221,33 @@ GEMV_SOURCE = r"""
         out[row] = bfloat16_t(sum);
     }
 """
+PAIR_SOURCE = r"""
+    uint index = thread_position_in_grid.x;
+    uint row = index / GEMV_LANES;
+    uint lane = index % GEMV_LANES;
+    float sum_anchor = 0.0f;
+    float sum_target = 0.0f;
+    for (uint column = lane; column < K_VALUES; column += GEMV_LANES) {
+        uint anchor_word = ANCHOR_ACCESS;
+        uint target_word = TARGET_ACCESS;
+        float anchor_weight = as_type<float>(anchor_word << 16);
+        float target_weight = as_type<float>(target_word << 16);
+        float activation_anchor = float(x_anchor[column * x_anchor_strides[0]]);
+        float activation_target = float(x_target[column * x_target_strides[0]]);
+        sum_anchor += anchor_weight * activation_anchor;
+        sum_target += target_weight * activation_target;
+    }
+    sum_anchor = simd_sum(sum_anchor);
+    sum_target = simd_sum(sum_target);
+    if (lane == 0) {
+        if (HAS_ANCHOR_BIAS)
+            sum_anchor += float(bias_anchor[row * bias_anchor_strides[0]]);
+        if (HAS_TARGET_BIAS)
+            sum_target += float(bias_target[row * bias_target_strides[0]]);
+        out_anchor[row] = bfloat16_t(sum_anchor);
+        out_target[row] = bfloat16_t(sum_target);
+    }
+"""
 
 
 def _gemv_kernel(*, packed: bool, rows: int, columns: int,
@@ -284,6 +321,103 @@ def family_gemv(operand: DeviceOperand, x: Any, bias: Any | None = None):
                   output_shapes=[(rows,)], output_dtypes=[mx.bfloat16])[0]
 
 
+def _pair_kernel(*, kind: str, columns: int, block_values: int,
+                 has_anchor_bias: bool, has_target_bias: bool):
+    import mlx.core as mx
+
+    if kind == "raw":
+        names = ["anchor", "target", "x_anchor", "x_target",
+                 "bias_anchor", "bias_target"]
+        anchor_access = "uint(anchor[row * anchor_strides[0] + column * anchor_strides[1]])"
+        target_access = "uint(target[row * target_strides[0] + column * target_strides[1]])"
+        helpers = ""
+    elif kind == "packed":
+        names = ["anchor", "descriptors", "payload", "x_anchor", "x_target",
+                 "bias_anchor", "bias_target"]
+        anchor_access = "uint(anchor[row * K_VALUES + column])"
+        target_access = "ft_target_word_from_anchor(anchor_word, descriptors, payload, row, column)"
+        helpers = DECODE_HELPERS
+    elif kind == "alias":
+        names = ["anchor", "x_anchor", "x_target", "bias_anchor", "bias_target"]
+        anchor_access = "uint(anchor[row * K_VALUES + column])"
+        target_access = "anchor_word"
+        helpers = ""
+    else:
+        raise ValueError("unknown paired GEMV kind")
+    header = (f"#define K_VALUES {columns}\n#define BLOCK_VALUES {block_values}\n"
+              f"#define TILES_PER_ROW {(columns + block_values - 1) // block_values}\n"
+              f"#define GEMV_LANES {GEMV_LANES}\n"
+              f"#define HAS_ANCHOR_BIAS {int(has_anchor_bias)}\n"
+              f"#define HAS_TARGET_BIAS {int(has_target_bias)}\n" + helpers)
+    source = (PAIR_SOURCE.replace("ANCHOR_ACCESS", anchor_access)
+             .replace("TARGET_ACCESS", target_access))
+    return mx.fast.metal_kernel(
+        name="familytiles_pair_gemv_v1", input_names=names,
+        output_names=["out_anchor", "out_target"], source=source, header=header,
+        ensure_row_contiguous=False, compile_options={"math_mode": "safe"},
+    )
+
+
+def _check_pair_inputs(shape: tuple[int, int], x_anchor: Any, x_target: Any,
+                       biases: tuple[Any | None, Any | None]) -> None:
+    if not isinstance(biases, tuple) or len(biases) != 2:
+        raise ValueError("paired GEMV requires exactly two biases or None values")
+    _check_gemv_inputs(shape, x_anchor, biases[0])
+    _check_gemv_inputs(shape, x_target, biases[1])
+
+
+def raw_gemv_pair(anchor: Any, target: Any, x_anchor: Any, x_target: Any,
+                  biases: tuple[Any | None, Any | None] = (None, None)):
+    """Grouped raw control with exactly the paired packed arithmetic schedule."""
+    import mlx.core as mx
+
+    if (anchor.ndim != 2 or anchor.dtype != mx.uint16 or target.ndim != 2
+            or target.dtype != mx.uint16 or anchor.shape != target.shape):
+        raise ValueError("paired raw weights must be equal-shape uint16 matrices")
+    shape = tuple(anchor.shape)
+    _check_pair_inputs(shape, x_anchor, x_target, biases)
+    rows, columns = shape
+    kernel = _pair_kernel(kind="raw", columns=columns, block_values=128,
+                          has_anchor_bias=biases[0] is not None,
+                          has_target_bias=biases[1] is not None)
+    return tuple(kernel(inputs=[anchor, target, x_anchor, x_target,
+                                biases[0] if biases[0] is not None else x_anchor,
+                                biases[1] if biases[1] is not None else x_target],
+                        template=[], grid=(rows * GEMV_LANES, 1, 1),
+                        threadgroup=(GEMV_LANES, 1, 1),
+                        output_shapes=[(rows,), (rows,)],
+                        output_dtypes=[mx.bfloat16, mx.bfloat16]))
+
+
+def family_gemv_pair(operand: DeviceOperand, x_anchor: Any, x_target: Any,
+                     biases: tuple[Any | None, Any | None] = (None, None)):
+    """Reuse each loaded anchor word for independent anchor/target outputs."""
+    import mlx.core as mx
+
+    _check_pair_inputs(operand.shape, x_anchor, x_target, biases)
+    if operand.kind == "native":
+        return raw_gemv_pair(operand.anchor_words, operand.native_words,
+                             x_anchor, x_target, biases)
+    if operand.kind not in ("packed", "alias"):
+        raise ValueError("unknown paired operand kind")
+    rows, columns = operand.shape
+    kernel = _pair_kernel(kind=operand.kind, columns=columns,
+                          block_values=operand.policy.block_values,
+                          has_anchor_bias=biases[0] is not None,
+                          has_target_bias=biases[1] is not None)
+    if operand.kind == "packed":
+        inputs = [operand.anchor_words, operand.descriptors, operand.payload,
+                  x_anchor, x_target]
+    else:
+        inputs = [operand.anchor_words, x_anchor, x_target]
+    inputs.extend((biases[0] if biases[0] is not None else x_anchor,
+                   biases[1] if biases[1] is not None else x_target))
+    return tuple(kernel(inputs=inputs, template=[], grid=(rows * GEMV_LANES, 1, 1),
+                        threadgroup=(GEMV_LANES, 1, 1),
+                        output_shapes=[(rows,), (rows,)],
+                        output_dtypes=[mx.bfloat16, mx.bfloat16]))
+
+
 def kernel_config() -> dict[str, Any]:
     return {"layout_version": 1, "lanes_per_row": GEMV_LANES,
             "accumulation": "fp32", "output": "bf16",
@@ -292,6 +426,11 @@ def kernel_config() -> dict[str, Any]:
                 (GEMV_SOURCE + DECODE_HELPERS +
                  "ft_target_word(anchor, descriptors, payload, row, column)" +
                  "weights[row * weights_strides[0] + column * weights_strides[1]]").encode()
+            ).hexdigest(),
+            "pair_source_sha256": hashlib.sha256(
+                (PAIR_SOURCE + DECODE_HELPERS +
+                 "ft_target_word_from_anchor(anchor_word, descriptors, payload, row, column)" +
+                 "target[row * target_strides[0] + column * target_strides[1]]").encode()
             ).hexdigest()}
 
 
