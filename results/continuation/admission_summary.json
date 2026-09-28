@@ -1,0 +1,76 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "capacity_only": "unproven: physical-footprint phase samples are not process high-water peaks, and full C3/B3/B4 runtime was not run",
+  "decision": "NO-GO for tested fast live-inference policies",
+  "fastest_legitimate_native": "B1",
+  "fixture_sha256": "e2abebbb43a91e5e01863b49a7e9e05a7343b38e1fd488cc77e6ca8af75f5bb0",
+  "full_evaluation_triggered": false,
+  "outcomes": {
+    "B1": {
+      "by_model_logit_mismatches": {
+        "anchor": 0,
+        "target": 0
+      },
+      "canonical_weight_saving": 0.0,
+      "fast_admission": true,
+      "loaded_unique_allocation_saving": 0.0,
+      "memory_measurement_scope": "maximum of load/prefill/decode physical-footprint phase samples",
+      "p95_ratio": 1.0,
+      "peak_memory_verified": false,
+      "sampled_footprint_saving": 0.0,
+      "sampled_memory_target": false,
+      "short_logit_mismatches": 0
+    },
+    "mixed10": {
+      "by_model_logit_mismatches": {
+        "anchor": 0,
+        "target": 0
+      },
+      "canonical_weight_saving": 0.1003217644279858,
+      "fast_admission": false,
+      "loaded_unique_allocation_saving": 0.10037423867778061,
+      "memory_measurement_scope": "maximum of load/prefill/decode physical-footprint phase samples",
+      "p95_ratio": 3.9138458507032694,
+      "peak_memory_verified": false,
+      "sampled_footprint_saving": 0.10566915528389353,
+      "sampled_memory_target": true,
+      "short_logit_mismatches": 0
+    },
+    "mixed15": {
+      "by_model_logit_mismatches": {
+        "anchor": 0,
+        "target": 0
+      },
+      "canonical_weight_saving": 0.15134436089930792,
+      "fast_admission": false,
+      "loaded_unique_allocation_saving": 0.15139783015186725,
+      "memory_measurement_scope": "maximum of load/prefill/decode physical-footprint phase samples",
+      "p95_ratio": 5.251017660211519,
+      "peak_memory_verified": false,
+      "sampled_footprint_saving": 0.15170425149356637,
+      "sampled_memory_target": true,
+      "short_logit_mismatches": 0
+    },
+    "native_pair": {
+      "by_model_logit_mismatches": {
+        "anchor": 0,
+        "target": 0
+      },
+      "canonical_weight_saving": 0.0,
+      "fast_admission": true,
+      "loaded_unique_allocation_saving": 0.0,
+      "memory_measurement_scope": "maximum of load/prefill/decode physical-footprint phase samples",
+      "p95_ratio": 1.1035907995955492,
+      "peak_memory_verified": false,
+      "sampled_footprint_saving": -0.0011972261142514373,
+      "sampled_memory_target": false,
+      "short_logit_mismatches": 0
+    }
+  },
+  "records": [
+    "results/continuation/admission-b1.json",
+    "results/continuation/admission-native_pair.json",
+    "results/continuation/admission-mixed10.json",
+    "results/continuation/admission-mixed15.json"
+  ]
+}

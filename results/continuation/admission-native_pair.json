@@ -1,0 +1,123 @@
+{
+  "aggregate_model_tokens_per_second": 60.89015712684116,
+  "arrays_file": "admission-native_pair-logits.npz",
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "canonical_weight_bytes": 6174857216,
+  "completed_model_steps": 32,
+  "decode_round_ns": [
+    35370208,
+    30991792,
+    32269875,
+    30680292,
+    30855292,
+    32126750,
+    33082875,
+    31797500,
+    34972583,
+    33747000,
+    33520291,
+    33328333,
+    33446958,
+    33849500,
+    33087250,
+    32410000
+  ],
+  "decode_steps_per_stream": 16,
+  "fixture_sha256": "e2abebbb43a91e5e01863b49a7e9e05a7343b38e1fd488cc77e6ca8af75f5bb0",
+  "loaded_weights": {
+    "duplicate_references": 0,
+    "random_placeholder_evaluated_bytes": 0,
+    "unique_weight_allocation_bytes": 6174857216,
+    "unique_weight_allocation_count": 676
+  },
+  "logit_hashes": {
+    "anchor": "49c97ac4a6695b793b64c6577999bdecdda5ecfb0e468fa3351f30954b86924d",
+    "target": "5e8b07d932e97537375293a38e393e4223957bbfc9c7ff04bf04975984f84117"
+  },
+  "memory": {
+    "decode": {
+      "mlx": {
+        "active_bytes": 6190159880,
+        "cache_bytes": 196658924,
+        "peak_active_bytes": 6191984236
+      },
+      "process": {
+        "phase": "decode",
+        "physical_footprint_bytes": 6645175360,
+        "physical_probe_available": true,
+        "physical_probe_reason": null,
+        "rss_bytes": 5528371200,
+        "timestamp_ns": 1777245810694041
+      }
+    },
+    "loaded": {
+      "mlx": {
+        "active_bytes": 6174857224,
+        "cache_bytes": 4732,
+        "peak_active_bytes": 6174857224
+      },
+      "process": {
+        "phase": "loaded",
+        "physical_footprint_bytes": 6290232216,
+        "physical_probe_available": true,
+        "physical_probe_reason": null,
+        "rss_bytes": 6213025792,
+        "timestamp_ns": 1777244976747125
+      }
+    },
+    "prefill": {
+      "mlx": {
+        "active_bytes": 6189537288,
+        "cache_bytes": 194680044,
+        "peak_active_bytes": 6368811648
+      },
+      "process": {
+        "phase": "prefill",
+        "physical_footprint_bytes": 6641734696,
+        "physical_probe_available": true,
+        "physical_probe_reason": null,
+        "rss_bytes": 5526175744,
+        "timestamp_ns": 1777245268773875
+      }
+    },
+    "sampled_not_instantaneous_peak": true,
+    "sampled_process_footprint_max_bytes": 6645175360,
+    "teardown": {
+      "mlx": {
+        "active_bytes": 6175479816,
+        "cache_bytes": 211338988,
+        "peak_active_bytes": 6191984236
+      },
+      "process": {
+        "phase": "teardown",
+        "physical_footprint_bytes": 6645175360,
+        "physical_probe_available": true,
+        "physical_probe_reason": null,
+        "rss_bytes": 5528371200,
+        "timestamp_ns": 1777245819533625
+      }
+    }
+  },
+  "mode": "native_pair",
+  "p50_round_ns": 33085062.5,
+  "p95_per_request_decode_ns": 35071989.25,
+  "policy_sha256": null,
+  "prefill_ns": 285588083,
+  "pressure_after": {
+    "available_bytes": 7142490112,
+    "memory_percent": 81.5,
+    "swap_used_bytes": 7370113024
+  },
+  "pressure_before": {
+    "available_bytes": 10296115200,
+    "memory_percent": 73.4,
+    "swap_used_bytes": 7370113024
+  },
+  "prompt_length": 128,
+  "revisions": {
+    "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+    "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "source": "tools/admit_policy.py",
+  "token_schedule_sha256": "eaff14d6aa190f7cf571f72f8f68662c78ae01a3f7f505d042d165857ab4ce77"
+}

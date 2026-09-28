@@ -1,0 +1,10 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "candidate_policies": [
+    "results/continuation/policy-10.json",
+    "results/continuation/policy-15.json"
+  ],
+  "original_G3": "historical fail remains unchanged",
+  "reason": "both candidate p95 latencies exceed 1.50 times the fastest matched native run; no final policy admitted",
+  "selected_policy": null
+}
