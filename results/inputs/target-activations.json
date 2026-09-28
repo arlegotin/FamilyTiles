@@ -1,0 +1,70 @@
+{
+  "array_file": "target-activations.npz",
+  "arrays": {
+    "layer0.down_proj": {
+      "dtype": "BF16 words as uint16",
+      "sha256": "c89068e4b1ef1deae787a31ef6d25b50cba90ceb743f835396893eece930b2e4",
+      "shape": [
+        8960
+      ]
+    },
+    "layer0.q_proj": {
+      "dtype": "BF16 words as uint16",
+      "sha256": "4d01e50bb926623b38400d57060efce6d8c30666f11198ed291a944050f34d6f",
+      "shape": [
+        1536
+      ]
+    },
+    "layer14.down_proj": {
+      "dtype": "BF16 words as uint16",
+      "sha256": "e34ea93287f6d12e853b460bcacea772578ae7ccb14aae4c0693b8d6f5053850",
+      "shape": [
+        8960
+      ]
+    },
+    "layer14.q_proj": {
+      "dtype": "BF16 words as uint16",
+      "sha256": "89f48e871994f1c833ac1e0573644bbf309fdc24642ceac85a061abb201a641d",
+      "shape": [
+        1536
+      ]
+    },
+    "layer27.down_proj": {
+      "dtype": "BF16 words as uint16",
+      "sha256": "947754231bc5092ad9aba46c630cd1d14a020f9e0e32108b7fb50074eca92df6",
+      "shape": [
+        8960
+      ]
+    },
+    "layer27.q_proj": {
+      "dtype": "BF16 words as uint16",
+      "sha256": "6d4f43ede7998b0c4dec7648eac68c758817581a7139efb1663f1d38ed811dee",
+      "shape": [
+        1536
+      ]
+    }
+  },
+  "prompt": "Explain why binary search requires sorted input. Give a small example.",
+  "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "role": "target",
+  "source": "mlx-lm 0.31.3 Qwen2 stock modules; expanded traversal checked against model.model",
+  "stock_expanded_bit_mismatches": 0,
+  "token_ids": [
+    840,
+    20772,
+    3170,
+    7868,
+    2711,
+    7460,
+    10615,
+    1946,
+    13,
+    20678,
+    264,
+    2613,
+    3110,
+    13
+  ],
+  "token_ids_sha256": "dd6e89ab374e08542fc8c9977a033616d2dd353a1c03fee12d4b59df412e9b41"
+}

@@ -8,20 +8,20 @@
     "family_id": "qwen2.5-1.5b",
     "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
     "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
-    "layout_changes": 0,
+    "layout_changes": 2,
     "policy_hash": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
     "revisions": {
       "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
       "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
     },
-    "source_hash": "ed5f46ddd113ce9ed7b2c8136af4de0f6ef0e86383165605ec39f320efae2840"
+    "source_hash": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88"
   },
   "gate": {
     "context": {
       "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
       "environment_hash": "9463dbacff1256b177ec23fa324cba57ff4ea230f9721af4f62c12bab3cb0617",
       "family_id": "qwen2.5-1.5b",
-      "implementation_hash": "ed5f46ddd113ce9ed7b2c8136af4de0f6ef0e86383165605ec39f320efae2840",
+      "implementation_hash": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88",
       "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
       "policy_hash": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
       "revisions": {
@@ -29,29 +29,29 @@
         "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
       }
     },
-    "decision": "fail",
+    "decision": "pass",
     "gate": "G3",
     "input_hashes": {
       "artifact": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
       "inputs": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
       "inventory": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
-      "kernel_source": "ed5f46ddd113ce9ed7b2c8136af4de0f6ef0e86383165605ec39f320efae2840"
+      "kernel_source": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88"
     },
     "observed": {
-      "best_native_pair_mode": "native_two",
+      "best_native_pair_mode": "native_batched",
       "c1_zero_mismatches": true,
       "c2_bitwise_equal": true,
-      "layout_changes": 0,
+      "layout_changes": 2,
       "maximum_family_pair_peak_extra_bytes": 65536,
       "median_sweep_ns_by_mode": {
-        "family_pair": 117303666,
-        "family_two_singles": 117277834,
-        "native_batched": 73718584,
-        "native_two": 72026875,
-        "raw_pair": 121747042
+        "family_pair": 75999500,
+        "family_two_singles": 113921541,
+        "native_batched": 62386959,
+        "native_two": 71964292,
+        "raw_pair": 100022333
       },
-      "pair_ratio_vs_best_native": 1.6286096821498919,
-      "pair_ratio_vs_two_single_fused": 1.0002202632766906,
+      "pair_ratio_vs_best_native": 1.2181952962317013,
+      "pair_ratio_vs_two_single_fused": 0.6671214182399446,
       "trial_counts": {
         "family_pair": 3,
         "family_two_singles": 3,
@@ -60,7 +60,7 @@
         "raw_pair": 3
       }
     },
-    "reason": "paired primitive exceeded 1.5x the fastest native pair sweep",
+    "reason": "paired primitive met the prespecified native sweep ceiling",
     "schema_version": 1,
     "thresholds": {
       "maximum_fused_extra_allocation_bytes": 8388608,
@@ -74,44 +74,44 @@
   "mode_summaries": {
     "family_pair": {
       "complete_trials": 3,
-      "median_completion_ns": 117303666,
-      "median_trial_p95_latency_ns": 1420333
+      "median_completion_ns": 75999500,
+      "median_trial_p95_latency_ns": 703375
     },
     "family_single": {
       "complete_trials": 3,
-      "median_completion_ns": 112737000,
-      "median_trial_p95_latency_ns": 1286542
+      "median_completion_ns": 92650500,
+      "median_trial_p95_latency_ns": 963125
     },
     "family_two_singles": {
       "complete_trials": 3,
-      "median_completion_ns": 117277834,
-      "median_trial_p95_latency_ns": 1427042
+      "median_completion_ns": 113921541,
+      "median_trial_p95_latency_ns": 1187125
     },
     "native_batched": {
       "complete_trials": 3,
-      "median_completion_ns": 73718584,
-      "median_trial_p95_latency_ns": 902083
+      "median_completion_ns": 62386959,
+      "median_trial_p95_latency_ns": 574667
     },
     "native_single": {
       "complete_trials": 3,
-      "median_completion_ns": 59615750,
-      "median_trial_p95_latency_ns": 864250
+      "median_completion_ns": 45758458,
+      "median_trial_p95_latency_ns": 417708
     },
     "native_two": {
       "complete_trials": 3,
-      "median_completion_ns": 72026875,
-      "median_trial_p95_latency_ns": 979792
+      "median_completion_ns": 71964292,
+      "median_trial_p95_latency_ns": 1006625
     },
     "raw_pair": {
       "complete_trials": 3,
-      "median_completion_ns": 121747042,
-      "median_trial_p95_latency_ns": 1664292
+      "median_completion_ns": 100022333,
+      "median_trial_p95_latency_ns": 1213209
     },
     "raw_single": {
       "complete_trials": 3,
-      "median_completion_ns": 63742916,
-      "median_trial_p95_latency_ns": 918000
+      "median_completion_ns": 56203583,
+      "median_trial_p95_latency_ns": 649542
     }
   },
-  "run_dir": "results/kernel/runs/15a2fc85fb614ba7bdc2ab1421305a7d"
+  "run_dir": "results/kernel/runs/a43f4070630a48b3b91a2b212af15274"
 }

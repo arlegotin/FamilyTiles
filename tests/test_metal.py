@@ -234,3 +234,54 @@ def test_pair_rejects_bad_inputs_and_allocates_no_decoded_matrix():
     mx.eval(*pair)
     assert mx.get_active_memory() - before < 2**18
     assert pair[0].shape == pair[1].shape == (256,)
+
+
+@pytest.mark.parametrize("length", [255, 256, 257, 511])
+def test_pair_tiled_256_preserves_same_schedule_with_exceptions(length):
+    import mlx.core as mx
+
+    assert metal.kernel_config()["layout_version"] == 3
+    rng = np.random.default_rng(903 + length)
+    anchor = np.zeros((3, length), dtype=np.uint16)
+    target = anchor.copy()
+    target[0, ::17] = np.uint16(0x3F80)
+    target[1, ::7] = np.uint16(0xBF80)
+    target[2] = rng.integers(0, 65536, length, dtype=np.uint16)
+    operand = device_operand_from_words(anchor, encode_tensor(
+        anchor, target, CodecPolicy(1, 256, ("xor", "ordered_delta")),
+        modes=("copy", "raw", "packed")))
+    x0 = mx.array(rng.normal(0, 0.2, length).astype(np.float32), dtype=mx.bfloat16)
+    x1 = mx.array(rng.normal(0.6, 0.4, length).astype(np.float32), dtype=mx.bfloat16)
+    actual = metal.family_gemv_pair(operand, x0, x1)
+    expected = metal.raw_gemv_pair(mx.array(anchor, dtype=mx.uint16),
+                                   mx.array(target, dtype=mx.uint16), x0, x1)
+    mx.eval(*actual, *expected)
+    for packed, raw in zip(actual, expected):
+        np.testing.assert_array_equal(np.asarray(packed.view(mx.uint16)),
+                                      np.asarray(raw.view(mx.uint16)))
+
+
+def test_pair_specializes_only_verified_all_packed_ordered_tiles():
+    import mlx.core as mx
+
+    rng = np.random.default_rng(820)
+    anchor = np.full((2, 513), 0x3F80, dtype=np.uint16)
+    target = anchor.copy()
+    target[:, ::5] = 0xBF80
+    packed = device_operand_from_words(anchor, encode_tensor(
+        anchor, target, CodecPolicy(1, 256, ("ordered_delta",)),
+        modes=("packed",)))
+    assert packed.packed_profile == "ordered_all_packed"
+    mixed = device_operand_from_words(anchor, encode_tensor(
+        anchor, target, CodecPolicy(1, 256, ("ordered_delta",)),
+        modes=("copy", "raw", "packed")))
+    x0 = mx.array(rng.normal(0, 0.2, 513).astype(np.float32), dtype=mx.bfloat16)
+    x1 = mx.array(rng.normal(0.8, 0.3, 513).astype(np.float32), dtype=mx.bfloat16)
+    for operand in (packed, mixed):
+        actual = metal.family_gemv_pair(operand, x0, x1)
+        expected = metal.raw_gemv_pair(mx.array(anchor, dtype=mx.uint16),
+                                       mx.array(target, dtype=mx.uint16), x0, x1)
+        mx.eval(*actual, *expected)
+        for fused, raw in zip(actual, expected):
+            np.testing.assert_array_equal(np.asarray(fused.view(mx.uint16)),
+                                          np.asarray(raw.view(mx.uint16)))

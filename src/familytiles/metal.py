@@ -87,6 +87,7 @@ class DeviceOperand:
     payload: Any | None
     native_words: Any | None
     storage_ids: dict[str, int]
+    packed_profile: str = "mixed"
 
 
 def device_operand_from_words(anchor: np.ndarray, encoded: EncodedTensor) -> DeviceOperand:
@@ -105,9 +106,15 @@ def device_operand_from_words(anchor: np.ndarray, encoded: EncodedTensor) -> Dev
         payload = mx.array(encoded.payload, dtype=mx.uint8)
         native = None
     mx.eval(*(x for x in (a, desc, payload, native) if x is not None))
+    profile = "mixed"
+    if encoded.kind == "packed":
+        fields = np.asarray(encoded.descriptors[:, 1], dtype=np.uint32)
+        if (np.all((fields & np.uint32(3)) == np.uint32(2))
+                and np.all(((fields >> np.uint32(4)) & np.uint32(1)) == np.uint32(1))):
+            profile = "ordered_all_packed"
     return DeviceOperand(encoded.kind, encoded.shape, encoded.policy, a, desc, payload,
                          native, {"anchor": id(a), "descriptors": id(desc),
-                                  "payload": id(payload), "native": id(native)})
+                                  "payload": id(payload), "native": id(native)}, profile)
 
 
 def load_operand(artifact: FamilyArtifact, tensor_name: str) -> DeviceOperand:
@@ -248,6 +255,158 @@ PAIR_SOURCE = r"""
         out_target[row] = bfloat16_t(sum_target);
     }
 """
+PAIR_PACKED_TILED_SOURCE = r"""
+    uint index = thread_position_in_grid.x;
+    uint row = index / GEMV_LANES;
+    uint lane = index % GEMV_LANES;
+    float sum_anchor = 0.0f;
+    float sum_target = 0.0f;
+    for (uint tile_in_row = 0; tile_in_row < TILES_PER_ROW; ++tile_in_row) {
+        uint tile = row * TILES_PER_ROW + tile_in_row;
+        uint payload_offset = descriptors[2 * tile] * 4;
+        uint field = descriptors[2 * tile + 1];
+        uint mode = field & 3u;
+        uint selector = (field >> 2) & 3u;
+        uint width = selector == 0 ? 0u : (1u << selector);
+        uint exception_count = (field >> 5) & 511u;
+        uint valid = min(256u, uint(K_VALUES) - tile_in_row * 256u);
+        uint low_bytes = ((valid * width + 31u) / 32u) * 4u;
+        uint mask_base = payload_offset + low_bytes;
+        uint literal_base = mask_base + 32u;
+        uint exception_prefix = 0u;
+        uint chunks = (valid + GEMV_LANES - 1u) / GEMV_LANES;
+        for (uint chunk = 0; chunk < chunks; ++chunk) {
+            uint lane_in_tile = chunk * GEMV_LANES + lane;
+            uint column = tile_in_row * 256u + lane_in_tile;
+            uint mask_word = 0u;
+            if (mode == 2u && exception_count != 0u)
+                mask_word = ft_read_u32(payload, mask_base + 4u * chunk);
+            if (lane_in_tile < valid) {
+                uint anchor_word = uint(anchor[row * K_VALUES + column]);
+                uint target_word;
+                if (mode == 0u) {
+                    target_word = anchor_word;
+                } else if (mode == 1u) {
+                    target_word = ft_read_u16(payload, payload_offset + 2u * lane_in_tile);
+                } else {
+                    uint code = 0u;
+                    if (width != 0u) {
+                        uint bit = lane_in_tile * width;
+                        code = (uint(payload[payload_offset + bit / 8u]) >>
+                                (bit % 8u)) & ((1u << width) - 1u);
+                    }
+                    if (((mask_word >> lane) & 1u) != 0u) {
+                        uint lower = lane == 0u ? 0u : ((1u << lane) - 1u);
+                        uint rank = exception_prefix + popcount(mask_word & lower);
+                        target_word = ft_read_u16(payload, literal_base + 2u * rank);
+                    } else if (((field >> 4) & 1u) == 0u) {
+                        target_word = anchor_word ^ code;
+                    } else {
+                        uint key = (anchor_word & 0x8000u) != 0u ?
+                                   ((~anchor_word) & 0xFFFFu) :
+                                   (anchor_word ^ 0x8000u);
+                        int delta = (code & 1u) != 0u ?
+                                    -int((code + 1u) / 2u) : int(code / 2u);
+                        uint target_key = uint(int(key) + delta);
+                        target_word = (target_key & 0x8000u) != 0u ?
+                                      (target_key ^ 0x8000u) :
+                                      ((~target_key) & 0xFFFFu);
+                    }
+                }
+                float anchor_weight = as_type<float>(anchor_word << 16);
+                float target_weight = as_type<float>(target_word << 16);
+                float activation_anchor = float(x_anchor[column * x_anchor_strides[0]]);
+                float activation_target = float(x_target[column * x_target_strides[0]]);
+                sum_anchor += anchor_weight * activation_anchor;
+                sum_target += target_weight * activation_target;
+            }
+            exception_prefix += popcount(mask_word);
+        }
+    }
+    sum_anchor = simd_sum(sum_anchor);
+    sum_target = simd_sum(sum_target);
+    if (lane == 0) {
+        if (HAS_ANCHOR_BIAS)
+            sum_anchor += float(bias_anchor[row * bias_anchor_strides[0]]);
+        if (HAS_TARGET_BIAS)
+            sum_target += float(bias_target[row * bias_target_strides[0]]);
+        out_anchor[row] = bfloat16_t(sum_anchor);
+        out_target[row] = bfloat16_t(sum_target);
+    }
+"""
+PAIR_PACKED_ORDERED_SOURCE = r"""
+    uint index = thread_position_in_grid.x;
+    uint row = index / GEMV_LANES;
+    uint lane = index % GEMV_LANES;
+    float sum_anchor = 0.0f;
+    float sum_target = 0.0f;
+    for (uint tile_in_row = 0; tile_in_row < TILES_PER_ROW; ++tile_in_row) {
+        uint tile = row * TILES_PER_ROW + tile_in_row;
+        uint payload_offset = descriptors[2 * tile] * 4u;
+        uint field = descriptors[2 * tile + 1];
+        uint selector = (field >> 2) & 3u;
+        uint width = selector == 0u ? 0u : (1u << selector);
+        uint exception_count = (field >> 5) & 511u;
+        uint valid = min(256u, uint(K_VALUES) - tile_in_row * 256u);
+        uint low_bytes = ((valid * width + 31u) / 32u) * 4u;
+        uint mask_base = payload_offset + low_bytes;
+        uint literal_base = mask_base + 32u;
+        uint exception_prefix = 0u;
+        uint chunks = (valid + GEMV_LANES - 1u) / GEMV_LANES;
+        for (uint chunk = 0; chunk < chunks; ++chunk) {
+            uint lane_in_tile = chunk * GEMV_LANES + lane;
+            uint column = tile_in_row * 256u + lane_in_tile;
+            uint mask_word = exception_count == 0u ? 0u :
+                             ft_read_u32(payload, mask_base + 4u * chunk);
+            if (lane_in_tile < valid) {
+                uint anchor_word = uint(anchor[row * K_VALUES + column]);
+                uint code = 0u;
+                if (selector == 2u) {
+                    uint packed = uint(payload[payload_offset + lane_in_tile / 2u]);
+                    code = (packed >> (4u * (lane_in_tile & 1u))) & 15u;
+                } else if (selector == 3u) {
+                    code = uint(payload[payload_offset + lane_in_tile]);
+                } else if (selector == 1u) {
+                    uint packed = uint(payload[payload_offset + lane_in_tile / 4u]);
+                    code = (packed >> (2u * (lane_in_tile & 3u))) & 3u;
+                }
+                uint target_word;
+                if (((mask_word >> lane) & 1u) != 0u) {
+                    uint lower = lane == 0u ? 0u : ((1u << lane) - 1u);
+                    uint rank = exception_prefix + popcount(mask_word & lower);
+                    target_word = ft_read_u16(payload, literal_base + 2u * rank);
+                } else {
+                    uint key = (anchor_word & 0x8000u) != 0u ?
+                               ((~anchor_word) & 0xFFFFu) :
+                               (anchor_word ^ 0x8000u);
+                    int delta = (code & 1u) != 0u ?
+                                -int((code + 1u) / 2u) : int(code / 2u);
+                    uint target_key = uint(int(key) + delta);
+                    target_word = (target_key & 0x8000u) != 0u ?
+                                  (target_key ^ 0x8000u) :
+                                  ((~target_key) & 0xFFFFu);
+                }
+                float anchor_weight = as_type<float>(anchor_word << 16);
+                float target_weight = as_type<float>(target_word << 16);
+                float activation_anchor = float(x_anchor[column * x_anchor_strides[0]]);
+                float activation_target = float(x_target[column * x_target_strides[0]]);
+                sum_anchor += anchor_weight * activation_anchor;
+                sum_target += target_weight * activation_target;
+            }
+            exception_prefix += popcount(mask_word);
+        }
+    }
+    sum_anchor = simd_sum(sum_anchor);
+    sum_target = simd_sum(sum_target);
+    if (lane == 0) {
+        if (HAS_ANCHOR_BIAS)
+            sum_anchor += float(bias_anchor[row * bias_anchor_strides[0]]);
+        if (HAS_TARGET_BIAS)
+            sum_target += float(bias_target[row * bias_target_strides[0]]);
+        out_anchor[row] = bfloat16_t(sum_anchor);
+        out_target[row] = bfloat16_t(sum_target);
+    }
+"""
 
 
 def _gemv_kernel(*, packed: bool, rows: int, columns: int,
@@ -322,7 +481,8 @@ def family_gemv(operand: DeviceOperand, x: Any, bias: Any | None = None):
 
 
 def _pair_kernel(*, kind: str, columns: int, block_values: int,
-                 has_anchor_bias: bool, has_target_bias: bool):
+                 has_anchor_bias: bool, has_target_bias: bool,
+                 packed_profile: str = "mixed"):
     import mlx.core as mx
 
     if kind == "raw":
@@ -349,10 +509,18 @@ def _pair_kernel(*, kind: str, columns: int, block_values: int,
               f"#define GEMV_LANES {GEMV_LANES}\n"
               f"#define HAS_ANCHOR_BIAS {int(has_anchor_bias)}\n"
               f"#define HAS_TARGET_BIAS {int(has_target_bias)}\n" + helpers)
-    source = (PAIR_SOURCE.replace("ANCHOR_ACCESS", anchor_access)
-             .replace("TARGET_ACCESS", target_access))
+    if kind == "packed" and block_values == 256 and packed_profile == "ordered_all_packed":
+        source = PAIR_PACKED_ORDERED_SOURCE
+        name = "familytiles_pair_gemv_ordered_v3"
+    elif kind == "packed" and block_values == 256:
+        source = PAIR_PACKED_TILED_SOURCE
+        name = "familytiles_pair_gemv_tiled_v2"
+    else:
+        source = (PAIR_SOURCE.replace("ANCHOR_ACCESS", anchor_access)
+                 .replace("TARGET_ACCESS", target_access))
+        name = "familytiles_pair_gemv_v1"
     return mx.fast.metal_kernel(
-        name="familytiles_pair_gemv_v1", input_names=names,
+        name=name, input_names=names,
         output_names=["out_anchor", "out_target"], source=source, header=header,
         ensure_row_contiguous=False, compile_options={"math_mode": "safe"},
     )
@@ -404,7 +572,8 @@ def family_gemv_pair(operand: DeviceOperand, x_anchor: Any, x_target: Any,
     kernel = _pair_kernel(kind=operand.kind, columns=columns,
                           block_values=operand.policy.block_values,
                           has_anchor_bias=biases[0] is not None,
-                          has_target_bias=biases[1] is not None)
+                          has_target_bias=biases[1] is not None,
+                          packed_profile=operand.packed_profile)
     if operand.kind == "packed":
         inputs = [operand.anchor_words, operand.descriptors, operand.payload,
                   x_anchor, x_target]
@@ -419,7 +588,8 @@ def family_gemv_pair(operand: DeviceOperand, x_anchor: Any, x_target: Any,
 
 
 def kernel_config() -> dict[str, Any]:
-    return {"layout_version": 1, "lanes_per_row": GEMV_LANES,
+    return {"layout_version": 3, "layout_changes_after_first_correct": 2,
+            "lanes_per_row": GEMV_LANES,
             "accumulation": "fp32", "output": "bf16",
             "math_mode": "safe", "partial_sum_bytes": 0,
             "single_source_sha256": hashlib.sha256(
@@ -428,7 +598,8 @@ def kernel_config() -> dict[str, Any]:
                  "weights[row * weights_strides[0] + column * weights_strides[1]]").encode()
             ).hexdigest(),
             "pair_source_sha256": hashlib.sha256(
-                (PAIR_SOURCE + DECODE_HELPERS +
+                (PAIR_SOURCE + PAIR_PACKED_TILED_SOURCE + PAIR_PACKED_ORDERED_SOURCE +
+                 DECODE_HELPERS +
                  "ft_target_word_from_anchor(anchor_word, descriptors, payload, row, column)" +
                  "target[row * target_strides[0] + column * target_strides[1]]").encode()
             ).hexdigest()}

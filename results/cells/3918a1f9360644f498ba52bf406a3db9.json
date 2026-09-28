@@ -1,0 +1,697 @@
+{
+  "activation_hash": "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce",
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "budget_bytes": 5976617779,
+  "cache_limit_bytes": 268435456,
+  "cell_hash": "87d2e5330fd126f78013cec331bb7118d117154412451ba0fc60d4b3ded152f3",
+  "child_reaped": true,
+  "completed_model_tokens": 336,
+  "completion_ns": 69276708,
+  "config_hash": "f5d8a60f3c64eb75e8ff6d393cc8475426d07e3eb6dbe96cbff7a357fd729d1b",
+  "decoded_matrix_bytes": 280756224,
+  "exit_code": 0,
+  "family_id": "qwen2.5-1.5b",
+  "implementation_hash": "dbc8afae200227708c670d8d2457a6f8928cf69128e9427fe020de5beeb0013c",
+  "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
+  "inventory_hash": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
+  "latency_ns": [
+    440958,
+    236000,
+    227667,
+    270708,
+    532125,
+    574875,
+    451792,
+    371708,
+    724375,
+    219750,
+    272084,
+    457750,
+    447500,
+    552584,
+    424583,
+    269084,
+    323792,
+    267917,
+    441833,
+    421875,
+    435334,
+    263625,
+    223458,
+    217250,
+    250792,
+    440750,
+    441917,
+    724750,
+    261917,
+    234042,
+    223875,
+    260750,
+    530333,
+    723625,
+    1363458,
+    947042,
+    870000,
+    366333,
+    2076334,
+    807959,
+    637166,
+    457917,
+    244375,
+    202334,
+    293416,
+    694208,
+    450666,
+    445792,
+    460917,
+    318500,
+    278083,
+    233167,
+    390625,
+    430958,
+    421333,
+    428458,
+    256792,
+    215959,
+    205292,
+    241250,
+    413583,
+    427208,
+    442083,
+    252708,
+    197083,
+    379917,
+    238875,
+    416375,
+    445417,
+    461958,
+    358792,
+    504125,
+    234833,
+    264334,
+    415708,
+    413250,
+    473916,
+    255917,
+    199542,
+    209417,
+    244584,
+    424666,
+    408666,
+    412083,
+    239584,
+    196958,
+    197000,
+    239375,
+    407333,
+    406708,
+    714583,
+    235458,
+    192042,
+    192583,
+    755417,
+    402292,
+    378375,
+    395875,
+    216625,
+    180667,
+    197083,
+    317375,
+    417708,
+    421834,
+    422958,
+    244708,
+    200250,
+    536833,
+    318667,
+    434833,
+    409958,
+    440542,
+    257042,
+    266292,
+    357666,
+    242541,
+    1019000,
+    1614500,
+    1317333,
+    1054250,
+    170083,
+    791625,
+    275583,
+    434584,
+    407500,
+    480375,
+    274791,
+    319875,
+    660958,
+    276333,
+    437583,
+    454000,
+    410125,
+    224209,
+    191125,
+    192625,
+    217667,
+    439208,
+    438916,
+    438125,
+    252167,
+    217917,
+    230375,
+    253291,
+    466125,
+    414000,
+    416041,
+    233208,
+    203000,
+    188875,
+    233000,
+    405666,
+    410833,
+    513584,
+    256209,
+    285459,
+    682917,
+    269875,
+    406667,
+    423250,
+    447709,
+    247750,
+    192459,
+    203500,
+    234958,
+    408959,
+    426625,
+    407708
+  ],
+  "matrix_times_ns": [
+    {
+      "name": "model.layers.0.self_attn.q_proj.weight",
+      "time_ns": 2193957
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj.weight",
+      "time_ns": 1778958
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj.weight",
+      "time_ns": 2701916
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj.weight",
+      "time_ns": 2521958
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj.weight",
+      "time_ns": 3525331
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj.weight",
+      "time_ns": 3589500
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj.weight",
+      "time_ns": 4178251
+    },
+    {
+      "name": "model.layers.14.self_attn.q_proj.weight",
+      "time_ns": 2283835
+    },
+    {
+      "name": "model.layers.14.self_attn.k_proj.weight",
+      "time_ns": 2675543
+    },
+    {
+      "name": "model.layers.14.self_attn.v_proj.weight",
+      "time_ns": 2337416
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj.weight",
+      "time_ns": 2673293
+    },
+    {
+      "name": "model.layers.14.mlp.gate_proj.weight",
+      "time_ns": 4101916
+    },
+    {
+      "name": "model.layers.14.mlp.up_proj.weight",
+      "time_ns": 4860749
+    },
+    {
+      "name": "model.layers.14.mlp.down_proj.weight",
+      "time_ns": 5417458
+    },
+    {
+      "name": "model.layers.27.self_attn.q_proj.weight",
+      "time_ns": 3655126
+    },
+    {
+      "name": "model.layers.27.self_attn.k_proj.weight",
+      "time_ns": 2315711
+    },
+    {
+      "name": "model.layers.27.self_attn.v_proj.weight",
+      "time_ns": 2527417
+    },
+    {
+      "name": "model.layers.27.self_attn.o_proj.weight",
+      "time_ns": 3911292
+    },
+    {
+      "name": "model.layers.27.mlp.gate_proj.weight",
+      "time_ns": 3815417
+    },
+    {
+      "name": "model.layers.27.mlp.up_proj.weight",
+      "time_ns": 3564874
+    },
+    {
+      "name": "model.layers.27.mlp.down_proj.weight",
+      "time_ns": 3474499
+    }
+  ],
+  "memory_samples": [
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 983352,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 425984,
+      "timestamp_ns": 1767226612914541
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 26771984,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 47841280,
+      "timestamp_ns": 1767226720465250
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 48038440,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 71581696,
+      "timestamp_ns": 1767226829468916
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 132743792,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 170508288,
+      "timestamp_ns": 1767226938640416
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 320094976,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 341786624,
+      "timestamp_ns": 1767227047053375
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 479871864,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 505036800,
+      "timestamp_ns": 1767227153286041
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 621151216,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 647151616,
+      "timestamp_ns": 1767227262406333
+    },
+    {
+      "phase": "running",
+      "physical_footprint_bytes": 625689512,
+      "physical_probe_available": true,
+      "physical_probe_reason": null,
+      "rss_bytes": 622903296,
+      "timestamp_ns": 1767227370004708
+    }
+  ],
+  "mlx_counters": {
+    "after": {
+      "active_bytes": 563976192,
+      "cache_bytes": 72704,
+      "peak_active_bytes": 564041728
+    },
+    "before": {
+      "active_bytes": 563976192,
+      "cache_bytes": 66560,
+      "peak_active_bytes": 564035584
+    }
+  },
+  "mode": "native_two",
+  "peak_active_bytes": 564041728,
+  "peak_extra_bytes": 65536,
+  "pid": 64488,
+  "pressure_after": {
+    "available_bytes": 9961029632,
+    "memory_percent": 74.2,
+    "swap_used_bytes": 1556742144
+  },
+  "pressure_before": {
+    "available_bytes": 9961029632,
+    "memory_percent": 74.2,
+    "swap_used_bytes": 1556742144
+  },
+  "requested_model_tokens": 336,
+  "revisions": {
+    "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+    "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "run_id": "3918a1f9360644f498ba52bf406a3db9",
+  "source_hash": "1651c482a4566f0149b32756a22872579e81d8efb603c4433dc8c1c766fd10b2",
+  "status": "complete",
+  "suite": "kernel",
+  "trace": true,
+  "trial": 3,
+  "wall_ns": 866545250,
+  "worker_events": [
+    {
+      "completed_model_tokens": 42,
+      "event": "progress",
+      "sweep": 1
+    },
+    {
+      "completed_model_tokens": 84,
+      "event": "progress",
+      "sweep": 2
+    },
+    {
+      "completed_model_tokens": 126,
+      "event": "progress",
+      "sweep": 3
+    },
+    {
+      "completed_model_tokens": 168,
+      "event": "progress",
+      "sweep": 4
+    },
+    {
+      "completed_model_tokens": 210,
+      "event": "progress",
+      "sweep": 5
+    },
+    {
+      "completed_model_tokens": 252,
+      "event": "progress",
+      "sweep": 6
+    },
+    {
+      "completed_model_tokens": 294,
+      "event": "progress",
+      "sweep": 7
+    },
+    {
+      "completed_model_tokens": 336,
+      "event": "progress",
+      "sweep": 8
+    },
+    {
+      "activation_hash": "48119567b37206142a92f3049c51e8607b522438516ba11a7127d7141bcab1ce",
+      "completed_model_tokens": 336,
+      "completion_ns": 69276708,
+      "decoded_matrix_bytes": 280756224,
+      "event": "complete",
+      "latency_ns": [
+        440958,
+        236000,
+        227667,
+        270708,
+        532125,
+        574875,
+        451792,
+        371708,
+        724375,
+        219750,
+        272084,
+        457750,
+        447500,
+        552584,
+        424583,
+        269084,
+        323792,
+        267917,
+        441833,
+        421875,
+        435334,
+        263625,
+        223458,
+        217250,
+        250792,
+        440750,
+        441917,
+        724750,
+        261917,
+        234042,
+        223875,
+        260750,
+        530333,
+        723625,
+        1363458,
+        947042,
+        870000,
+        366333,
+        2076334,
+        807959,
+        637166,
+        457917,
+        244375,
+        202334,
+        293416,
+        694208,
+        450666,
+        445792,
+        460917,
+        318500,
+        278083,
+        233167,
+        390625,
+        430958,
+        421333,
+        428458,
+        256792,
+        215959,
+        205292,
+        241250,
+        413583,
+        427208,
+        442083,
+        252708,
+        197083,
+        379917,
+        238875,
+        416375,
+        445417,
+        461958,
+        358792,
+        504125,
+        234833,
+        264334,
+        415708,
+        413250,
+        473916,
+        255917,
+        199542,
+        209417,
+        244584,
+        424666,
+        408666,
+        412083,
+        239584,
+        196958,
+        197000,
+        239375,
+        407333,
+        406708,
+        714583,
+        235458,
+        192042,
+        192583,
+        755417,
+        402292,
+        378375,
+        395875,
+        216625,
+        180667,
+        197083,
+        317375,
+        417708,
+        421834,
+        422958,
+        244708,
+        200250,
+        536833,
+        318667,
+        434833,
+        409958,
+        440542,
+        257042,
+        266292,
+        357666,
+        242541,
+        1019000,
+        1614500,
+        1317333,
+        1054250,
+        170083,
+        791625,
+        275583,
+        434584,
+        407500,
+        480375,
+        274791,
+        319875,
+        660958,
+        276333,
+        437583,
+        454000,
+        410125,
+        224209,
+        191125,
+        192625,
+        217667,
+        439208,
+        438916,
+        438125,
+        252167,
+        217917,
+        230375,
+        253291,
+        466125,
+        414000,
+        416041,
+        233208,
+        203000,
+        188875,
+        233000,
+        405666,
+        410833,
+        513584,
+        256209,
+        285459,
+        682917,
+        269875,
+        406667,
+        423250,
+        447709,
+        247750,
+        192459,
+        203500,
+        234958,
+        408959,
+        426625,
+        407708
+      ],
+      "matrix_times_ns": [
+        {
+          "name": "model.layers.0.self_attn.q_proj.weight",
+          "time_ns": 2193957
+        },
+        {
+          "name": "model.layers.0.self_attn.k_proj.weight",
+          "time_ns": 1778958
+        },
+        {
+          "name": "model.layers.0.self_attn.v_proj.weight",
+          "time_ns": 2701916
+        },
+        {
+          "name": "model.layers.0.self_attn.o_proj.weight",
+          "time_ns": 2521958
+        },
+        {
+          "name": "model.layers.0.mlp.gate_proj.weight",
+          "time_ns": 3525331
+        },
+        {
+          "name": "model.layers.0.mlp.up_proj.weight",
+          "time_ns": 3589500
+        },
+        {
+          "name": "model.layers.0.mlp.down_proj.weight",
+          "time_ns": 4178251
+        },
+        {
+          "name": "model.layers.14.self_attn.q_proj.weight",
+          "time_ns": 2283835
+        },
+        {
+          "name": "model.layers.14.self_attn.k_proj.weight",
+          "time_ns": 2675543
+        },
+        {
+          "name": "model.layers.14.self_attn.v_proj.weight",
+          "time_ns": 2337416
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj.weight",
+          "time_ns": 2673293
+        },
+        {
+          "name": "model.layers.14.mlp.gate_proj.weight",
+          "time_ns": 4101916
+        },
+        {
+          "name": "model.layers.14.mlp.up_proj.weight",
+          "time_ns": 4860749
+        },
+        {
+          "name": "model.layers.14.mlp.down_proj.weight",
+          "time_ns": 5417458
+        },
+        {
+          "name": "model.layers.27.self_attn.q_proj.weight",
+          "time_ns": 3655126
+        },
+        {
+          "name": "model.layers.27.self_attn.k_proj.weight",
+          "time_ns": 2315711
+        },
+        {
+          "name": "model.layers.27.self_attn.v_proj.weight",
+          "time_ns": 2527417
+        },
+        {
+          "name": "model.layers.27.self_attn.o_proj.weight",
+          "time_ns": 3911292
+        },
+        {
+          "name": "model.layers.27.mlp.gate_proj.weight",
+          "time_ns": 3815417
+        },
+        {
+          "name": "model.layers.27.mlp.up_proj.weight",
+          "time_ns": 3564874
+        },
+        {
+          "name": "model.layers.27.mlp.down_proj.weight",
+          "time_ns": 3474499
+        }
+      ],
+      "mlx_counters": {
+        "after": {
+          "active_bytes": 563976192,
+          "cache_bytes": 72704,
+          "peak_active_bytes": 564041728
+        },
+        "before": {
+          "active_bytes": 563976192,
+          "cache_bytes": 66560,
+          "peak_active_bytes": 564035584
+        }
+      },
+      "peak_active_bytes": 564041728,
+      "peak_extra_bytes": 65536
+    }
+  ],
+  "worker_stderr": ""
+}

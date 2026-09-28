@@ -3,7 +3,7 @@
     "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
     "environment_hash": "9463dbacff1256b177ec23fa324cba57ff4ea230f9721af4f62c12bab3cb0617",
     "family_id": "qwen2.5-1.5b",
-    "implementation_hash": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88",
+    "implementation_hash": "1651c482a4566f0149b32756a22872579e81d8efb603c4433dc8c1c766fd10b2",
     "input_hash": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
     "policy_hash": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
     "revisions": {
@@ -11,29 +11,29 @@
       "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
     }
   },
-  "decision": "pass",
+  "decision": "fail",
   "gate": "G3",
   "input_hashes": {
     "artifact": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
     "inputs": "968645010624430420df52626a16a203e674d6a051614636880d9f49f4dc7dab",
     "inventory": "94b83933308caebed22da86841f52b1f30783bf516458cb6f3cb86e18f56705c",
-    "kernel_source": "0cba3b5a56f98265b5314ce34565d11d3977fa6aa9feb4ea2c208e9faf25ad88"
+    "kernel_source": "1651c482a4566f0149b32756a22872579e81d8efb603c4433dc8c1c766fd10b2"
   },
   "observed": {
     "best_native_pair_mode": "native_batched",
     "c1_zero_mismatches": true,
     "c2_bitwise_equal": true,
-    "layout_changes": 2,
+    "layout_changes": 1,
     "maximum_family_pair_peak_extra_bytes": 65536,
     "median_sweep_ns_by_mode": {
-      "family_pair": 75999500,
-      "family_two_singles": 113921541,
-      "native_batched": 62386959,
-      "native_two": 71964292,
-      "raw_pair": 100022333
+      "family_pair": 104385416,
+      "family_two_singles": 121028584,
+      "native_batched": 66275709,
+      "native_two": 70483209,
+      "raw_pair": 77584959
     },
-    "pair_ratio_vs_best_native": 1.2181952962317013,
-    "pair_ratio_vs_two_single_fused": 0.6671214182399446,
+    "pair_ratio_vs_best_native": 1.5750177187844192,
+    "pair_ratio_vs_two_single_fused": 0.8624856422347302,
     "trial_counts": {
       "family_pair": 3,
       "family_two_singles": 3,
@@ -42,7 +42,7 @@
       "raw_pair": 3
     }
   },
-  "reason": "paired primitive met the prespecified native sweep ceiling",
+  "reason": "paired primitive exceeded 1.5x the fastest native pair sweep",
   "schema_version": 1,
   "thresholds": {
     "maximum_fused_extra_allocation_bytes": 8388608,

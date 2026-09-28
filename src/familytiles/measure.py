@@ -456,6 +456,7 @@ def build_kernel_cells(artifact, inputs: Path) -> list[CellSpec]:
     selected_raw_bytes = sum(int(tensor_map[name]["shape"][0]) *
                              int(tensor_map[name]["shape"][1]) * 2 for name in names)
     estimate = 4 * selected_raw_bytes + 512 * MIB
+    layout_changes = kernel_config()["layout_changes_after_first_correct"]
     shared = {"artifact": artifact_name, "artifact_hash": artifact.manifest_hash,
               "family_id": artifact.manifest.get("family_id"),
               "revisions": artifact.manifest.get("revisions", {}),
@@ -479,13 +480,13 @@ def build_kernel_cells(artifact, inputs: Path) -> list[CellSpec]:
                                   requested_model_tokens=(tokens_per_matrix * len(names) *
                                                           fixture["sweeps"]),
                                   estimated_peak_bytes=estimate, trial=trial,
-                                  persist=True, extras={**shared, "layout_changes": 0}))
+                                  persist=True, extras={**shared, "layout_changes": layout_changes}))
     for mode in ("family_pair", "native_two"):
         cells.append(CellSpec(suite="kernel", mode=mode,
                               requested_model_tokens=2 * len(names) * fixture["sweeps"],
                               estimated_peak_bytes=estimate, trial=3,
                               trace=True, persist=True,
-                              extras={**shared, "layout_changes": 0}))
+                              extras={**shared, "layout_changes": layout_changes}))
     return cells
 
 

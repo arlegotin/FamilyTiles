@@ -1,0 +1,142 @@
+{
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "capture_manifests": [
+    "results/inputs/anchor-activations.json",
+    "results/inputs/target-activations.json"
+  ],
+  "kernel_config": {
+    "accumulation": "fp32",
+    "lanes_per_row": 32,
+    "layout_changes_after_first_correct": 2,
+    "layout_version": 3,
+    "math_mode": "safe",
+    "output": "bf16",
+    "pair_source_sha256": "ffa5c9b3ba47160031de84a4f1720f5076d19741ec45ec34697479deaafbf2e4",
+    "partial_sum_bytes": 0,
+    "single_source_sha256": "f5ca49812cc2c5ee2a65e5b2f932f54bb2563f62a066a0adf3dcf9d21e1605cd"
+  },
+  "pair_raw_bit_mismatches": [
+    0,
+    0
+  ],
+  "pair_two_single_bit_mismatches": [
+    0,
+    0
+  ],
+  "tensors": [
+    {
+      "input_sha256": [
+        "3439b454fb740162b1e4360f2e7a7a803df2a4d8b3b9afad23f5daa73c9bfd25",
+        "4d01e50bb926623b38400d57060efce6d8c30666f11198ed291a944050f34d6f"
+      ],
+      "pair_raw_bit_mismatches": [
+        0,
+        0
+      ],
+      "pair_two_single_bit_mismatches": [
+        0,
+        0
+      ],
+      "shape": [
+        1536,
+        1536
+      ],
+      "tensor": "model.layers.0.self_attn.q_proj.weight"
+    },
+    {
+      "input_sha256": [
+        "df83cb7fe949b991e062e6843b29b9ffeb418cb82cb85906194ca8e6b1c2591b",
+        "c89068e4b1ef1deae787a31ef6d25b50cba90ceb743f835396893eece930b2e4"
+      ],
+      "pair_raw_bit_mismatches": [
+        0,
+        0
+      ],
+      "pair_two_single_bit_mismatches": [
+        0,
+        0
+      ],
+      "shape": [
+        1536,
+        8960
+      ],
+      "tensor": "model.layers.0.mlp.down_proj.weight"
+    },
+    {
+      "input_sha256": [
+        "e7737e62f57de1a9eea28555e712298fb77b14e8a8fda0402060a860aca1bba0",
+        "89f48e871994f1c833ac1e0573644bbf309fdc24642ceac85a061abb201a641d"
+      ],
+      "pair_raw_bit_mismatches": [
+        0,
+        0
+      ],
+      "pair_two_single_bit_mismatches": [
+        0,
+        0
+      ],
+      "shape": [
+        1536,
+        1536
+      ],
+      "tensor": "model.layers.14.self_attn.q_proj.weight"
+    },
+    {
+      "input_sha256": [
+        "5599f49eebf3b12ca084cfe7ff037c1049dd1857aae5ea86b0d9ba9457ab9bc9",
+        "e34ea93287f6d12e853b460bcacea772578ae7ccb14aae4c0693b8d6f5053850"
+      ],
+      "pair_raw_bit_mismatches": [
+        0,
+        0
+      ],
+      "pair_two_single_bit_mismatches": [
+        0,
+        0
+      ],
+      "shape": [
+        1536,
+        8960
+      ],
+      "tensor": "model.layers.14.mlp.down_proj.weight"
+    },
+    {
+      "input_sha256": [
+        "a04524cf13781d1c384489688aa408baaa954060933d9d9bf29b7277fe58d35a",
+        "6d4f43ede7998b0c4dec7648eac68c758817581a7139efb1663f1d38ed811dee"
+      ],
+      "pair_raw_bit_mismatches": [
+        0,
+        0
+      ],
+      "pair_two_single_bit_mismatches": [
+        0,
+        0
+      ],
+      "shape": [
+        1536,
+        1536
+      ],
+      "tensor": "model.layers.27.self_attn.q_proj.weight"
+    },
+    {
+      "input_sha256": [
+        "d6ceb56b907ad081ca1deda2f26f2f3aa8322572714093f9c3f02130504d560b",
+        "947754231bc5092ad9aba46c630cd1d14a020f9e0e32108b7fb50074eca92df6"
+      ],
+      "pair_raw_bit_mismatches": [
+        0,
+        0
+      ],
+      "pair_two_single_bit_mismatches": [
+        0,
+        0
+      ],
+      "shape": [
+        1536,
+        8960
+      ],
+      "tensor": "model.layers.27.mlp.down_proj.weight"
+    }
+  ]
+}
