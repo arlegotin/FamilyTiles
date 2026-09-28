@@ -1,0 +1,20 @@
+{
+  "argmax_agreement": true,
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "b1_stock_bit_mismatches": 0,
+  "bit_mismatches": 0,
+  "logit_words": 151936,
+  "max_absolute_error": 0.0,
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "normalized_rms": 0.0,
+  "one_request_prefill_sampled_physical_footprint_saving": 0.19008734581513587,
+  "physical_footprints_are_phase_samples_not_instantaneous_peaks": true,
+  "records": [
+    "results/correctness/a1-target-prefill.json",
+    "results/correctness/b1-target-prefill.json",
+    "results/correctness/stock-target-prefill.json"
+  ],
+  "token_ids_sha256": "dd6e89ab374e08542fc8c9977a033616d2dd353a1c03fee12d4b59df412e9b41",
+  "two_model_loaded_physical_footprint_saving": 0.19987751994216807,
+  "two_model_weight_allocation_saving": 0.2049591088067031
+}

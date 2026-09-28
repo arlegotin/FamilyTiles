@@ -13,6 +13,7 @@ from pathlib import Path
 
 import mlx.core as mx
 import numpy as np
+from huggingface_hub import hf_hub_download
 from mlx_lm import load
 from mlx_lm.models.activations import swiglu
 from mlx_lm.models.base import create_attention_mask
@@ -33,9 +34,15 @@ def capture(role: str, selected: Path, output_dir: Path) -> dict:
     pinned_path = selected.parent / selection["pinned_manifest"]
     pinned = json.loads(pinned_path.read_text(encoding="utf-8"))[role]
     local = ROOT / "artifacts/downloaded" / pinned["repo"].replace("/", "--") / pinned["revision"]
-    for filename in ("model.safetensors", "config.json", "tokenizer.json", "tokenizer_config.json"):
-        if not (local / filename).is_file():
-            raise FileNotFoundError(local / filename)
+    if not (local / "model.safetensors").is_file():
+        raise FileNotFoundError(local / "model.safetensors")
+    for filename, want in pinned["metadata"]["config_hashes"].items():
+        path = local / filename
+        if not path.is_file():
+            path = Path(hf_hub_download(pinned["repo"], filename=filename,
+                                        revision=pinned["revision"], local_dir=local))
+        if path.stat().st_size > 16 * 2**20 or hashlib.sha256(path.read_bytes()).hexdigest() != want:
+            raise ValueError(f"pinned metadata is oversized or mismatched: {filename}")
     budget = compute_budget(psutil.virtual_memory().total, psutil.virtual_memory().available)
     if budget.process_limit_bytes < 4 * 2**30:
         raise RuntimeError("insufficient safe budget for stock activation capture")
