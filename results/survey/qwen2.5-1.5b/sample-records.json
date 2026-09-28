@@ -1,0 +1,3604 @@
+{
+  "development": [
+    {
+      "score": {
+        "b3_pair": 144329,
+        "b4_pair": 100909,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 39416
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 45260
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 39416
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 37820
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 43600
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 37820
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 42464
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 48452
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 42424
+          }
+        },
+        "identical_words": 19107,
+        "ordered_max": 59287,
+        "raw": 98304,
+        "xor_max": 36829
+      },
+      "sha256": {
+        "anchor": "a95fc8959a15972cf3ee95f06cf8d3fceccb1db685d774671748ba83f2fb022a",
+        "target": "4fbece0e261787b038fe36fc5285c85ad76e3301a2bc21670e67a3333ff2c0b9"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 384,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.0.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 143962,
+        "b4_pair": 102386,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 41868
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 48524
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 41868
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 40128
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 46796
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 40128
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 45176
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 51872
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 45140
+          }
+        },
+        "identical_words": 15082,
+        "ordered_max": 59149,
+        "raw": 98304,
+        "xor_max": 36854
+      },
+      "sha256": {
+        "anchor": "cc69a1119630ac7c718d74b5f2e10757b084d4845307f35ae14983253fa61d04",
+        "target": "2add4694b9854bb26bf45ea460ce75ec30ede10f44a13b77db3297a2fe430ef3"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 768,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.0.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145007,
+        "b4_pair": 112304,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 54336
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 61076
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54336
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53096
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59568
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53096
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 56848
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63740
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56792
+          }
+        },
+        "identical_words": 6090,
+        "ordered_max": 59330,
+        "raw": 98304,
+        "xor_max": 36857
+      },
+      "sha256": {
+        "anchor": "c27cad727eca7088f8f971b131d28e6978e4055adfd75c84f9438b8ccafe0574",
+        "target": "40e65be64c1ac54e2edc970c6e94bcd67f6fa9a0071417db43739bf9e5fc22b7"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 1152,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.0.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144551,
+        "b4_pair": 110212,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 50372
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 58196
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 50372
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 48756
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 56784
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 48756
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 53328
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 60788
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53304
+          }
+        },
+        "identical_words": 7915,
+        "ordered_max": 59238,
+        "raw": 98304,
+        "xor_max": 36809
+      },
+      "sha256": {
+        "anchor": "16d25fbfd18b634b59032663a9f52d6909c4f341c1485db7364f6d53d362615c",
+        "target": "c78c621aee798108cdb52d0c62200dc0c847d89eb426c676679c106eb7decf25"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 1152,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.14.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145234,
+        "b4_pair": 116155,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 61356
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 65724
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 61352
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 59892
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 64024
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 59892
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 64024
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 69044
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 64000
+          }
+        },
+        "identical_words": 3164,
+        "ordered_max": 59384,
+        "raw": 98304,
+        "xor_max": 36862
+      },
+      "sha256": {
+        "anchor": "257ecf34cf783da97410fe0774ffe84130e4cb532aa8c4ab9454fab3ba5cff1f",
+        "target": "a89e5acea3f02990e57af4c2563a8cf1e4947146e2f1f38f1c6bf343ec4cdb12"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 768,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.14.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145068,
+        "b4_pair": 111478,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 54236
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 61028
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54236
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52888
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59588
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52888
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57044
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63656
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57008
+          }
+        },
+        "identical_words": 6141,
+        "ordered_max": 59392,
+        "raw": 98304,
+        "xor_max": 36843
+      },
+      "sha256": {
+        "anchor": "8e49cd239acd8fa42341fcf50964c5ef5e4c8d0b834a072238d8cd5d39e3a10f",
+        "target": "0d9f118d2ca8ddc67791a04f719eb14dc6b32f55cda2d4bae2c6ad28fed327ad"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.0.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145831,
+        "b4_pair": 112293,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53184
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 59884
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53184
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51868
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 58352
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51868
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 55932
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 62488
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55876
+          }
+        },
+        "identical_words": 7015,
+        "ordered_max": 59385,
+        "raw": 98304,
+        "xor_max": 36831
+      },
+      "sha256": {
+        "anchor": "70dafc2b27c5c03992f84545ef1342acd79684b2fe8d041275b3ff0a4e911da1",
+        "target": "00fcf16b250a36a8999f706e15bdf523c00080bc14575b08fe288dd340c641e3"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 1152,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.27.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144766,
+        "b4_pair": 116181,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 60196
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 64772
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 60192
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 58828
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 63164
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 58828
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 62672
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 67900
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 62640
+          }
+        },
+        "identical_words": 3618,
+        "ordered_max": 59498,
+        "raw": 98304,
+        "xor_max": 36857
+      },
+      "sha256": {
+        "anchor": "4ad9984bd68c245dea1f05b7da02e2dbd8a544422e5be955837c9e9174c867c1",
+        "target": "dbda81450c7b805a8263851c16e60f450e6b0622a1c060a0943d7c44fe3d7b9f"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 64,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.14.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145261,
+        "b4_pair": 106671,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 46264
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 53616
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 46252
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 44572
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 51988
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 44572
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 49524
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 56608
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 49496
+          }
+        },
+        "identical_words": 11071,
+        "ordered_max": 59307,
+        "raw": 98304,
+        "xor_max": 36828
+      },
+      "sha256": {
+        "anchor": "51d4bba78e6580d354a03d3884d7b7dd62f2c5859ddf3a53b9e451ee6b8b2f6c",
+        "target": "648944f50fadd6d1929240740c6ed9d7825b3822a2b571bd17604634fdb1f5ce"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 128,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.0.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144995,
+        "b4_pair": 114189,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 60464
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 64548
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 60460
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 59180
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 62868
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 59180
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 62612
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 67716
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 62584
+          }
+        },
+        "identical_words": 3731,
+        "ordered_max": 59526,
+        "raw": 98304,
+        "xor_max": 36845
+      },
+      "sha256": {
+        "anchor": "25c682d274ca02a2e29a3fa0cbfecea2ccf5f3da47350f255146d7f0dd783084",
+        "target": "a1dcf0f810876b1f6b7a96aaec8f28395694f1da255d89d8de47d3d0277c2788"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 192,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.27.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145706,
+        "b4_pair": 120428,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 63028
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 67848
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 63028
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 61344
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 66104
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 61344
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 66120
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 71324
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 66092
+          }
+        },
+        "identical_words": 2257,
+        "ordered_max": 59699,
+        "raw": 98304,
+        "xor_max": 36862
+      },
+      "sha256": {
+        "anchor": "6326b41bdf1d9f145a9fcda2ae5b115d080ff9521a0998cf96d0133f4521fd48",
+        "target": "1f4c751251ec4e0b5d3bcb0e23b40c51c957f7bf089605c9a330a02f318e2f45"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 64,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.27.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144880,
+        "b4_pair": 112518,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 60836
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 64924
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 60828
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 59492
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 63208
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 59488
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 63164
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 68128
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 63120
+          }
+        },
+        "identical_words": 3533,
+        "ordered_max": 59561,
+        "raw": 98304,
+        "xor_max": 36846
+      },
+      "sha256": {
+        "anchor": "ea0f7e2cbfacf901c3890135b2b93cbfe7d2d3d7c5fa3869ee7c882d31c1f6e0",
+        "target": "753608f02473d412fc2f0bdfec37d278b7ef7ba28c184369f5aa9a08dd1d892f"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 128,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.27.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144495,
+        "b4_pair": 103280,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 42356
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 49288
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 42352
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 40640
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 47548
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 40640
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 45728
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 52516
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 45708
+          }
+        },
+        "identical_words": 14532,
+        "ordered_max": 59471,
+        "raw": 98304,
+        "xor_max": 36735
+      },
+      "sha256": {
+        "anchor": "b6999ba819cdf05c5d25f2a44bb2a527be437ab19ee0ab080888699349a4b808",
+        "target": "cc7fe1e22d3056c5e8fc7f7db28811536a6a0d7fe75a290135622627529ca3cd"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.0.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144721,
+        "b4_pair": 113263,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 57360
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 62776
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57356
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 56032
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 61240
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56032
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 59540
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 65440
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 59488
+          }
+        },
+        "identical_words": 4976,
+        "ordered_max": 59365,
+        "raw": 98304,
+        "xor_max": 36856
+      },
+      "sha256": {
+        "anchor": "e76a2bab14a0d19b5aa85520663a81abfc0fc680d78db53c407e68381e660ebe",
+        "target": "96d7cce738920ba83d76c23fe65f119ab9b74f3bdc07cb7ad0e7f681cb556bd1"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 192,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.14.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144624,
+        "b4_pair": 110612,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 55464
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 62176
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55460
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 54344
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 60844
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54344
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57788
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 64756
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57748
+          }
+        },
+        "identical_words": 5711,
+        "ordered_max": 59334,
+        "raw": 98304,
+        "xor_max": 36850
+      },
+      "sha256": {
+        "anchor": "3bc5d556db38a479b7646032e11840934ad6883a0ce8bb81227f4442c0702a23",
+        "target": "9065dc56c743e67f2769ae7ecfa00ac576fc989d2bd42adf541e5a2bbf317540"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 64,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.14.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144804,
+        "b4_pair": 111730,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 55620
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 62124
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55620
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 54384
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 60700
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54384
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57868
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 64468
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57792
+          }
+        },
+        "identical_words": 5873,
+        "ordered_max": 59210,
+        "raw": 98304,
+        "xor_max": 47389
+      },
+      "sha256": {
+        "anchor": "dba2a78e4daba697894bcfa5c0d5334ac1d61095f44f3f3f1c93a809b2cf52ea",
+        "target": "14408717beb950df19ea82b86282e30769d4c398982dc61f9d54ee7be09a82de"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 64,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.0.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144497,
+        "b4_pair": 112400,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 55204
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 61848
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55204
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53916
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 60424
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53916
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57668
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 64348
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57596
+          }
+        },
+        "identical_words": 5837,
+        "ordered_max": 59459,
+        "raw": 98304,
+        "xor_max": 36854
+      },
+      "sha256": {
+        "anchor": "f8a7a43aeb49356d32c079f3c20f0ab0157e3408ed557052e03625134e0d01c1",
+        "target": "4d278783f2a09727aa5a5edc4d46c59977af0101d41e9a23f4e7e4a0d07d07fa"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.14.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145714,
+        "b4_pair": 109841,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 48284
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 56056
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 48284
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 46616
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 54536
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 46616
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 51468
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 58776
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51432
+          }
+        },
+        "identical_words": 9207,
+        "ordered_max": 59515,
+        "raw": 98304,
+        "xor_max": 36834
+      },
+      "sha256": {
+        "anchor": "513e587cae70c5ddc90f5d7274f1dd092bbd3e7d4d8ffdb51b0ebe30d56d2b14",
+        "target": "8504e7e1b1ee7840821930da429834346d7df65534c84dce01103e69a650390e"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 192,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.27.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145907,
+        "b4_pair": 113084,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 54548
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 61352
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54544
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53092
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 60068
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53092
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57068
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63848
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57032
+          }
+        },
+        "identical_words": 6594,
+        "ordered_max": 59271,
+        "raw": 98304,
+        "xor_max": 36856
+      },
+      "sha256": {
+        "anchor": "bb4367be126198961b19697f18fe8771266d3eeee9e2f589ddbafead9e8bc67d",
+        "target": "d6d91fb771a052844fcfa5a25bfdd25361b89bb344369c48be769fc347be70f5"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 128,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.14.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145951,
+        "b4_pair": 109224,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 49328
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 56992
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 49328
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 47708
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 55512
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 47708
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 52536
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 59676
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52512
+          }
+        },
+        "identical_words": 8789,
+        "ordered_max": 59438,
+        "raw": 98304,
+        "xor_max": 36833
+      },
+      "sha256": {
+        "anchor": "c3ee5ec6cdf94f674cf5782623a72c515c18d732cc12cbafad0b18eacfb867d2",
+        "target": "9aed2b4ffd9be603663c24c7700ee60cb3ffea028ca64be0266cf817a202594f"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.27.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145947,
+        "b4_pair": 112592,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 54212
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 61184
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54212
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52864
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59928
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52864
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 56772
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63744
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56716
+          }
+        },
+        "identical_words": 6562,
+        "ordered_max": 59553,
+        "raw": 98304,
+        "xor_max": 47251
+      },
+      "sha256": {
+        "anchor": "188ff4ffe5fea763d21a887e5e7963aa198b24f71c0eaf86c931807d2023afb8",
+        "target": "d71ec0471f24795797e028a884e0ec34c216a6b7afd2fb076a30421406916cbc"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 192,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.14.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145339,
+        "b4_pair": 110673,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 54652
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 61096
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54652
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53636
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 60076
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53636
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57252
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63736
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57216
+          }
+        },
+        "identical_words": 5942,
+        "ordered_max": 59365,
+        "raw": 98304,
+        "xor_max": 36848
+      },
+      "sha256": {
+        "anchor": "852c0b9295eb3865147fac180ac215b01bbd0d135197a0e69745b56abccdffe7",
+        "target": "5fe8a322b00bf53be5321f2972372a07d098e8cf0a1ffaa54d280640bdc18f1c"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 384,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.14.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144687,
+        "b4_pair": 112277,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53460
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60472
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53460
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52440
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59556
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52440
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 56180
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63016
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56124
+          }
+        },
+        "identical_words": 6364,
+        "ordered_max": 59267,
+        "raw": 98304,
+        "xor_max": 36860
+      },
+      "sha256": {
+        "anchor": "82e713387fab1c4e4db9d57d4ca48e09e217a51fb76a19e325ae4ed7f2f30660",
+        "target": "558c6e7b3003a4dc28e2b668e44b85125aa99c4e77c87975071a416a910443e1"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 768,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.0.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145740,
+        "b4_pair": 113031,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 52884
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 59908
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52880
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51820
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 58692
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51820
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 55636
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 62624
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55592
+          }
+        },
+        "identical_words": 6557,
+        "ordered_max": 59429,
+        "raw": 98304,
+        "xor_max": 36814
+      },
+      "sha256": {
+        "anchor": "c5f747c18f395373a3e9c7fad9534f319cb2a19cf295e47983631ff5a5ef85e8",
+        "target": "91df716e517873d56d21487a3dae779711ff1f0e73e2c03852426cf11b0304f9"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 768,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.27.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145305,
+        "b4_pair": 110368,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 52860
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 59800
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52860
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51888
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 58640
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51888
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 55628
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 62460
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55588
+          }
+        },
+        "identical_words": 6558,
+        "ordered_max": 59751,
+        "raw": 98304,
+        "xor_max": 36853
+      },
+      "sha256": {
+        "anchor": "cbf7be567614f0c0628c6d4b5aa3da68014e418de2c8302582ee1f5820c4655d",
+        "target": "d119ba7b6a9aac5329bc1bdf52dd6586f0641e6fad27e64a310388b4b8896912"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 1152,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.27.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145822,
+        "b4_pair": 112309,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 54556
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60936
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54556
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53436
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 60056
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53436
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57176
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63660
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57124
+          }
+        },
+        "identical_words": 5954,
+        "ordered_max": 59443,
+        "raw": 98304,
+        "xor_max": 36836
+      },
+      "sha256": {
+        "anchor": "0814c767f5c2a258616fa810b8ee0390682d94e6195a3b7ca7e86ac23c1e9411",
+        "target": "0be011269ea4a2bac6f5b6b0a742036e0f86bf33a6b88163d6709f55ca1e0f00"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 1152,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.14.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145513,
+        "b4_pair": 111907,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53612
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60656
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53604
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52732
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59536
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52732
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 56440
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63316
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56404
+          }
+        },
+        "identical_words": 6096,
+        "ordered_max": 59557,
+        "raw": 98304,
+        "xor_max": 36833
+      },
+      "sha256": {
+        "anchor": "b25eb7d1e068c10f7a93e9a4814ad7c70456a7545b2b47810f1d34e74256eded",
+        "target": "17777d7e75ffe04000ba5689b7ce3fa8c98f9c212289124f29e62b9dcec89f96"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.27.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145605,
+        "b4_pair": 112151,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 54432
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 61176
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54424
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53440
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 60084
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53440
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57004
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 64012
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56976
+          }
+        },
+        "identical_words": 5894,
+        "ordered_max": 59659,
+        "raw": 98304,
+        "xor_max": 36822
+      },
+      "sha256": {
+        "anchor": "0600646cd2f842249dd2abbfdb25c22d61b7f22a18043a0068c8adb2893492bb",
+        "target": "1b5eb1789c45e868aefe2370e8d8061dd65f955483bfddfaed9c2607bbcd3180"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.14.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144376,
+        "b4_pair": 109939,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53592
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60264
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53588
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52132
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 58844
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52132
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 56156
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 62824
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56072
+          }
+        },
+        "identical_words": 6252,
+        "ordered_max": 59532,
+        "raw": 98304,
+        "xor_max": 36855
+      },
+      "sha256": {
+        "anchor": "1de65b5ceeaf4b41adf7d9f30684e0aee7cfd096e024508153f1a64bf169b0d9",
+        "target": "623cde3e0c1df5c2038aa1a325a8c7ae5b6ad6a95430df6b1cda84b18d6931ae"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 4480,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.27.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144027,
+        "b4_pair": 111740,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53040
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60348
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53040
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51612
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59000
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51612
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 55760
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 62872
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55744
+          }
+        },
+        "identical_words": 6540,
+        "ordered_max": 59493,
+        "raw": 98304,
+        "xor_max": 36863
+      },
+      "sha256": {
+        "anchor": "c19ca2e6b8a1fb520a62a4286bcb37c4cebdb544e7577a5806d847bf9d9737df",
+        "target": "e9262900ee36164f51e0d5cb026f5ee6d85b471cd08502dc11b731c5abbd38a8"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.27.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144315,
+        "b4_pair": 109659,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 48896
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 57024
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 48896
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 47240
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 55528
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 47240
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 52204
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 59716
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52164
+          }
+        },
+        "identical_words": 8375,
+        "ordered_max": 59219,
+        "raw": 98304,
+        "xor_max": 36823
+      },
+      "sha256": {
+        "anchor": "571ace614aa66be09312d84cb18f5b6ba8b754b15943ef3512beba165d259c8b",
+        "target": "3ffb541d66932a8f833697f99ce081d75fc26586e2445e5b0248ff1ae9ff8e57"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 6720,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.0.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144339,
+        "b4_pair": 108138,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 49392
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 57336
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 49392
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 47716
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 55908
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 47716
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 52620
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 60068
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52588
+          }
+        },
+        "identical_words": 8066,
+        "ordered_max": 59342,
+        "raw": 98304,
+        "xor_max": 36800
+      },
+      "sha256": {
+        "anchor": "72cbb7659c9086dbcce0fb3df716e75f097b3a416275bfdea73d97c8ad562162",
+        "target": "aba667c1f92b3e739e40f01987de65c91cfe451e1c382f2d1cdf9d1eb6d1cd9a"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.0.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144200,
+        "b4_pair": 111756,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 54628
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 61368
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54624
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53284
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59960
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53284
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 57144
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 64112
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 57080
+          }
+        },
+        "identical_words": 5942,
+        "ordered_max": 59529,
+        "raw": 98304,
+        "xor_max": 36855
+      },
+      "sha256": {
+        "anchor": "9519f5b6b58a9ab174db0e6a806ffb6d3c7e610db5f0280daf2cf3a65b1edd81",
+        "target": "00a619db8a75efd03addde3d301a9ae5b2190c53a53924ff89803a95530ddebf"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 2240,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.27.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144430,
+        "b4_pair": 111998,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53468
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60476
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53468
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51972
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59076
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51972
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 56152
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63120
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56104
+          }
+        },
+        "identical_words": 6278,
+        "ordered_max": 59533,
+        "raw": 98304,
+        "xor_max": 36793
+      },
+      "sha256": {
+        "anchor": "a24b2219a6b6e96bdc57f6ae55287ee3eb5cb991f3af6e4f80da399397c025c4",
+        "target": "9977c37c8d5be61e9a8f3619954c082e451b7eca7ea4b15780cdd8bd515a94d4"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.14.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144406,
+        "b4_pair": 112216,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53484
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60764
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53484
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52092
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59392
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52092
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 56236
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63308
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 56200
+          }
+        },
+        "identical_words": 6392,
+        "ordered_max": 59484,
+        "raw": 98304,
+        "xor_max": 36846
+      },
+      "sha256": {
+        "anchor": "a4b2f4b64a8f49177d93c8f7cd3042d148f69adce9a180169c1f2dee79b2111c",
+        "target": "4e159bae4a094f37bc658439e206efcfb99bf3ba28f66e28bda513b4568474d2"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 4480,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.14.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144153,
+        "b4_pair": 109462,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53200
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60436
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53196
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51732
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59184
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51732
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 56040
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 62968
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55980
+          }
+        },
+        "identical_words": 6362,
+        "ordered_max": 59688,
+        "raw": 98304,
+        "xor_max": 36828
+      },
+      "sha256": {
+        "anchor": "d70590f198508ffd2adca5ff49493fa481ef230b1d4b05c4d792afe59a3c014c",
+        "target": "5c3b43bcd099506552ac04c2aac835e28a4d77cede785eccdb94732e8e3c291b"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 2240,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.14.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144266,
+        "b4_pair": 110932,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 52048
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 59776
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52040
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 50472
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 58484
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 50472
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 54908
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 62184
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54868
+          }
+        },
+        "identical_words": 6989,
+        "ordered_max": 59456,
+        "raw": 98304,
+        "xor_max": 36859
+      },
+      "sha256": {
+        "anchor": "6eb886e573a1ed04657552e218e064c3841452efc6b11a340b61a6d5c7ccd4e6",
+        "target": "120d6fe5df2807278d32abd55f54003703eb1308275695a50812f220f71f857b"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.14.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144262,
+        "b4_pair": 111499,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 52460
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60164
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 52460
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51040
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 58864
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51040
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 55316
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 62700
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55264
+          }
+        },
+        "identical_words": 6426,
+        "ordered_max": 59492,
+        "raw": 98304,
+        "xor_max": 36858
+      },
+      "sha256": {
+        "anchor": "9080f5e26a21096ef47613305eacd6e1530f1e94cb9ba06017cb91e19a0a09fc",
+        "target": "ce5eecff8495db3942153766086f2a2c80f1818e0e08dbc3f2653ab27b4c98c1"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 6720,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.14.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144008,
+        "b4_pair": 110082,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 51456
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 59492
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51456
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 49936
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 58104
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 49936
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 54404
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 61976
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54372
+          }
+        },
+        "identical_words": 7008,
+        "ordered_max": 59343,
+        "raw": 98304,
+        "xor_max": 36832
+      },
+      "sha256": {
+        "anchor": "a96d45eea98701dacd653ebce75941b26a28d5ea9c95a4102899b729eb26eb2c",
+        "target": "3e937d548b9d6ca4c93e9aec2bec27ce9d626a653af6d34b241910dabb5dfddf"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 6720,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.0.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144136,
+        "b4_pair": 109499,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 51496
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 59392
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51492
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 49924
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 58036
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 49924
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 54380
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 61852
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54336
+          }
+        },
+        "identical_words": 7174,
+        "ordered_max": 59398,
+        "raw": 98304,
+        "xor_max": 36853
+      },
+      "sha256": {
+        "anchor": "e02a3d428a571e7c0b22b0d690716e2cf840ab31f07b4c2286c3ab3dc4d73e85",
+        "target": "f9f99b14fbe4c7e45214a0d03e5786cacfec45e66dc13c8d4c9f8b8e48b090b6"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.0.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144120,
+        "b4_pair": 109548,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 53248
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 60608
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 53244
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51772
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 59328
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51772
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 55828
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 63252
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 55792
+          }
+        },
+        "identical_words": 6557,
+        "ordered_max": 59398,
+        "raw": 98304,
+        "xor_max": 36845
+      },
+      "sha256": {
+        "anchor": "00442ee7bde8a2e77edfc707c12ae06b4bd7e36befec13a32b4719806614f95b",
+        "target": "67e877aba015e538de4330487e0cd981633fc2a6664b797851780a91af0502c8"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 4480,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.14.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144424,
+        "b4_pair": 110900,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 98304,
+            "family": 51240
+          },
+          "128:xor": {
+            "b2": 98304,
+            "family": 58940
+          },
+          "128:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 51240
+          },
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 49648
+          },
+          "256:xor": {
+            "b2": 98304,
+            "family": 57688
+          },
+          "256:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 49648
+          },
+          "64:ordered_delta": {
+            "b2": 98304,
+            "family": 54192
+          },
+          "64:xor": {
+            "b2": 98304,
+            "family": 61664
+          },
+          "64:xor,ordered_delta": {
+            "b2": 98304,
+            "family": 54172
+          }
+        },
+        "identical_words": 7138,
+        "ordered_max": 59771,
+        "raw": 98304,
+        "xor_max": 36852
+      },
+      "sha256": {
+        "anchor": "3563b14ca499d64f2ad4005a2a79db29d0519224486850a3df8560bd7373384a",
+        "target": "15851f9a6a3bd2372cd0b8ae7a8fc19a3dd53263217f8d3ad09c77d6038afcab"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 4480,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.27.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 819713,
+        "b4_pair": 649103,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 573440,
+            "family": 316400
+          },
+          "128:xor": {
+            "b2": 573440,
+            "family": 356668
+          },
+          "128:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 316380
+          },
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 308052
+          },
+          "256:xor": {
+            "b2": 573440,
+            "family": 348912
+          },
+          "256:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 308052
+          },
+          "64:ordered_delta": {
+            "b2": 573440,
+            "family": 331664
+          },
+          "64:xor": {
+            "b2": 573440,
+            "family": 371384
+          },
+          "64:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 331404
+          }
+        },
+        "identical_words": 35514,
+        "ordered_max": 59642,
+        "raw": 573440,
+        "xor_max": 36859
+      },
+      "sha256": {
+        "anchor": "52d02fcad4e467fadb2345bd2a710ab828795dd38b77686c667638d455a1c418",
+        "target": "123524b6d546d46271b3e857c56b6906d606eea5e876c68fe958273b850c2acc"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 1152,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.14.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 818762,
+        "b4_pair": 645572,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 573440,
+            "family": 312996
+          },
+          "128:xor": {
+            "b2": 573440,
+            "family": 354896
+          },
+          "128:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 312976
+          },
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 304720
+          },
+          "256:xor": {
+            "b2": 573440,
+            "family": 347336
+          },
+          "256:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 304720
+          },
+          "64:ordered_delta": {
+            "b2": 573440,
+            "family": 328836
+          },
+          "64:xor": {
+            "b2": 573440,
+            "family": 369500
+          },
+          "64:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 328480
+          }
+        },
+        "identical_words": 37047,
+        "ordered_max": 59520,
+        "raw": 573440,
+        "xor_max": 36845
+      },
+      "sha256": {
+        "anchor": "e64a7c00f75c95514618a4a5b77e9123df0eb06e830a83e7fcb83e6ca48201ed",
+        "target": "85048607a6507ba8a02edc825285fc0b270f7b8a6d2659daa4ed2cc07c10f646"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 768,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.14.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 815945,
+        "b4_pair": 639313,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 573440,
+            "family": 294712
+          },
+          "128:xor": {
+            "b2": 573440,
+            "family": 342172
+          },
+          "128:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 294696
+          },
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 285132
+          },
+          "256:xor": {
+            "b2": 573440,
+            "family": 334092
+          },
+          "256:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 285132
+          },
+          "64:ordered_delta": {
+            "b2": 573440,
+            "family": 312744
+          },
+          "64:xor": {
+            "b2": 573440,
+            "family": 356920
+          },
+          "64:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 312512
+          }
+        },
+        "identical_words": 43180,
+        "ordered_max": 59403,
+        "raw": 573440,
+        "xor_max": 36863
+      },
+      "sha256": {
+        "anchor": "6eff909534f9534e86d199b525678ee7755a88a9c6e0d029f509fb06e2a6ec2e",
+        "target": "90f4cdd0b169847180590a889ed5e5f99823c12157843cea6acc8c71dd73df40"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 768,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.0.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 816354,
+        "b4_pair": 639815,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 573440,
+            "family": 296244
+          },
+          "128:xor": {
+            "b2": 573440,
+            "family": 343832
+          },
+          "128:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 296240
+          },
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 286764
+          },
+          "256:xor": {
+            "b2": 573440,
+            "family": 335860
+          },
+          "256:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 286764
+          },
+          "64:ordered_delta": {
+            "b2": 573440,
+            "family": 313860
+          },
+          "64:xor": {
+            "b2": 573440,
+            "family": 358336
+          },
+          "64:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 313712
+          }
+        },
+        "identical_words": 42686,
+        "ordered_max": 59525,
+        "raw": 573440,
+        "xor_max": 36857
+      },
+      "sha256": {
+        "anchor": "5bcf5fced63c848e98a633c39282baa22c988315f87b29c81cab28adcf55b716",
+        "target": "dbb71ee95fa93f9c507975e8497ea1a10656a7a7a3c028a6da26d7c71c74ba69"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.0.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 818651,
+        "b4_pair": 649228,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 573440,
+            "family": 315852
+          },
+          "128:xor": {
+            "b2": 573440,
+            "family": 356684
+          },
+          "128:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 315852
+          },
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 307852
+          },
+          "256:xor": {
+            "b2": 573440,
+            "family": 349108
+          },
+          "256:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 307852
+          },
+          "64:ordered_delta": {
+            "b2": 573440,
+            "family": 330828
+          },
+          "64:xor": {
+            "b2": 573440,
+            "family": 370664
+          },
+          "64:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 330548
+          }
+        },
+        "identical_words": 35651,
+        "ordered_max": 59630,
+        "raw": 573440,
+        "xor_max": 36863
+      },
+      "sha256": {
+        "anchor": "85dcc288f1f1f026a1dfbb1fb86aaab80c425d70fda1dcd7e4b182411e5b94e5",
+        "target": "0296e4d927a459797bf8237637b2cb63418d694c341b280ebe1f67b3c9374a57"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.27.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 819388,
+        "b4_pair": 645388,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 573440,
+            "family": 314028
+          },
+          "128:xor": {
+            "b2": 573440,
+            "family": 355400
+          },
+          "128:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 314024
+          },
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 306100
+          },
+          "256:xor": {
+            "b2": 573440,
+            "family": 348036
+          },
+          "256:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 306100
+          },
+          "64:ordered_delta": {
+            "b2": 573440,
+            "family": 329088
+          },
+          "64:xor": {
+            "b2": 573440,
+            "family": 369756
+          },
+          "64:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 328876
+          }
+        },
+        "identical_words": 36786,
+        "ordered_max": 59584,
+        "raw": 573440,
+        "xor_max": 36860
+      },
+      "sha256": {
+        "anchor": "90b35c30342cb150fc837abb545e95e344c7eb6a1bc707c517b381e24b973bf4",
+        "target": "905469d1320c2153b7dc324e204963544736f16ac63456dbc3b28385a9741eca"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 384,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.27.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 819506,
+        "b4_pair": 647063,
+        "candidates": {
+          "128:ordered_delta": {
+            "b2": 573440,
+            "family": 314072
+          },
+          "128:xor": {
+            "b2": 573440,
+            "family": 355428
+          },
+          "128:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 314048
+          },
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 305736
+          },
+          "256:xor": {
+            "b2": 573440,
+            "family": 348116
+          },
+          "256:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 305736
+          },
+          "64:ordered_delta": {
+            "b2": 573440,
+            "family": 329460
+          },
+          "64:xor": {
+            "b2": 573440,
+            "family": 370032
+          },
+          "64:xor,ordered_delta": {
+            "b2": 573440,
+            "family": 329108
+          }
+        },
+        "identical_words": 36845,
+        "ordered_max": 59483,
+        "raw": 573440,
+        "xor_max": 47163
+      },
+      "sha256": {
+        "anchor": "100aa46a7621982d3481ca0be2b7dfed0dcbc9a1b66ca657d0da92b49501d89e",
+        "target": "8183ebaafc9f225c8ee0eed7ad8a9c20943bba109932a8c4bff40bea15fd298b"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 1152,
+        "split": "development",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.27.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    }
+  ],
+  "holdout": [
+    {
+      "score": {
+        "b3_pair": 145103,
+        "b4_pair": 114524,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 58756
+          }
+        },
+        "identical_words": 4146,
+        "ordered_max": 59546,
+        "raw": 98304,
+        "xor_max": 36862
+      },
+      "sha256": {
+        "anchor": "de22ecce3555202f224ee717a3496f16bc91e43cdb39f3755dc6ef450360149b",
+        "target": "703b4b5074b06853b882fe6ee25af3af5ed420c05e80fb48ccd71a2babd60242"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.27.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144733,
+        "b4_pair": 112077,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52900
+          }
+        },
+        "identical_words": 6247,
+        "ordered_max": 59262,
+        "raw": 98304,
+        "xor_max": 36863
+      },
+      "sha256": {
+        "anchor": "913bf009d7aacc896a000ca4611ae5f47a29e8432d68d5be50a75e3b0c659b22",
+        "target": "3d2f6bf4bfd96e6ded7e20e157ba367c1effb2ceb58a38efdac9d851572b590d"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.14.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145523,
+        "b4_pair": 116799,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 59444
+          }
+        },
+        "identical_words": 3747,
+        "ordered_max": 59449,
+        "raw": 98304,
+        "xor_max": 36857
+      },
+      "sha256": {
+        "anchor": "bf77afaad0235a2849c2320b504718d50e36f48984f35400a59ede3b978b7d24",
+        "target": "94551f33c9650aa2e11f03f718bac4999563e5105bf565472c0a2306413f821f"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 384,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "q_proj",
+        "tensor_name": "model.layers.27.self_attn.q_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145841,
+        "b4_pair": 122038,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 61496
+          }
+        },
+        "identical_words": 2216,
+        "ordered_max": 59667,
+        "raw": 98304,
+        "xor_max": 36863
+      },
+      "sha256": {
+        "anchor": "a725800b8cae837253ba47da8751f552573864854bda59fc2906b7a258067913",
+        "target": "5a07764f8cdf576ea20c6e5462433e406ba504d65926edce94160cd71f402ca0"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.27.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144374,
+        "b4_pair": 112969,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 55720
+          }
+        },
+        "identical_words": 5282,
+        "ordered_max": 59337,
+        "raw": 98304,
+        "xor_max": 36854
+      },
+      "sha256": {
+        "anchor": "dfe74ab57552cc795fac65a84d58093031ccdf70a154e8a15cd1163b99557977",
+        "target": "393751ab580b868ae7e8e4786e98138c5b1c04cec172e83f9ddace946579836f"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 128,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.14.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144742,
+        "b4_pair": 114647,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 58928
+          }
+        },
+        "identical_words": 3636,
+        "ordered_max": 59466,
+        "raw": 98304,
+        "xor_max": 36859
+      },
+      "sha256": {
+        "anchor": "13b2675956840f5e7dce19a3f9798c0efbd7afff69454afbc86a0fea5fdf9023",
+        "target": "08cbbf6d5c170f60360e841df808bcd1d7edd0025e52999e0403cdadf00bdf01"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "k_proj",
+        "tensor_name": "model.layers.14.self_attn.k_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145426,
+        "b4_pair": 106491,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 46028
+          }
+        },
+        "identical_words": 9400,
+        "ordered_max": 59520,
+        "raw": 98304,
+        "xor_max": 36816
+      },
+      "sha256": {
+        "anchor": "275bf16738f843548affaf390c80cdc04bfce07d157256af9232449e28e3d6db",
+        "target": "8eff04ee63b9a4e988c03cd396af29ec36f70614206fe757af98bc8a16b05202"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 128,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.27.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144318,
+        "b4_pair": 112372,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 54216
+          }
+        },
+        "identical_words": 5772,
+        "ordered_max": 59368,
+        "raw": 98304,
+        "xor_max": 36862
+      },
+      "sha256": {
+        "anchor": "2285f320b2191f479c2bd0c5e969f7ce6b603f544947ad54d6e302ffef7dc204",
+        "target": "5b676060f5093722cb579c8c3fc62ba29567438654ef5398e932cb184819eeeb"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 192,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.0.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 146157,
+        "b4_pair": 110670,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 47376
+          }
+        },
+        "identical_words": 8832,
+        "ordered_max": 59488,
+        "raw": 98304,
+        "xor_max": 36814
+      },
+      "sha256": {
+        "anchor": "60d7b61cc0d9e44ce750a0b6ee2a2f53fd7aa3d7cfa02f2db2debcce255fe267",
+        "target": "20244c952db25ce4581577adee42c317e6542546793130740b968930722a9478"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 64,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "v_proj",
+        "tensor_name": "model.layers.27.self_attn.v_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145088,
+        "b4_pair": 111485,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52928
+          }
+        },
+        "identical_words": 6237,
+        "ordered_max": 59356,
+        "raw": 98304,
+        "xor_max": 36817
+      },
+      "sha256": {
+        "anchor": "652047d6c6152be08168cf7adf5fdd8b572aac2d025abac1a389c235f5140634",
+        "target": "245d5e7b0d7d368fd7793e06f7d75d940d174b94213f37029330c48474fc6ba1"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 0,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.0.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144935,
+        "b4_pair": 111123,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53276
+          }
+        },
+        "identical_words": 6221,
+        "ordered_max": 59317,
+        "raw": 98304,
+        "xor_max": 36844
+      },
+      "sha256": {
+        "anchor": "c15c741ab8a4f07660ab4faf3557ef311c75e5222ef9c0e522d92abb2cb52e9a",
+        "target": "934738911f1095c5937c883e7a0bcea29726e6a6e4fea0ce2d9389da385b9e56"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 384,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.0.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 145306,
+        "b4_pair": 111296,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 53148
+          }
+        },
+        "identical_words": 6017,
+        "ordered_max": 59394,
+        "raw": 98304,
+        "xor_max": 36862
+      },
+      "sha256": {
+        "anchor": "b08da5c02624a307ad8788ea26c545698eb4f7120d47a8673f83a332c1203602",
+        "target": "3f31af908c2dca31d7182bc3e53abe4393c0ca493a132ec1063f73f869a62c0d"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 768,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "o_proj",
+        "tensor_name": "model.layers.14.self_attn.o_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 143937,
+        "b4_pair": 111653,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 52352
+          }
+        },
+        "identical_words": 6090,
+        "ordered_max": 59403,
+        "raw": 98304,
+        "xor_max": 36842
+      },
+      "sha256": {
+        "anchor": "f5da572018d1f862c2f7969dc938e0330577b0044714559da889029026cc1216",
+        "target": "507aadca4d20eab8f628a312ce190ff6180d4f191bcacd8a0348cef440f046a2"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 6720,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.14.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144187,
+        "b4_pair": 110068,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 51568
+          }
+        },
+        "identical_words": 6452,
+        "ordered_max": 59585,
+        "raw": 98304,
+        "xor_max": 36858
+      },
+      "sha256": {
+        "anchor": "51bfa1a5e25657d8df8ad5d0b885c1dc0597f3a91ef9dfa2e7bafe125cb4057e",
+        "target": "b48d3fdb320c0bce70045c947c6a9ff6f33c93d573a049168656c01fd744ae52"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 6720,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.27.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144326,
+        "b4_pair": 109489,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 47812
+          }
+        },
+        "identical_words": 8148,
+        "ordered_max": 59420,
+        "raw": 98304,
+        "xor_max": 36811
+      },
+      "sha256": {
+        "anchor": "c7976c4a38710afde905cea86b3c348ed417f2b27647f13f05279ffc83456910",
+        "target": "707629ecb646514019ded7a318edc66fb527d926cbc5d2bcf5e940112210f0ae"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 4480,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "gate_proj",
+        "tensor_name": "model.layers.0.mlp.gate_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144117,
+        "b4_pair": 110297,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 50280
+          }
+        },
+        "identical_words": 6910,
+        "ordered_max": 59401,
+        "raw": 98304,
+        "xor_max": 36811
+      },
+      "sha256": {
+        "anchor": "2ca31731f9e5d18804dc22eebeac8a6b98ce5d35f7c8e4c044b559040654a934",
+        "target": "31d05a2bafc234ca5f8ea871f1130e04845442921c479bd3399d23dd1939344f"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 6720,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.27.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144218,
+        "b4_pair": 110265,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 49880
+          }
+        },
+        "identical_words": 7137,
+        "ordered_max": 59341,
+        "raw": 98304,
+        "xor_max": 36805
+      },
+      "sha256": {
+        "anchor": "3bdb65eb7219cd6717f463a96eff8ac226eb5e304245e3c94d986e09fcc5092c",
+        "target": "a658157be6ff9bc5b85a746e66be35d5470baa79860087bc294d9f721ce4fe3b"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 4480,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.0.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 144370,
+        "b4_pair": 109423,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 98304,
+            "family": 49564
+          }
+        },
+        "identical_words": 7165,
+        "ordered_max": 59456,
+        "raw": 98304,
+        "xor_max": 36848
+      },
+      "sha256": {
+        "anchor": "9e9a87535dd66939df2e9ba3dc9f3bd2b80b6cb0c731e022e86fd892246e8f4c",
+        "target": "1176543de38f29fa047b3644762755385599e17ff320eea346cad7073cb82e21"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 2240,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "up_proj",
+        "tensor_name": "model.layers.0.mlp.up_proj.weight",
+        "word_count": 49152
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 816929,
+        "b4_pair": 639935,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 289848
+          }
+        },
+        "identical_words": 41946,
+        "ordered_max": 59586,
+        "raw": 573440,
+        "xor_max": 36859
+      },
+      "sha256": {
+        "anchor": "5dd6749604c887af167b3141ba04c09f788763e3d83e5f92c7dae39fb311cbe4",
+        "target": "b565837b0cf6e8783c958c2abef4b140573a3de71887824a8e47d18f4129f0e6"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 1152,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.0.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 817146,
+        "b4_pair": 638451,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 288004
+          }
+        },
+        "identical_words": 42597,
+        "ordered_max": 59502,
+        "raw": 573440,
+        "xor_max": 47132
+      },
+      "sha256": {
+        "anchor": "0e31fe01e291800583bfcfdb42e8c814d57569710b77f1d0c42b2d5d07156696",
+        "target": "9406c70c298b6a0c9805af783bcee47f45643ba34b6e81a1e14f00e1b8064f10"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 384,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.0.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    },
+    {
+      "score": {
+        "b3_pair": 818828,
+        "b4_pair": 649679,
+        "candidates": {
+          "256:ordered_delta": {
+            "b2": 573440,
+            "family": 305628
+          }
+        },
+        "identical_words": 36946,
+        "ordered_max": 59512,
+        "raw": 573440,
+        "xor_max": 36862
+      },
+      "sha256": {
+        "anchor": "1621d7d8962426259256bab79f4278bb40090e56963b42a129850c5306bec498",
+        "target": "d4d54bdc86b41bf18dc64b119216eac0ab02507e0beb269e5fc5d6f3a1caf081"
+      },
+      "window": {
+        "model_id": "pair",
+        "row": 768,
+        "split": "holdout",
+        "start_column": 0,
+        "stratum": "down_proj",
+        "tensor_name": "model.layers.27.mlp.down_proj.weight",
+        "word_count": 286720
+      }
+    }
+  ]
+}

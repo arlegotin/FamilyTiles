@@ -1,0 +1,8 @@
+{
+  "block_values": 256,
+  "development_hash": "9605c02cdd47fa291ba97bfb031487e128c0d0161912156a140bd6d838df8488",
+  "transforms": [
+    "ordered_delta"
+  ],
+  "version": 1
+}

@@ -1,0 +1,90 @@
+{
+  "candidates": [
+    {
+      "block": 64,
+      "family_bytes": 5218707200,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "xor"
+      ]
+    },
+    {
+      "block": 64,
+      "family_bytes": 5028932992,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "ordered_delta"
+      ]
+    },
+    {
+      "block": 64,
+      "family_bytes": 5027776640,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "xor",
+        "ordered_delta"
+      ]
+    },
+    {
+      "block": 128,
+      "family_bytes": 5149857152,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "xor"
+      ]
+    },
+    {
+      "block": 128,
+      "family_bytes": 4954274176,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "ordered_delta"
+      ]
+    },
+    {
+      "block": 128,
+      "family_bytes": 4954219904,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "xor",
+        "ordered_delta"
+      ]
+    },
+    {
+      "block": 256,
+      "family_bytes": 5114077440,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "xor"
+      ]
+    },
+    {
+      "block": 256,
+      "family_bytes": 4915176448,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "ordered_delta"
+      ]
+    },
+    {
+      "block": 256,
+      "family_bytes": 4915176320,
+      "raw_family_bytes": 6174857216,
+      "source": "real",
+      "transforms": [
+        "xor",
+        "ordered_delta"
+      ]
+    }
+  ],
+  "split_hash": "f4759d2175d6e721f1905cf598ce6236db7201e39ea4e0033073a63010ec962b",
+  "window_count": 49
+}

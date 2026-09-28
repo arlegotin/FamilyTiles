@@ -1,0 +1,36 @@
+{
+  "decision": "pass",
+  "families": [
+    {
+      "family_id": "qwen2.5-0.5b",
+      "projection": "qwen2.5-0.5b/projection.json",
+      "revisions": {
+        "anchor": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+        "target": "7ae557604adf67be50417f59c2c2f167def9a775"
+      },
+      "status": "fail"
+    },
+    {
+      "family_id": "qwen2.5-1.5b",
+      "projection": "qwen2.5-1.5b/projection.json",
+      "revisions": {
+        "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+        "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+      },
+      "status": "pass"
+    }
+  ],
+  "sample_mib_per_model": 32,
+  "seed": 20260928,
+  "selected": "qwen2.5-1.5b",
+  "transfer_ledger": {
+    "metadata_reserved": 35372501,
+    "sample_by_model": {
+      "Qwen/Qwen2.5-0.5B": 6553600,
+      "Qwen/Qwen2.5-0.5B-Instruct": 6553600,
+      "Qwen/Qwen2.5-1.5B": 11632640,
+      "Qwen/Qwen2.5-1.5B-Instruct": 11632640
+    },
+    "weight_reserved": 0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "anchor": "Qwen/Qwen2.5-1.5B",
+  "family_id": "qwen2.5-1.5b",
+  "pinned_manifest": "qwen2.5-1.5b/pinned.json",
+  "revisions": {
+    "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+    "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "target": "Qwen/Qwen2.5-1.5B-Instruct"
+}

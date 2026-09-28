@@ -1,0 +1,199 @@
+{
+  "b1_bytes": 6174857216,
+  "b2_bytes": 6174857216,
+  "beyond_b2_fraction_raw": 0.2020623699228222,
+  "controls": {
+    "identical": {
+      "encoded": 64,
+      "raw": 4096
+    },
+    "independent_random": {
+      "encoded": 4096,
+      "raw": 4096
+    },
+    "shuffled": {
+      "encoded": 4096,
+      "raw": 4096
+    },
+    "sign_exponent_crossings": {
+      "encoded": 4096,
+      "raw": 4096
+    },
+    "sparse_changes": {
+      "encoded": 416,
+      "raw": 4096
+    }
+  },
+  "development": {
+    "roles": {
+      "down_proj": {
+        "b2": 4014080,
+        "family": 2104356,
+        "raw": 4014080
+      },
+      "gate_proj": {
+        "b2": 688128,
+        "family": 356048,
+        "raw": 688128
+      },
+      "k_proj": {
+        "b2": 688128,
+        "family": 380088,
+        "raw": 688128
+      },
+      "o_proj": {
+        "b2": 688128,
+        "family": 369392,
+        "raw": 688128
+      },
+      "q_proj": {
+        "b2": 688128,
+        "family": 344448,
+        "raw": 688128
+      },
+      "up_proj": {
+        "b2": 688128,
+        "family": 354524,
+        "raw": 688128
+      },
+      "v_proj": {
+        "b2": 688128,
+        "family": 362924,
+        "raw": 688128
+      }
+    },
+    "totals": {
+      "b2": 8142848,
+      "b3_pair": 11812042,
+      "b4_pair": 9177316,
+      "family": 4271780,
+      "identical_words": 563378,
+      "ordered_max": 59771,
+      "raw": 8142848,
+      "xor_max": 47389
+    }
+  },
+  "family_bytes": 4927150933,
+  "family_id": "qwen2.5-1.5b",
+  "g1_pass": true,
+  "holdout": {
+    "roles": {
+      "down_proj": {
+        "b2": 1720320,
+        "family": 883480,
+        "raw": 1720320
+      },
+      "gate_proj": {
+        "b2": 294912,
+        "family": 151732,
+        "raw": 294912
+      },
+      "k_proj": {
+        "b2": 294912,
+        "family": 176144,
+        "raw": 294912
+      },
+      "o_proj": {
+        "b2": 294912,
+        "family": 159352,
+        "raw": 294912
+      },
+      "q_proj": {
+        "b2": 294912,
+        "family": 171100,
+        "raw": 294912
+      },
+      "up_proj": {
+        "b2": 294912,
+        "family": 149724,
+        "raw": 294912
+      },
+      "v_proj": {
+        "b2": 294912,
+        "family": 147620,
+        "raw": 294912
+      }
+    },
+    "totals": {
+      "b2": 3489792,
+      "b3_pair": 5059604,
+      "b4_pair": 3945751,
+      "family": 1839152,
+      "identical_words": 231144,
+      "ordered_max": 59667,
+      "raw": 3489792,
+      "xor_max": 47132
+    }
+  },
+  "inventory": {
+    "b1_bytes": 6174857216,
+    "eligible_tensor_count": 196,
+    "native_target_bytes": 467037184,
+    "raw_family_bytes": 6174857216,
+    "target_role_bytes": {
+      "down_proj": 770703360,
+      "gate_proj": 770703360,
+      "k_proj": 22020096,
+      "o_proj": 132120576,
+      "q_proj": 132120576,
+      "up_proj": 770703360,
+      "v_proj": 22020096
+    },
+    "unresolved_alias_bytes": 3087428608
+  },
+  "limitations": "Sampled projection ratios; no sampled whole-tensor aliases declared. Unsupported tensors charged native.",
+  "policy": {
+    "block_values": 256,
+    "development_hash": "5909d1273891b68aae48ced9a20fc25a78317b04070a70c19cfb232e255ebddf",
+    "transforms": [
+      "ordered_delta"
+    ],
+    "version": 1
+  },
+  "raw_family_bytes": 6174857216,
+  "revisions": {
+    "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+    "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "roles": {
+    "down_proj": {
+      "active_target_bytes": 770703360,
+      "b2_ratio": 1.0,
+      "family_ratio": 0.5242436623086735
+    },
+    "gate_proj": {
+      "active_target_bytes": 770703360,
+      "b2_ratio": 1.0,
+      "family_ratio": 0.5174153645833334
+    },
+    "k_proj": {
+      "active_target_bytes": 22020096,
+      "b2_ratio": 1.0,
+      "family_ratio": 0.5972764756944444
+    },
+    "o_proj": {
+      "active_target_bytes": 132120576,
+      "b2_ratio": 1.0,
+      "family_ratio": 0.5403374565972222
+    },
+    "q_proj": {
+      "active_target_bytes": 132120576,
+      "b2_ratio": 1.0,
+      "family_ratio": 0.5801730685763888
+    },
+    "up_proj": {
+      "active_target_bytes": 770703360,
+      "b2_ratio": 1.0,
+      "family_ratio": 0.5152006603422619
+    },
+    "v_proj": {
+      "active_target_bytes": 22020096,
+      "b2_ratio": 1.0,
+      "family_ratio": 0.5274076915922619
+    }
+  },
+  "sample_bytes_per_model": 11632640,
+  "sample_split_hash": "f4759d2175d6e721f1905cf598ce6236db7201e39ea4e0033073a63010ec962b",
+  "saving_vs_b1": 0.2020623699228222,
+  "unresolved_alias_bytes": 3087428608
+}

@@ -19,7 +19,7 @@ from .records import write_json_atomic
 
 
 HEADER_LIMIT = 16 * 2**20
-MAX_METADATA_FILE = 2 * 2**20
+MAX_METADATA_FILE = 16 * 2**20
 DTYPE_BYTES = {"BF16": 2, "F16": 2, "F32": 4, "F64": 8,
                "I64": 8, "I32": 4, "I16": 2, "I8": 1,
                "U64": 8, "U32": 4, "U16": 2, "U8": 1, "BOOL": 1,

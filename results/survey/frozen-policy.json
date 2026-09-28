@@ -1,0 +1,9 @@
+{
+  "block_values": 256,
+  "family_id": "qwen2.5-1.5b",
+  "policy_sha256": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
+  "transforms": [
+    "ordered_delta"
+  ],
+  "version": 1
+}

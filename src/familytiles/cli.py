@@ -17,7 +17,12 @@ def main(argv: list[str] | None = None) -> int:
     report.add_argument("--out", required=True)
     doctor_parser = commands.add_parser("doctor", help="Run the G0 machine and Metal smoke")
     doctor_parser.add_argument("--out", required=True)
-    for name in ("survey", "convert", "verify", "bench"):
+    survey_parser = commands.add_parser("survey", help="Run the bounded real-family G1 screen")
+    survey_parser.add_argument("--families", required=True)
+    survey_parser.add_argument("--sample-mib-per-model", required=True, type=int)
+    survey_parser.add_argument("--seed", required=True, type=int)
+    survey_parser.add_argument("--out", required=True)
+    for name in ("convert", "verify", "bench"):
         commands.add_parser(name, help="Available after its prerequisite implementation gate")
     args = parser.parse_args(argv)
     root = Path(__file__).resolve().parents[2]
@@ -35,6 +40,16 @@ def main(argv: list[str] | None = None) -> int:
             return {"pass": 0, "fail": 3, "blocked": 4}[gate.decision]
         except (OSError, ValueError) as exc:
             print(f"doctor: {exc}", file=sys.stderr)
+            return 2
+    if args.command == "survey":
+        from .survey import survey
+        try:
+            record = survey(resolve_under_root(root, args.families),
+                            args.sample_mib_per_model, args.seed,
+                            resolve_under_root(root, args.out))
+            return {"pass": 0, "fail": 3, "blocked": 4}[record["decision"]]
+        except (OSError, ValueError) as exc:
+            print(f"survey: {exc}", file=sys.stderr)
             return 2
     if args.command != "report":
         print(f"{args.command} is not implemented at the current gate", file=sys.stderr)

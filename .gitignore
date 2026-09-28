@@ -13,4 +13,5 @@ samples/
 *.bin
 results/survey/**/sample-*.bin
 results/survey/**/weight-*.bin
+results/survey/*.lock
 .superpowers/

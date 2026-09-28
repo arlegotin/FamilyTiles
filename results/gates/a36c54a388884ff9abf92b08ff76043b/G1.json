@@ -1,0 +1,48 @@
+{
+  "context": {
+    "artifact_hash": null,
+    "environment_hash": "9463dbacff1256b177ec23fa324cba57ff4ea230f9721af4f62c12bab3cb0617",
+    "family_id": "qwen2.5-1.5b",
+    "implementation_hash": "bb82c3f363a712e46747ba81319f9d2efad8ccc28e4f07e18101864e22ada599",
+    "input_hash": "d2d7a7004070852916facafaa7dbdf2c382b92de4c86665571178fab530dcb4a",
+    "policy_hash": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
+    "revisions": {
+      "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+      "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    }
+  },
+  "decision": "pass",
+  "gate": "G1",
+  "input_hashes": {
+    "families": "dd87c48eaa4a2bfe27be5533ffa7a536065f5279ae435fd8c02419317cc907c9",
+    "summary": "d2d7a7004070852916facafaa7dbdf2c382b92de4c86665571178fab530dcb4a"
+  },
+  "observed": {
+    "families": [
+      {
+        "family_id": "qwen2.5-0.5b",
+        "projection": "qwen2.5-0.5b/projection.json",
+        "revisions": {
+          "anchor": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+          "target": "7ae557604adf67be50417f59c2c2f167def9a775"
+        },
+        "status": "fail"
+      },
+      {
+        "family_id": "qwen2.5-1.5b",
+        "projection": "qwen2.5-1.5b/projection.json",
+        "revisions": {
+          "anchor": "8faed761d45a263340a0528343f099c05c9a4323",
+          "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "reason": "one real family passed the conservative sample screen",
+  "schema_version": 1,
+  "thresholds": {
+    "minimum_b1_saving": 0.15,
+    "minimum_beyond_b2_raw": 0.05
+  }
+}

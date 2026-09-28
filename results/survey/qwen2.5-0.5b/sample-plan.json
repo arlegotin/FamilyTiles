@@ -1,0 +1,637 @@
+{
+  "bytes_per_model": 6553600,
+  "seed": 20260928,
+  "split_hash": "facc3d2e34b63df1f9f506624b6d9d42c0b49c42fed193eac7c39af5589f0d0c",
+  "windows": [
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.23.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 224,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.0.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 448,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.0.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 672,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.0.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 672,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.12.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.12.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 448,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.12.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.0.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 224,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.23.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 672,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "q_proj",
+      "tensor_name": "model.layers.23.self_attn.q_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 32,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.12.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.23.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 64,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.0.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 96,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.23.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 64,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.12.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.12.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 32,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.23.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 64,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.23.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.0.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 96,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "k_proj",
+      "tensor_name": "model.layers.12.self_attn.k_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 32,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.12.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 32,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.0.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 64,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.23.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.12.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 96,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.23.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 64,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.12.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 96,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.0.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.23.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 96,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.12.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 32,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "v_proj",
+      "tensor_name": "model.layers.23.self_attn.v_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.0.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 224,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.12.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 448,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.0.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 448,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.23.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 224,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.0.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 672,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.23.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 448,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.12.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 672,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.12.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.23.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "o_proj",
+      "tensor_name": "model.layers.12.self_attn.o_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 2432,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.23.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.23.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 3648,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.12.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 3648,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.23.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 3648,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.0.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 2432,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.0.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.0.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 1216,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.23.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.12.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 2432,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "gate_proj",
+      "tensor_name": "model.layers.12.mlp.gate_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 3648,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.23.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 1216,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.12.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.12.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 3648,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.12.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 3648,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.0.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.0.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 2432,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.0.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 2432,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.12.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 1216,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.0.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 2432,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "up_proj",
+      "tensor_name": "model.layers.23.mlp.up_proj.weight",
+      "word_count": 28672
+    },
+    {
+      "model_id": "pair",
+      "row": 672,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.12.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 672,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.0.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 224,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.0.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 448,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.12.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 448,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.0.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.0.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 0,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.23.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 224,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.23.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 448,
+      "split": "holdout",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.23.mlp.down_proj.weight",
+      "word_count": 155648
+    },
+    {
+      "model_id": "pair",
+      "row": 672,
+      "split": "development",
+      "start_column": 0,
+      "stratum": "down_proj",
+      "tensor_name": "model.layers.23.mlp.down_proj.weight",
+      "word_count": 155648
+    }
+  ]
+}

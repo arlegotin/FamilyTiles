@@ -1,0 +1,10 @@
+{
+  "metadata_reserved": 35372501,
+  "sample_by_model": {
+    "Qwen/Qwen2.5-0.5B": 6553600,
+    "Qwen/Qwen2.5-0.5B-Instruct": 6553600,
+    "Qwen/Qwen2.5-1.5B": 11632640,
+    "Qwen/Qwen2.5-1.5B-Instruct": 11632640
+  },
+  "weight_reserved": 0
+}
