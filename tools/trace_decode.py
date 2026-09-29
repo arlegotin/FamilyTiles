@@ -193,15 +193,18 @@ def compare(steps: int) -> dict:
 
 
 def main() -> None:
+    global OUT
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=(*MODES, *MIXED_MODES, "all", "compare"), default="all")
     parser.add_argument("--steps", type=int, choices=(1, 8), default=1)
+    parser.add_argument("--out", type=Path, default=OUT)
     args = parser.parse_args()
+    OUT = args.out.resolve()
     OUT.mkdir(parents=True, exist_ok=True)
     if args.mode == "all":
         for mode in MODES:
             subprocess.run([sys.executable, str(Path(__file__).resolve()), "--mode", mode,
-                            "--steps", str(args.steps)], check=True, cwd=ROOT)
+                            "--steps", str(args.steps), "--out", str(OUT)], check=True, cwd=ROOT)
         result = compare(args.steps)
         print(json.dumps({"steps": args.steps, "first_step_nrmse": {
             mode: {role: result["versus_reference"][mode][role][0]["normalized_rms"]
