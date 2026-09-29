@@ -194,8 +194,11 @@ def compare(steps: int) -> dict:
 
 def main() -> None:
     global OUT
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=(*MODES, *MIXED_MODES, "all", "compare"), default="all")
+    parser = argparse.ArgumentParser(
+        description="Manual cached-decoding research replay; raw, fused, and mixed modes failed admission or remain unvalidated"
+    )
+    parser.add_argument("--mode", choices=(*MODES, *MIXED_MODES, "all", "compare"),
+                        required=True, help="Select a research mode explicitly; B1 is the stock/native control")
     parser.add_argument("--steps", type=int, choices=(1, 8), default=1)
     parser.add_argument("--out", type=Path, default=OUT)
     args = parser.parse_args()

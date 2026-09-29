@@ -10,7 +10,10 @@ from .records import publish_gate, resolve_under_root
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="familytiles", description="Gated exact-inference research")
+    parser = argparse.ArgumentParser(
+        prog="familytiles",
+        description="Research archive; no validated compressed-model inference command",
+    )
     commands = parser.add_subparsers(dest="command", required=True)
     report = commands.add_parser("report", help="Render supported status from saved records")
     report.add_argument("--results", required=True)
