@@ -76,6 +76,13 @@ inline uint ft_target_word(A anchor, D descriptors, P payload,
 }
 """
 
+BIAS_HELPER = r"""
+inline bfloat16_t ft_bf16_add_bias(float dot, bfloat16_t bias) {
+    bfloat16_t rounded_dot = bfloat16_t(dot);
+    return bfloat16_t(float(rounded_dot) + float(bias));
+}
+"""
+
 
 @dataclass(frozen=True)
 class DeviceOperand:
@@ -224,8 +231,10 @@ GEMV_SOURCE = r"""
     }
     sum = simd_sum(sum);
     if (lane == 0) {
-        if (HAS_BIAS) sum += float(bias[row * bias_strides[0]]);
-        out[row] = bfloat16_t(sum);
+        if (HAS_BIAS)
+            out[row] = ft_bf16_add_bias(sum, bias[row * bias_strides[0]]);
+        else
+            out[row] = bfloat16_t(sum);
     }
 """
 PAIR_SOURCE = r"""
@@ -248,11 +257,13 @@ PAIR_SOURCE = r"""
     sum_target = simd_sum(sum_target);
     if (lane == 0) {
         if (HAS_ANCHOR_BIAS)
-            sum_anchor += float(bias_anchor[row * bias_anchor_strides[0]]);
+            out_anchor[row] = ft_bf16_add_bias(sum_anchor, bias_anchor[row * bias_anchor_strides[0]]);
+        else
+            out_anchor[row] = bfloat16_t(sum_anchor);
         if (HAS_TARGET_BIAS)
-            sum_target += float(bias_target[row * bias_target_strides[0]]);
-        out_anchor[row] = bfloat16_t(sum_anchor);
-        out_target[row] = bfloat16_t(sum_target);
+            out_target[row] = ft_bf16_add_bias(sum_target, bias_target[row * bias_target_strides[0]]);
+        else
+            out_target[row] = bfloat16_t(sum_target);
     }
 """
 PAIR_PACKED_TILED_SOURCE = r"""
@@ -327,11 +338,13 @@ PAIR_PACKED_TILED_SOURCE = r"""
     sum_target = simd_sum(sum_target);
     if (lane == 0) {
         if (HAS_ANCHOR_BIAS)
-            sum_anchor += float(bias_anchor[row * bias_anchor_strides[0]]);
+            out_anchor[row] = ft_bf16_add_bias(sum_anchor, bias_anchor[row * bias_anchor_strides[0]]);
+        else
+            out_anchor[row] = bfloat16_t(sum_anchor);
         if (HAS_TARGET_BIAS)
-            sum_target += float(bias_target[row * bias_target_strides[0]]);
-        out_anchor[row] = bfloat16_t(sum_anchor);
-        out_target[row] = bfloat16_t(sum_target);
+            out_target[row] = ft_bf16_add_bias(sum_target, bias_target[row * bias_target_strides[0]]);
+        else
+            out_target[row] = bfloat16_t(sum_target);
     }
 """
 PAIR_PACKED_ORDERED_SOURCE = r"""
@@ -400,11 +413,13 @@ PAIR_PACKED_ORDERED_SOURCE = r"""
     sum_target = simd_sum(sum_target);
     if (lane == 0) {
         if (HAS_ANCHOR_BIAS)
-            sum_anchor += float(bias_anchor[row * bias_anchor_strides[0]]);
+            out_anchor[row] = ft_bf16_add_bias(sum_anchor, bias_anchor[row * bias_anchor_strides[0]]);
+        else
+            out_anchor[row] = bfloat16_t(sum_anchor);
         if (HAS_TARGET_BIAS)
-            sum_target += float(bias_target[row * bias_target_strides[0]]);
-        out_anchor[row] = bfloat16_t(sum_anchor);
-        out_target[row] = bfloat16_t(sum_target);
+            out_target[row] = ft_bf16_add_bias(sum_target, bias_target[row * bias_target_strides[0]]);
+        else
+            out_target[row] = bfloat16_t(sum_target);
     }
 """
 
@@ -424,7 +439,7 @@ def _gemv_kernel(*, packed: bool, rows: int, columns: int,
     header = (f"#define K_VALUES {columns}\n#define BLOCK_VALUES {block_values}\n"
               f"#define TILES_PER_ROW {(columns + block_values - 1) // block_values}\n"
               f"#define GEMV_LANES {GEMV_LANES}\n#define HAS_BIAS {int(has_bias)}\n"
-              + helpers)
+              + BIAS_HELPER + helpers)
     kernel = mx.fast.metal_kernel(
         name="familytiles_single_gemv_v1", input_names=input_names,
         output_names=["out"], source=GEMV_SOURCE.replace("WEIGHT_ACCESS", accessor),
@@ -508,7 +523,7 @@ def _pair_kernel(*, kind: str, columns: int, block_values: int,
               f"#define TILES_PER_ROW {(columns + block_values - 1) // block_values}\n"
               f"#define GEMV_LANES {GEMV_LANES}\n"
               f"#define HAS_ANCHOR_BIAS {int(has_anchor_bias)}\n"
-              f"#define HAS_TARGET_BIAS {int(has_target_bias)}\n" + helpers)
+              f"#define HAS_TARGET_BIAS {int(has_target_bias)}\n" + BIAS_HELPER + helpers)
     if kind == "packed" and block_values == 256 and packed_profile == "ordered_all_packed":
         source = PAIR_PACKED_ORDERED_SOURCE
         name = "familytiles_pair_gemv_ordered_v3"
@@ -593,13 +608,13 @@ def kernel_config() -> dict[str, Any]:
             "accumulation": "fp32", "output": "bf16",
             "math_mode": "safe", "partial_sum_bytes": 0,
             "single_source_sha256": hashlib.sha256(
-                (GEMV_SOURCE + DECODE_HELPERS +
+                (GEMV_SOURCE + BIAS_HELPER + DECODE_HELPERS +
                  "ft_target_word(anchor, descriptors, payload, row, column)" +
                  "weights[row * weights_strides[0] + column * weights_strides[1]]").encode()
             ).hexdigest(),
             "pair_source_sha256": hashlib.sha256(
                 (PAIR_SOURCE + PAIR_PACKED_TILED_SOURCE + PAIR_PACKED_ORDERED_SOURCE +
-                 DECODE_HELPERS +
+                BIAS_HELPER + DECODE_HELPERS +
                  "ft_target_word_from_anchor(anchor_word, descriptors, payload, row, column)" +
                  "target[row * target_strides[0] + column * target_strides[1]]").encode()
             ).hexdigest()}

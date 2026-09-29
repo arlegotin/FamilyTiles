@@ -1,0 +1,22 @@
+{
+  "decision": "not_tested",
+  "date": "2026-09-29",
+  "artifact_hash": "ed6da10e3efbe6eea5b6b0bde6f0c5536cc97dd884ed85ca6060ff7c4dc33585",
+  "original_codec_policy_sha256": "53628dd18b85be5a969284737dfb1e0f1243365fe431c3bf8e18d75b702281bd",
+  "anchor_revision": "8faed761d45a263340a0528343f099c05c9a4323",
+  "target_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "before_source": {
+    "commit": "5943a0c",
+    "metal_py_sha256": "d8eaffae0b203c88ee02a15a35c977674fd6e82eaa38edba080d846ed23a0b19",
+    "single_generated_source_sha256": "f5ca49812cc2c5ee2a65e5b2f932f54bb2563f62a066a0adf3dcf9d21e1605cd",
+    "pair_generated_source_sha256": "ffa5c9b3ba47160031de84a4f1720f5076d19741ec45ec34697479deaafbf2e4",
+    "math_mode": "safe"
+  },
+  "scope": "One BF16-before-bias production epilogue correction, then raw and fused cached decoding gates; no codec, layout, reduction, model or dependency changes",
+  "finding": "The two-round correction exists only in tools/trace_projection.py. All five active custom epilogues in src/familytiles/metal.py add bias to the FP32 sum before converting to BF16. No source-bound corrected whole-model cached result was found.",
+  "previous_evidence": [
+    "results/continuation/projection_trace.json",
+    "results/continuation/numerical-trace-8.json",
+    "results/continuation/CONTINUATION_RESULTS.md"
+  ]
+}
