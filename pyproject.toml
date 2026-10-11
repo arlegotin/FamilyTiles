@@ -5,7 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "familytiles"
 version = "0.1.0"
+readme = "README.md"
 description = "Gated exact shared-weight inference research on Apple Silicon"
+license = {text = "AGPL-3.0-only"}
+authors = [{name = "Artem Legotin"}]
 requires-python = ">=3.11"
 dependencies = [
   "numpy==2.5.3",
@@ -26,3 +29,10 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[project.urls]
+Repository = "https://github.com/arlegotin/FamilyTiles"
+Issues = "https://github.com/arlegotin/FamilyTiles/issues"
+
+[tool.setuptools]
+license-files = ["LICENSE", "NOTICE", "LICENSING.md", "LICENSES/*.txt", "THIRD_PARTY_NOTICES.md"]

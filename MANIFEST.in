@@ -1,0 +1,3 @@
+include LICENSE NOTICE LICENSING.md CITATION.cff
+recursive-include LICENSES *.txt
+include THIRD_PARTY_NOTICES.md

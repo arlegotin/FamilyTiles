@@ -1,0 +1,16 @@
+FamilyTiles: Exact shared-weight representations for related language models
+Copyright (c) 2026 Artem Legotin
+https://github.com/arlegotin/FamilyTiles
+
+This notice identifies the author and original project. Preserve applicable
+copyright and license notices when sharing AGPL-covered material, as required
+by the unchanged AGPL-3.0-only license in LICENSE. No supplemental license
+conditions are imposed by this notice. Third-party notices remain intact.
+
+Original prose, documentation, report text, diagrams, and authored research
+presentation are licensed separately under CC BY 4.0; see LICENSING.md.
+The license documents themselves retain their publishers' terms.
+
+CITATION.cff supplies citation metadata. Citation for independent reuse of
+ideas or facts is requested as scholarly attribution; it is not a claim
+that copyright licenses control every use of an idea or fact.

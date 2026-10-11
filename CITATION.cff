@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you build on this software, findings, or ideas, please cite this repository and the exact commit used."
+type: software
+title: "FamilyTiles: Exact shared-weight representations for related language models"
+authors:
+  - family-names: Legotin
+    given-names: Artem
+version: 0.1.0
+license:
+  - AGPL-3.0-only
+  - CC-BY-4.0
+repository-code: "https://github.com/arlegotin/FamilyTiles"
+url: "https://github.com/arlegotin/FamilyTiles"
+abstract: >-
+  Lossless residual encoding and Metal decoding for related BF16 checkpoints.
+  The tested Qwen2.5-1.5B base/Instruct pair used 20.49 percent less active-
+  weight representation storage with exact reconstruction. Custom model
+  execution failed its numerical requirement and stock-operator fallbacks
+  failed latency requirements; no validated memory-saving inference or
+  physical process-peak reduction was demonstrated.
+keywords:
+  - language models
+  - shared weights
+  - lossless compression
+  - BF16
+  - Apple Silicon
+  - Metal
+  - negative results
